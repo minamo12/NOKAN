@@ -1,0 +1,20 @@
+
+<div>
+
+  <div>本当に退会しますか？</div>
+
+  <p>
+    退会すると、会員登録情報や<br>
+    これまでの模試の履歴などが閲覧できなくなります。<br>
+    退会する場合は、「退会する」をクリックしてください。
+  </p>
+
+  <div>
+    <div><%= link_to "退会しない", customers_my_page_path %></div>
+    <div>
+      <%= link_to "退会する", customers_withdraw_path(customer: {is_active: false}),
+      method: :patch, "data-confirm" => "本当に退会しますか？" %>
+    </div>
+  </div>
+
+</div>

@@ -1,2 +1,21 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+
+<div>ユーザ名変更</div>
+
+<%= form_with model: @customer, url: customers_infomation_path do |f| %>
+
+<div>
+
+  <div>
+    <label>ユーザ名</label>
+    <div><%= f.text_field :name %></div>
+  </div>
+
+  <div>
+    <div><%= f.submit "編集内容を保存" %></div>
+  </div>
+
+</div>
+
+<% end %>
+
+<%= link_to "退会する", customers_unsubscribe_path %>
