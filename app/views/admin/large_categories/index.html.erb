@@ -15,9 +15,24 @@
 
 </div>
 
+  <div>
+    <%= form_with model: @medium_category, url: admin_medium_create_path, method: :post do |f| %>
+    <label>中カテゴリ</label>
+    <div><%= f.collection_select :large_category_id, LargeCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+    <div><%= f.text_field :name %></div>
+    <div><%= f.submit '追加する' %></div>
+    <% end %>
+  </div>
 
 <div>
   <% @large_categories.each do |large_category| %>
     <%= large_category.name %>
+  <% end %>
+</div>
+
+<div>
+  <% @medium_categories.each do |medium_category| %>
+    <%= medium_category.name %>
+    <%= medium_category.large_category.name %>
   <% end %>
 </div>
