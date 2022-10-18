@@ -49,12 +49,12 @@ Rails.application.routes.draw do
 
     #large_categories
     resources :large_categories, only: [:index]
-    post 'large_create' => 'large_create'
-    delete 'large_destroy' => 'large_destroy'
-    post 'medium_create' => 'medium_category'
-    delete 'medium_destroy' => 'medium_destroy'
-    post 'small_create' => 'small_create'
-    delete 'small_destroy' => 'small_destroy'
+    post 'large_create' => 'large_categories#large_create'
+    delete 'large_destroy' => 'large_categories#large_destroy'
+    post 'medium_create' => 'large_categories#medium_category'
+    delete 'medium_destroy' => 'large_categories#medium_destroy'
+    post 'small_create' => 'large_categories#small_create'
+    delete 'small_destroy' => 'large_categories#small_destroy'
 
     #items
     resources :items, only: [:new, :create, :edit, :update, :destroy]
