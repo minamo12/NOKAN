@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_18_123653) do
+ActiveRecord::Schema.define(version: 2022_10_18_124828) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,23 @@ ActiveRecord::Schema.define(version: 2022_10_18_123653) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "board_posts", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
+    t.integer "large_category_id", null: false
+    t.string "board_title", null: false
+    t.text "board_text", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id", null: false
+    t.integer "board_post_id", null: false
+    t.text "comment_text", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,6 +81,60 @@ ActiveRecord::Schema.define(version: 2022_10_18_123653) do
     t.boolean "is_active", default: true, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "exam_and_quizzes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id", null: false
+    t.integer "quiz_id", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "large_category_id", null: false
+    t.integer "medium_category_id", null: false
+    t.integer "small_category_id", null: false
+    t.string "name", null: false
+    t.text "information", null: false
+    t.text "commentary", null: false
+  end
+
+  create_table "large_categories", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
+  end
+
+  create_table "medium_categories", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "large_category_id", null: false
+    t.string "name", null: false
+  end
+
+  create_table "mock_exams", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "point", null: false
+    t.string "answer", null: false
+    t.boolean "scoring", default: false, null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "item_id", null: false
+    t.text "question", null: false
+    t.string "correct_answer", null: false
+  end
+
+  create_table "small_categories", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "medium_category_id", null: false
+    t.string "name", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

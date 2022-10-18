@@ -1,0 +1,2 @@
+class MockExam < ApplicationRecord
+end
