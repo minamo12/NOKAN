@@ -9,6 +9,8 @@ class Admin::LargeCategoriesController < ApplicationController
     @small_category = SmallCategory.new
   end
 
+  # 大カテゴリ
+
   def large_create
     @large_category = LargeCategory.new(large_category_params)
     @large_category.save
@@ -21,15 +23,31 @@ class Admin::LargeCategoriesController < ApplicationController
     redirect_to admin_large_categories_path
   end
 
+  # 中カテゴリ
+
   def medium_create
     @medium_category = MediumCategory.new(medium_category_params)
     @medium_category.save
     redirect_to admin_large_categories_path
   end
 
+  def medium_destroy
+    @medium__categories = MediumCategory.find(params[:id])
+    @medium__categories.destroy
+    redirect_to admin_large_categories_path
+  end
+
+  # 小カテゴリ
+
   def small_create
     @small_category = SmallCategory.new(small_category_params)
     @small_category.save
+    redirect_to admin_large_categories_path
+  end
+
+  def small_destroy
+    @small__categories = SmallCategory.find(params[:id])
+    @small__categories.destroy
     redirect_to admin_large_categories_path
   end
 

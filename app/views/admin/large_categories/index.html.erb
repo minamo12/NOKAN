@@ -52,7 +52,7 @@
   <% @medium_categories.each do |medium_category| %>
   <br/>
     <%= medium_category.name %>
-    <%= medium_category.large_category.name %>
+    <%= link_to "削除", admin_medium_destroy_path(medium_category), method: :delete %>
   <% end %>
 </div>
 
@@ -63,7 +63,6 @@
   <br/>
   <% @small_categories.each do |small_category| %>
     <%= small_category.name %>
-    <%= small_category.medium_category.name %>
-    <%= small_category.medium_category.large_category.name %>
+    <%= link_to "削除", admin_small_destroy_path(small_category), method: :delete %>
   <% end %>
 </div>
