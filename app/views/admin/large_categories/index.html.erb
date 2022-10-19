@@ -39,7 +39,9 @@
 <div>
   <label>大カテゴリ</label>
   <% @large_categories.each do |large_category| %>
+  <br/>
     <%= large_category.name %>
+    <%= link_to "削除", admin_large_destroy_path(large_category), method: :delete %>
   <% end %>
 </div>
 
@@ -48,6 +50,7 @@
 <div>
   <label>中カテゴリ</label>
   <% @medium_categories.each do |medium_category| %>
+  <br/>
     <%= medium_category.name %>
     <%= medium_category.large_category.name %>
   <% end %>
@@ -57,6 +60,7 @@
 <br/>
 <div>
   <label>小カテゴリ</label>
+  <br/>
   <% @small_categories.each do |small_category| %>
     <%= small_category.name %>
     <%= small_category.medium_category.name %>

@@ -15,6 +15,12 @@ class Admin::LargeCategoriesController < ApplicationController
     redirect_to admin_large_categories_path
   end
 
+  def large_destroy
+    @large_categories = LargeCategory.find(params[:id])
+    @large_categories.destroy
+    redirect_to admin_large_categories_path
+  end
+
   def medium_create
     @medium_category = MediumCategory.new(medium_category_params)
     @medium_category.save
