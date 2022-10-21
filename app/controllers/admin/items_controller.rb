@@ -16,7 +16,7 @@ class Admin::ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :information, :commentary, :image, :other_image, :large_category_id, :medium_category_id, :small_category_id)
+    params.require(:item).permit(:name, :information, :commentary, :image, :large_category_id, :medium_category_id, :small_category_id, other_images: [])
   end
 
 end

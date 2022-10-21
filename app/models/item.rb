@@ -2,6 +2,7 @@ class Item < ApplicationRecord
 
   has_many :quizzes, dependent: :destroy
   has_one_attached :image
+  has_many_attached :other_images
 
   belongs_to :large_category
   belongs_to :medium_category

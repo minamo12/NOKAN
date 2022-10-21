@@ -17,11 +17,10 @@
     <div><%= f.text_area :information %></div>
     <label>解説</label>
     <div><%= f.text_area :commentary %></div>
-
     <label>画像1</label>
     <div><%= f.file_field :image, accept: "image/*" %></div>
     <label>他画像</label>
-    <div><%= f.file_field :other_image, accept: "image/*", multiple: true %></div>
+    <div><%= f.file_field :other_images, accept: "image/*", multiple: true %></div>
 
     <div><%= f.submit '追加する' %></div>
     <% end %>
