@@ -5,7 +5,7 @@ class Public::ItemsController < ApplicationController
     @small_categories = SmallCategory.all
 
     if params[:small_category_id].present?
-      @small_category = LargeCategory.find(params[:small_category_id])
+      @small_category = SmallCategory.find(params[:small_category_id])
       @items = @small_category.items
     end
   end
