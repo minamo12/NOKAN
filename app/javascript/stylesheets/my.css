@@ -1,0 +1,16 @@
+
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin: 5px;
+}
+
+
+
+/*並び方*/
+.flex {
+  display: flex
+}

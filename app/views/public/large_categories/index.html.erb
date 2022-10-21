@@ -1,2 +1,18 @@
-<h1>Public::LargeCategories#index</h1>
-<p>Find me in app/views/public/large_categories/index.html.erb</p>
+
+<div>カテゴリ一覧</div>
+
+<div>
+  <% @medium_categories.each do |medium_category| %>
+  <br/>
+    <%= link_to medium_category.name, categories_path(large_category_id: medium_category.large_category.id, medium_category_id: medium_category.id) %>
+  <% end %>
+
+</div>
+
+<div>
+    <% if @small_categories.present? %>
+    <% @small_categories.each do |small_category| %>
+    <%= link_to small_category.name, items_path(large_category_id: small_category.medium_category.large_category.id,medium_category_id: small_category.medium_category.id, small_category_id: small_category.id) %>
+    <% end %>
+    <% end %>
+</div>

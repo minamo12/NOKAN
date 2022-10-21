@@ -16,7 +16,7 @@
     <header>
       <div>
         <!--ロゴ-->
-        <h1>NOKAN</h1>
+        <h1><%= link_to "NOKAN", root_path %></h1>
 
         <div>
           <ul class="flex header-list">
@@ -31,7 +31,7 @@
             <!--会員ログイン-->
             <% elsif customer_signed_in? %>
             <li><%= link_to "模試", quizzes_path %></li>
-            <li><%= link_to "カテゴリ一覧", categories_path %></li>
+            <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "掲示板", board_posts_path %></li>
             <li><%= link_to "マイページ", customers_my_page_path %></li>
             <li><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
@@ -39,7 +39,7 @@
             <!--共通ログアウト-->
             <% else %>
             <li><%= link_to "模試", quizzes_path %></li>
-            <li><%= link_to "カテゴリ一覧", categories_path %></li>
+            <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "掲示板", board_posts_path %></li>
             <li><%= link_to "About", about_path %></li>
             <li><%= link_to "ログイン", new_customer_session_path %></li>

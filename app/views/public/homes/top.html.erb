@@ -1,0 +1,22 @@
+
+<div>
+  <p>
+    ようこそ、「NOKAN」へ！</br>
+    このサイトは農業鑑定競技の勉強と</br>
+    農高生同士の交流ができる無料学習サイトになります。</br>
+    会員でない方もサイト全体の閲覧は可能ですが、</br>
+    模試の記録保存、掲示板への投稿、ブックマークなど、</br>
+    様々な機能を利用するには会員登録が必要になります。
+  </p>
+</div>
+
+</br>
+</br>
+
+<div>
+  <% @large_categories.each do |large_category| %>
+  <br/>
+    <%= large_category.name %>
+    <%= link_to "勉強する", categories_path(large_category_id: large_category.id) %>
+  <% end %>
+</div>

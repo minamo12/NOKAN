@@ -46,8 +46,8 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   def small_destroy
-    @small__categories = SmallCategory.find(params[:id])
-    @small__categories.destroy
+    @small_categories = SmallCategory.find(params[:id])
+    @small_categories.destroy
     redirect_to admin_large_categories_path
   end
 
