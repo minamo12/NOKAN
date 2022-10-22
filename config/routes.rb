@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     #items
     resources :items, only: [:index, :show]
 
+
   end
 
   devise_for :customers, skip: [:passwords], controllers: {

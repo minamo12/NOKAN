@@ -12,6 +12,12 @@ class Public::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @quiz = Quiz.new
+    @quizzes = Quiz.all
   end
+
+
+
+
 
 end

@@ -1,2 +1,30 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+
+<div>項目編集</div>
+
+<div>
+
+  <div>
+    <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
+    <label>大カテゴリ</label>
+    <div><%= f.collection_select :large_category_id, LargeCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+    <label>中カテゴリ</label>
+    <div><%= f.collection_select :medium_category_id, MediumCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+    <label>小カテゴリ</label>
+    <div><%= f.collection_select :small_category_id, SmallCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+    <label>項目名</label>
+    <div><%= f.text_field :name %></div>
+    <label>情報</label>
+    <div><%= f.text_area :information %></div>
+    <label>解説</label>
+    <div><%= f.text_area :commentary %></div>
+    <label>画像1</label>
+    <div><%= f.file_field :image, accept: "image/*" %></div>
+    <label>他画像</label>
+    <div><%= f.file_field :other_images, accept: "image/*", multiple: true %></div>
+
+    <div><%= f.submit '追加する' %></div>
+    <div><%= link_to "削除する", admin_item_path(@item.id), method: :delete %></div>
+    <% end %>
+  </div>
+
+</div>

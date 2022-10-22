@@ -23,3 +23,51 @@
     <% end %>
   <% end %>
 </div>
+
+<!--以下管理者　問題管理画面-->
+<% if admin_signed_in? %>
+
+<div>
+  <%= link_to "修正する", edit_admin_item_path(@item.id) %>
+</div>
+
+<div>
+  <div>この項目の問題一覧</div>
+  <div>
+    <% @quizzes.each do |quiz| %>
+      問題文　<%= quiz.question %>
+      答え　<%= quiz.correct_answer %>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <div>問題追加</div>
+  <div>
+    <%= form_with model: @quiz, url: admin_quizzes_path(item_id: @item.id), method: :post do |f| %>
+      <div>
+        問題
+        <%= f.text_field :question %>
+      </div>
+      <div>
+        答え
+        <%= f.text_field :correct_answer %>
+      </div>
+      <div>
+        画像A
+        <%= f.file_field :number_a_image, accept: "image/*" %>
+      </div>
+      <div>
+        画像B
+        <%= f.file_field :number_b_image, accept: "image/*" %>
+      </div>
+      <div>
+        画像C
+        <%= f.file_field :number_c_image, accept: "image/*" %>
+      </div>
+      <div><%= f.submit '追加する' %></div>
+    <% end %>
+  </div>
+</div>
+
+<% end %>
