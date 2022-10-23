@@ -32,11 +32,13 @@
 </div>
 
 <div>
+
   <div>この項目の問題一覧</div>
   <div>
     <% @quizzes.each do |quiz| %>
       問題文　<%= quiz.question %>
       答え　<%= quiz.correct_answer %>
+      <div><%= link_to "修正する", edit_admin_quiz_path(quiz.id, item_id: @item.id) %></div>
     <% end %>
   </div>
 </div>

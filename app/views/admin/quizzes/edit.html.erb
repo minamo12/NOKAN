@@ -1,2 +1,30 @@
-<h1>Admin::Quizzes#edit</h1>
-<p>Find me in app/views/admin/quizzes/edit.html.erb</p>
+<div>問題編集</div>
+
+
+<div>
+  <%= form_with model: @quiz, url: admin_quiz_path(item_id: @item.id), method: :patch do |f| %>
+    <div>
+      問題
+      <%= f.text_field :question %>
+    </div>
+    <div>
+      答え
+      <%= f.text_field :correct_answer %>
+    </div>
+    <div>
+      画像A
+      <%= f.file_field :number_a_image, accept: "image/*" %>
+    </div>
+    <div>
+      画像B
+      <%= f.file_field :number_b_image, accept: "image/*" %>
+    </div>
+    <div>
+      画像C
+      <%= f.file_field :number_c_image, accept: "image/*" %>
+    </div>
+    <div><%= f.submit '追加する' %></div>
+  <% end %>
+</div>
+
+<div><%= link_to "削除する", admin_quiz_path(@quiz.id, item_id: @item.id), method: :delete %></div>
