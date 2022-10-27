@@ -1,6 +1,7 @@
 class Admin::LargeCategoriesController < ApplicationController
 
   def index
+    # すべて表示
     @large_categories = LargeCategory.all
     @large_category = LargeCategory.new
     @medium_categories = MediumCategory.all

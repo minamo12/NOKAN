@@ -1,2 +1,39 @@
-<h1>Public::Quizzes#index</h1>
-<p>Find me in app/views/public/quizzes/index.html.erb</p>
+
+<div>模試</div>
+
+
+</br>
+</br>
+
+<table>
+  <thead>
+    <tr>
+      <th>番号</th>
+      <th>問題</th>
+      <th colspan="1"></th>
+      <th>解答</th>
+      <th>答え</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+    <% item.quizzes.take(40).each do |quiz| %>
+      <tr>
+        <td>番号</td>
+        <td><%= quiz.question %></td>
+        <td>
+          A<%= image_tag quiz.get_number_a_image(50, 50) %>
+          B<%= image_tag quiz.get_number_b_image(50, 50) %>
+          C<%= image_tag quiz.get_number_c_image(50, 50) %>
+        </td>
+        <td>解答</td>
+        <td><%= quiz.correct_answer %></td>
+        <td><%= link_to "詳細", item_path(item.id) %></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+

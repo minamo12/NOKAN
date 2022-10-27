@@ -30,7 +30,6 @@
 
             <!--会員ログイン-->
             <% elsif customer_signed_in? %>
-            <li><%= link_to "模試", quizzes_path %></li>
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "掲示板", board_posts_path %></li>
             <li><%= link_to "マイページ", customers_my_page_path %></li>
@@ -38,7 +37,6 @@
 
             <!--共通ログアウト-->
             <% else %>
-            <li><%= link_to "模試", quizzes_path %></li>
             <li><%= link_to "トップ", root_path %></li>
             <li><%= link_to "掲示板", board_posts_path %></li>
             <li><%= link_to "About", about_path %></li>

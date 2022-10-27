@@ -46,11 +46,11 @@
 </div>
 
 <br/>
-<br/>
 <div>
   <label>中カテゴリ</label>
   <% @medium_categories.each do |medium_category| %>
   <br/>
+    [大]<%= medium_category.large_category.name %>
     <%= medium_category.name %>
     <%= link_to "削除", admin_medium_destroy_path(medium_category), method: :delete %>
   <% end %>
@@ -60,8 +60,10 @@
 <br/>
 <div>
   <label>小カテゴリ</label>
-  <br/>
   <% @small_categories.each do |small_category| %>
+  <br/>
+    [大]<%= small_category.medium_category.large_category.name %>
+    [中]<%= small_category.medium_category.name %>
     <%= small_category.name %>
     <%= link_to "削除", admin_small_destroy_path(small_category), method: :delete %>
   <% end %>
