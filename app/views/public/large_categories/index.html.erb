@@ -11,8 +11,9 @@
 
 <div>
     <% if @small_categories.present? %>
-    <% @small_categories.each do |small_category| %>
-    <%= link_to small_category.name, items_path(small_category_id: small_category.id) %>
-    <% end %>
+      <% @small_categories.each do |small_category| %>
+        <%= link_to small_category.name, items_path(small_category_id: small_category.id) %>
+      <% end %>
+    <% else %>
     <% end %>
 </div>

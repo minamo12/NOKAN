@@ -2,8 +2,6 @@ class Public::LargeCategoriesController < ApplicationController
 
   def index
     @medium_categories = MediumCategory.all
-    @large_categories = LargeCategory.all
-    @small_categories = SmallCategory.all
 
     if params[:large_category_id].present?
       @large_category = LargeCategory.find(params[:large_category_id])

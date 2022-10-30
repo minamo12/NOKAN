@@ -4,21 +4,61 @@
 <div>
 
   <div>
+    <br/>
     <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+
     <label>大カテゴリ</label>
-    <div><%= f.collection_select :large_category_id, LargeCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+    <% @large_categories.each do |large_category| %>
+    <br/>
+      <%= link_to large_category.name, new_admin_item_path(large_category_id: large_category.id) %>
+    <% end %>
+
+    <br/>
+    <br/>
+
     <label>中カテゴリ</label>
-    <div><%= f.collection_select :medium_category_id, MediumCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+    <br/>
+    <% if @medium_categories.present? %>
+      <% @medium_categories.each do |medium_category| %>
+      <br/>
+        <%= link_to medium_category.name, new_admin_item_path(medium_category_id: medium_category.id) %>
+      <% end %>
+      <% elsif @medium_category.present? %>
+        <%= @medium_category.name %>
+      <% elsif @small_category.present? %>
+        <%= @small_category.medium_category.name %>
+      <% else %>
+    <% end %>
+
+    <br/>
+    <br/>
     <label>小カテゴリ</label>
-    <div><%= f.collection_select :small_category_id, SmallCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+    <br/>
+    <% if @small_categories.present? %>
+      <% @small_categories.each do |small_category| %>
+      <br/>
+        <%= link_to small_category.name, new_admin_item_path(small_category_id: small_category.id) %>
+      <% end %>
+      <% elsif @small_category.present? %>
+        <%= @small_category.name %>
+      <% else %>
+    <% end %>
+
+    <br/>
+    <br/>
+
     <label>項目名</label>
     <div><%= f.text_field :name %></div>
+
     <label>情報</label>
     <div><%= f.text_area :information %></div>
+
     <label>解説</label>
     <div><%= f.text_area :commentary %></div>
+
     <label>画像1</label>
     <div><%= f.file_field :image, accept: "image/*" %></div>
+
     <label>他画像</label>
     <div><%= f.file_field :other_images, accept: "image/*", multiple: true %></div>
 

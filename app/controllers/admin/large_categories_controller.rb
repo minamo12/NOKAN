@@ -33,8 +33,8 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   def medium_destroy
-    @medium__categories = MediumCategory.find(params[:id])
-    @medium__categories.destroy
+    @medium_categories = MediumCategory.find(params[:id])
+    @medium_categories.destroy
     redirect_to admin_large_categories_path
   end
 

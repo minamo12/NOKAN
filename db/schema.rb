@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2022_10_18_124828) do
   create_table "exam_and_quizzes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "item_id", null: false
+    t.integer "mock_exam_id", null: false
     t.integer "quiz_id", null: false
   end
 
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 2022_10_18_124828) do
   create_table "mock_exams", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "exam_and_quiz_id", null: false
     t.integer "point", null: false
     t.string "answer", null: false
     t.boolean "scoring", default: false, null: false
@@ -125,6 +126,7 @@ ActiveRecord::Schema.define(version: 2022_10_18_124828) do
   create_table "quizzes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "exam_and_quiz_id", null: false
     t.integer "item_id", null: false
     t.text "question", null: false
     t.string "correct_answer", null: false

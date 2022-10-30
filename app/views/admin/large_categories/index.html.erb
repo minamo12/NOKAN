@@ -18,7 +18,14 @@
   <div>
     <%= form_with model: @medium_category, url: admin_medium_create_path, method: :post do |f| %>
     <label>中カテゴリ</label>
-    <div><%= f.collection_select :large_category_id, LargeCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+
+
+    <!--大カテ選択-->
+    <% @large_categories.each do |large_category| %>
+    <br/>
+      <%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %>
+    <% end %>
+
     <div><%= f.text_field :name %></div>
     <div><%= f.submit '追加する' %></div>
     <% end %>
