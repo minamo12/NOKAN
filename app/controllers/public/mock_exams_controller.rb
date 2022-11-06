@@ -20,6 +20,12 @@ class Public::MockExamsController < ApplicationController
     redirect_to mock_exams_path
   end
 
+  def destroy
+    @mock_exam = MockExam.find(params[:id])
+    @mock_exam.destroy
+    redirect_to mock_exams_path
+  end
+
   private
 
   def mock_exam_params

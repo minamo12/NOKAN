@@ -24,7 +24,7 @@
       </td>
       <td><%= mock_exam.point %>/40</td>
       <td><%= link_to "詳細", mock_exam_path(mock_exam.id) %></td>
-      <td>削除</td>
+      <td><%= link_to "削除", mock_exam_path(mock_exam.id), method: :delete %></td>
     </tr>
   </tbody>
   <% end %>
