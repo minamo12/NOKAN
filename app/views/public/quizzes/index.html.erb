@@ -4,19 +4,23 @@
 </br>
 </br>
 
+<button>答えを表示する</button>
+
+
+<%= form_with model: @mock_exam, url: mock_exams_path, method: :post do |f| %>
 <table>
   <thead>
     <tr>
       <th>番号</th>
       <th>問題</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
       <th>解答</th>
       <th>答え</th>
       <th colspan="1"></th>
     </tr>
   </thead>
 
-  <%= form_with model: @mock_exam, url: mock_exams_path, method: :post do |f| %>
+
   <tbody>
 
     <% @items.each do |item| %>
@@ -29,13 +33,22 @@
           B<%= image_tag quiz.get_number_b_image(50, 50) %>
           C<%= image_tag quiz.get_number_c_image(50, 50) %>
         </td>
+
         <td>
           <%= f.fields_for :answers, @mock_exam.answers.build, url: answers_path, method: :post do |a| %>
             <%= a.check_box :scoring %>
-            <%= a.text_field :answer %>
-            <%= a.hidden_field :quiz_id, value: quiz.id %>
+
+
+        <td><%= a.text_field :answer %></td>
+        <%= a.hidden_field :quiz_id, value: quiz.id %>
         </td>
-        <td><%= quiz.correct_answer %></td>
+
+        <td>
+
+          <p><%= quiz.correct_answer %></p>
+
+        </td>
+
         <td>
           <%= link_to "詳細", item_path(item.id) %>
           <% end %>
@@ -45,9 +58,20 @@
     <% end %>
     <% end %>
 
-    <%= f.number_field :point %>
-    <%= f.submit "結果を保存する" %>
   </tbody>
-  <% end %>
+
 </table>
 
+  <%= f.number_field :point %>
+  <%= f.submit "結果を保存する" %>
+<% end %>
+
+
+
+<script>
+  $('p').hide();
+
+  $('button').click(function() {
+    $('p').toggle();
+  })
+</script>

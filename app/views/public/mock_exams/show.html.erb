@@ -8,6 +8,7 @@
   <% end %>
 </div>
 <div><%= @mock_exam.point %>/40</div>
+<div><%= link_to "削除", mock_exam_path(@mock_exam.id), method: :delete %></div>
 
 <table>
   <% @mock_exam.answers.each do |answer| %>
@@ -42,4 +43,5 @@
   </tbody>
   <% end %>
 </table>
+
 
