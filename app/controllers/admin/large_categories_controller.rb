@@ -3,11 +3,25 @@ class Admin::LargeCategoriesController < ApplicationController
   def index
     # すべて表示
     @large_categories = LargeCategory.all
-    @large_category = LargeCategory.new
     @medium_categories = MediumCategory.all
-    @medium_category = MediumCategory.new
     @small_categories = SmallCategory.all
+    @large_category = LargeCategory.new
+    @medium_category = MediumCategory.new
     @small_category = SmallCategory.new
+
+    @items = Item.all
+    @quizzes = Quiz.all
+
+    if params[:large_category_id].present?
+      @@large_select = LargeCategory.find(params[:large_category_id])
+      @large_select = @@large_select
+      @medium_selects = @@large_select.medium_categories
+    end
+
+    if params[:medium_category_id].present?
+      @@medium_select = MediumCategory.find(params[:medium_category_id])
+      @medium_select = @@medium_select
+    end
   end
 
   # 大カテゴリ
@@ -28,6 +42,7 @@ class Admin::LargeCategoriesController < ApplicationController
 
   def medium_create
     @medium_category = MediumCategory.new(medium_category_params)
+    @medium_category.large_category_id = @@large_select.id
     @medium_category.save
     redirect_to admin_large_categories_path
   end
@@ -42,6 +57,7 @@ class Admin::LargeCategoriesController < ApplicationController
 
   def small_create
     @small_category = SmallCategory.new(small_category_params)
+    @small_category.medium_category_id = @@medium_select.id
     @small_category.save
     redirect_to admin_large_categories_path
   end

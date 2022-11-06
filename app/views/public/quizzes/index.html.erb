@@ -1,7 +1,6 @@
 
 <div>模試</div>
 
-
 </br>
 </br>
 
@@ -17,7 +16,9 @@
     </tr>
   </thead>
 
+  <%= form_with model: @mock_exam, url: mock_exams_path, method: :post do |f| %>
   <tbody>
+
     <% @items.each do |item| %>
     <% item.quizzes.take(40).each do |quiz| %>
       <tr>
@@ -28,12 +29,25 @@
           B<%= image_tag quiz.get_number_b_image(50, 50) %>
           C<%= image_tag quiz.get_number_c_image(50, 50) %>
         </td>
-        <td>解答</td>
+        <td>
+          <%= f.fields_for :answers, @mock_exam.answers.build, url: answers_path, method: :post do |a| %>
+            <%= a.check_box :scoring %>
+            <%= a.text_field :answer %>
+            <%= a.hidden_field :quiz_id, value: quiz.id %>
+        </td>
         <td><%= quiz.correct_answer %></td>
-        <td><%= link_to "詳細", item_path(item.id) %></td>
+        <td>
+          <%= link_to "詳細", item_path(item.id) %>
+          <% end %>
+        </td>
       </tr>
+
     <% end %>
     <% end %>
+
+    <%= f.number_field :point %>
+    <%= f.submit "結果を保存する" %>
   </tbody>
+  <% end %>
 </table>
 

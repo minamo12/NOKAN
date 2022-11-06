@@ -41,9 +41,9 @@
     <% @quizzes.each do |quiz| %>
       問題文　<%= quiz.question %>
       答え　<%= quiz.correct_answer %>
-      A<%= image_tag quiz.get_number_a_image(30, 30) %>
-      B<%= image_tag quiz.get_number_b_image(30, 30) %>
-      C<%= image_tag quiz.get_number_c_image(30, 30) %>
+      A<%= image_tag quiz.get_number_a_image(50, 50) %>
+      B<%= image_tag quiz.get_number_b_image(50, 50) %>
+      C<%= image_tag quiz.get_number_c_image(50, 50) %>
       <div><%= link_to "修正する", edit_admin_quiz_path(quiz.id, item_id: @item.id) %></div>
     <% end %>
   </div>

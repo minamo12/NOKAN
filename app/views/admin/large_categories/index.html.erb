@@ -17,13 +17,21 @@
 
   <div>
     <%= form_with model: @medium_category, url: admin_medium_create_path, method: :post do |f| %>
+
+<br/>
+<br/>
+
     <label>中カテゴリ</label>
 
-
     <!--大カテ選択-->
-    <% @large_categories.each do |large_category| %>
-    <br/>
-      <%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %>
+    <div>大カテ選択</div>
+    <% if @large_categories.present? %>
+      <% @large_categories.each do |large_category| %>
+        <%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %>
+        <br/>
+      <% end %>
+    <% elsif @large_select.present? %>
+      <%= @large_select.name %>
     <% end %>
 
     <div><%= f.text_field :name %></div>
@@ -31,11 +39,34 @@
     <% end %>
   </div>
 
+<br/>
+<br/>
+
   <div>
     <%= form_with model: @small_category, url: admin_small_create_path, method: :post do |f| %>
     <label>小カテゴリ</label>
-    <div><%= f.collection_select :large_category_id, LargeCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
-    <div><%= f.collection_select :medium_category_id, MediumCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+
+    <!--大カテ選択-->
+    <div>大カテ選択</div>
+    <% if @large_categories.present? %>
+      <% @large_categories.each do |large_category| %>
+        <%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %>
+        <br/>
+      <% end %>
+    <% elsif @large_select.present? %>
+      <%= @large_select.name %>
+    <% end %>
+
+    <div>中カテ選択</div>
+    <% if @medium_selects.present? %>
+      <% @medium_selects.each do |medium_category| %>
+        <%= link_to medium_category.name, admin_large_categories_path(medium_category_id: medium_category.id) %>
+        <br/>
+      <% end %>
+    <% elsif @medium_select.present? %>
+      <%= @medium_select.name %>
+    <% else %>
+    <% end %>
     <div><%= f.text_field :name %></div>
     <div><%= f.submit '追加する' %></div>
     <% end %>
@@ -73,5 +104,22 @@
     [中]<%= small_category.medium_category.name %>
     <%= small_category.name %>
     <%= link_to "削除", admin_small_destroy_path(small_category), method: :delete %>
+  <% end %>
+</div>
+
+</br></br>
+<div>
+  <div>テスト用一覧</div>
+
+  <div>項目一覧</div>
+  <% @items.each do |item| %>
+  <%= link_to item.name, item_path(item.id) %>
+  </br>
+  <% end %>
+
+  <div>問題一覧</div>
+  <% @quizzes.each do |quiz| %>
+  <%= quiz.item.name %>　　<%= quiz.question %>
+  <br/>
   <% end %>
 </div>

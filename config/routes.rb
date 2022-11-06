@@ -21,7 +21,10 @@ Rails.application.routes.draw do
     get 'quizzes/shuffle' => 'quizzes#shuffle'
 
     #mock_exams
-    resources :mock_exams, only: [:index]
+    resources :mock_exams, only: [:index, :create]
+
+    #answers
+    resources :answers, only: [:create]
 
     #board_posts
     resources :board_posts, only: [:index, :new, :show, :crate, :destroy]
