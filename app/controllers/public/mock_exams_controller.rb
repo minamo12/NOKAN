@@ -5,6 +5,7 @@ class Public::MockExamsController < ApplicationController
   end
 
   def show
+    @mock_exam = MockExam.find(params[:id])
   end
 
   def new
@@ -16,7 +17,6 @@ class Public::MockExamsController < ApplicationController
     @mock_exam = MockExam.new(mock_exam_params)
     @mock_exam.customer_id = current_customer.id
     @mock_exam.save
-    binding.pry
     redirect_to mock_exams_path
   end
 
