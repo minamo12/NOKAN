@@ -66,6 +66,8 @@
   <%= f.submit "結果を保存する" %>
 <% end %>
 
+<div><%= link_to "保存せず問題を入れ替える", quizzes_path(large_category_id: @large_category.id) %></div>
+
 
 
 <script>

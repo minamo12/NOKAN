@@ -8,11 +8,6 @@ class Public::LargeCategoriesController < ApplicationController
       @medium_categories = @large_category.medium_categories
     end
 
-    if params[:medium_category_id].present?
-      @medium_category = MediumCategory.find(params[:medium_category_id])
-      @small_categories = @medium_category.small_categories
-    end
-
   end
 
 end

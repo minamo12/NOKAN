@@ -1,19 +1,20 @@
 
+<div><%= @large_category.name %></div>
 <div>カテゴリ一覧</div>
+
+</br>
 
 <div>
   <% @medium_categories.each do |medium_category| %>
-  <br/>
-    <%= link_to medium_category.name, categories_path(large_category_id: medium_category.large_category.id, medium_category_id: medium_category.id) %>
-  <% end %>
-
-</div>
-
-<div>
-    <% if @small_categories.present? %>
-      <% @small_categories.each do |small_category| %>
-        <%= link_to small_category.name, items_path(small_category_id: small_category.id) %>
-      <% end %>
-    <% else %>
+  </br>
+  <div>中カテゴリ <%= medium_category.name %></div>
+  </br>
+  <label>小カテゴリ</label>
+    <% medium_category.small_categories.each do |small_category| %>
+      <div><%= small_category.name %></div>
     <% end %>
+
+  </br>
+
+  <% end %>
 </div>

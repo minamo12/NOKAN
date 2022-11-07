@@ -1,2 +1,29 @@
-<h1>Public::BoardPosts#new</h1>
-<p>Find me in app/views/public/board_posts/new.html.erb</p>
+
+<div>新規投稿</div>
+
+<div>
+
+  <%= form_with model: @board_post, url: board_posts_path, method: :post do |f| %>
+
+  <div>
+    <label>カテゴリ</label>
+    <div><%= f.collection_select :large_category_id, LargeCategory.all, :id, :name, include_blank: "--選択してください--" %></div>
+  </div>
+
+  <div>
+    <label>タイトル</label>
+    <div><%= f.text_field :board_title %></div>
+  </div>
+
+  <div>
+    <label>本文</label>
+    <diva><%= f.text_area :board_text %></diva>
+  </div>
+
+  <div>
+    <div><%= f.submit '投稿する' %></div>
+  </div>
+
+  <% end %>
+
+</div>
