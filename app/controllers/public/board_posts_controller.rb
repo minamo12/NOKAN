@@ -17,6 +17,7 @@ class Public::BoardPostsController < ApplicationController
   end
 
   def show
+    @board_post = BoardPost.find(params[:id])
   end
 
   private

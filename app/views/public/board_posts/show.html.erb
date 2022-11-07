@@ -1,2 +1,34 @@
-<h1>Public::BoardPosts#show</h1>
-<p>Find me in app/views/public/board_posts/show.html.erb</p>
+
+<div>投稿詳細</div>
+
+<div>
+
+  <div>
+    <label>タイトル</label>
+    <div><%= @board_post.board_title %></div>
+  </div>
+
+  <div>
+    <label>作成日時</label>
+    <div><%= @board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+  </div>
+
+  <div>
+    <label>本文</label>
+    <div><%= @board_post.board_text %></div>
+  </div>
+
+  <div>
+    <label>ユーザ名</label>
+    <div><%= @board_post.customer.name %></div>
+  </div>
+
+  <div>
+    <label>カテゴリ</label>
+    <div><%= @board_post.large_category.name %></div>
+  </div>
+
+</div>
+
+
+

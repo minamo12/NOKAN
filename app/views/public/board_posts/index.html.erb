@@ -7,7 +7,10 @@
 </br>
 
 <div>
+
   <% @board_posts.each do |board_post| %>
+
+  <%= link_to(board_post_path(board_post.id)) do %>
 
     <div>
       <label>タイトル</label>
@@ -33,6 +36,8 @@
       <label>カテゴリ</label>
       <div><%= board_post.large_category.name %></div>
     </div>
+
+    <% end %>
 
     <% end %>
 </div>
