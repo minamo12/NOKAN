@@ -2,6 +2,7 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
+    @mock_exams = @customer.mock_exams
   end
 
   def edit

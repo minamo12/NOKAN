@@ -1,2 +1,40 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+
+
+<div>マイページ</div>
+
+<%= @customer.name %>
+
+<div>
+  <div>模試履歴</div>
+  <% @mock_exams.each do |mock_exam| %>
+
+    <div>
+      <label>日時</label>
+      <div><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+    </div>
+
+    <div>
+      <label>カテゴリ</label>
+      <div>
+        <% mock_exam.answers.take(1).each do |answer| %>
+          <%= answer.quiz.item.large_category.name %>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <label>正解数</label>
+      <div><%= mock_exam.point %>/40</div>
+    </div>
+
+    <div><%= link_to "詳細", mock_exam_path(mock_exam.id) %></div>
+
+    <div><%= link_to "模試履歴一覧を見る", mock_exams_path %></div>
+
+  <% end %>
+</div>
+
+<div>
+  <div>会員情報を変更する</div>
+  <div><%= link_to "→", edit_customer_path(@customer.id) %></div>
+</div>

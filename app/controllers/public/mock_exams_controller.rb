@@ -1,7 +1,8 @@
 class Public::MockExamsController < ApplicationController
 
   def index
-    @mock_exams = MockExam.all
+    customer = current_customer
+    @mock_exams = customer.mock_exams
   end
 
   def show

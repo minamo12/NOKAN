@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     get '/about' => 'homes#about', as: 'about'
 
     #customers
+    resources :customers, only: [:edit]
     get 'customers/my_page' => 'customers#show'
-    get 'customers/infomation/edit' => 'customers#edit'
     patch 'customers/infomation' => 'customers#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe'
     patch 'customers/withdraw'  => 'customers#withdraw'
