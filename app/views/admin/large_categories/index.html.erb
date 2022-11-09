@@ -2,7 +2,6 @@
 
 <div>カテゴリ管理</div>
 
-
 <div>
 
   <div>
@@ -74,52 +73,20 @@
 
 <br/>
 <br/>
+
+
 <div>
-  <label>大カテゴリ</label>
   <% @large_categories.each do |large_category| %>
-  <br/>
-    <%= large_category.name %>
-    <%= link_to "削除", admin_large_destroy_path(large_category), method: :delete %>
-  <% end %>
-</div>
-
-<br/>
-<div>
-  <label>中カテゴリ</label>
-  <% @medium_categories.each do |medium_category| %>
-  <br/>
-    [大]<%= medium_category.large_category.name %>
-    <%= medium_category.name %>
-    <%= link_to "削除", admin_medium_destroy_path(medium_category), method: :delete %>
-  <% end %>
-</div>
-
-<br/>
-<br/>
-<div>
-  <label>小カテゴリ</label>
-  <% @small_categories.each do |small_category| %>
-  <br/>
-    [大]<%= small_category.medium_category.large_category.name %>
-    [中]<%= small_category.medium_category.name %>
-    <%= small_category.name %>
-    <%= link_to "削除", admin_small_destroy_path(small_category), method: :delete %>
-  <% end %>
-</div>
-
-</br></br>
-<div>
-  <div>テスト用一覧</div>
-
-  <div>項目一覧</div>
-  <% @items.each do |item| %>
-  <%= link_to item.name, item_path(item.id) %>
   </br>
-  <% end %>
-
-  <div>問題一覧</div>
-  <% @quizzes.each do |quiz| %>
-  <%= quiz.item.name %>　　<%= quiz.question %>
-  <br/>
+  </br>
+    <%= link_to large_category.name, admin_large_destroy_path(large_category), method: :delete, "data-confirm" => "削除しますか？" %>
+  </br>
+    ●<% large_category.medium_categories.each do |medium_category| %>
+      <%= link_to medium_category.name, admin_medium_destroy_path(medium_category), method: :delete, "data-confirm" => "削除しますか？" %>
+      <% medium_category.small_categories.each do |small_category| %>
+  </br>
+        ><%= link_to small_category.name, admin_small_destroy_path(small_category), method: :delete, "data-confirm" => "削除しますか？" %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>

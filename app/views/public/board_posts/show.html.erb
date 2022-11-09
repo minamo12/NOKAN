@@ -31,4 +31,39 @@
 </div>
 
 
+<div>
+  <div>コメント</div>
+  <% @comments.each do |comment| %>
+    <div>
+
+      <label>投稿日時</label>
+      <div><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+    </div>
+
+    <div>
+      <label>本文</label>
+      <div><%= comment.comment_text %></div>
+    </div>
+
+    <div>
+      <label>ユーザ名</label>
+      <div><%= comment.customer.name %></div>
+    </div>
+
+  <% end %>
+  <div></div>
+</div>
+
+
+<div>
+  <div>コメント</div>
+  <%= form_with model: @comment, url: comments_path, method: :post do |f| %>
+
+    <div><%= f.text_area :comment_text %></div>
+    <div><%= f.hidden_field :board_post_id, :value => @board_post.id %></div>
+    <div><%= f.submit 'コメントする' %></div>
+
+  <% end %>
+</div>
+
 

@@ -17,6 +17,8 @@ class Public::BoardPostsController < ApplicationController
 
   def show
     @board_post = BoardPost.find(params[:id])
+    @comment = Comment.new
+    @comments = @board_post.comments
   end
 
   def my_posts
