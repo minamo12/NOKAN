@@ -8,7 +8,6 @@ class Public::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.customer_id = current_customer.id
-    binding.pry
     @comment.save
     redirect_to board_post_path(@comment.board_post.id)
   end
