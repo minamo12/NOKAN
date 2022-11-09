@@ -20,6 +20,11 @@ class Public::BoardPostsController < ApplicationController
     @board_post = BoardPost.find(params[:id])
   end
 
+  def my_posts
+    @customer = current_customer
+    @my_posts = @customer.board_posts
+  end
+
   private
 
   def board_post_params

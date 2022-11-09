@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
     #board_posts
     resources :board_posts, only: [:index, :new, :show, :create, :destroy]
-    get 'board_posts/my_posts' => 'board_posts#my_posts'
+    get 'board_post/my_posts' => 'board_posts#my_posts'
 
     #comments
     resources :comments, only: [:create, :destroy]

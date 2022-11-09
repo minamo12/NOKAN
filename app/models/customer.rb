@@ -12,6 +12,7 @@ class Customer < ApplicationRecord
   has_many :board_posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -28,5 +29,9 @@ class Customer < ApplicationRecord
   def email_changed?
     false
   end
+
+   def will_save_change_to_email?
+     false
+   end
 
 end
