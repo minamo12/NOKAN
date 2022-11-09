@@ -15,7 +15,11 @@ class Public::CommentsController < ApplicationController
   def destroy
     comment = Comment.find(params[:id])
     comment.destroy
-    redirect_to comment_my_comments_path
+    if admin_signed_in?
+      redirect_to board_post_path(comment.board_post.id)
+    else
+      redirect_to comment_my_comments_path
+    end
   end
 
   private

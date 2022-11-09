@@ -29,7 +29,11 @@ class Public::BoardPostsController < ApplicationController
   def destroy
     @board_post = BoardPost.find(params[:id])
     @board_post.destroy
-    redirect_to customers_my_page_path
+    if admin_signed_in?
+      redirect_to board_posts_path
+    else
+      redirect_to customers_my_page_path
+    end
   end
 
   private

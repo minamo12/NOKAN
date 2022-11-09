@@ -1,6 +1,11 @@
 
 <div>投稿詳細</div>
 
+<!--以下管理人のみ表示-->
+<% if admin_signed_in? %>
+  <%= link_to "削除する", board_post_path(@board_post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？" %>
+<% end %>
+
 <div>
 
   <div>
@@ -55,6 +60,13 @@
       <div><%= comment.customer.name %></div>
     </div>
 
+    <!--以下管理人のみ表示-->
+    <div>
+    <% if admin_signed_in? %>
+      <%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？" %>
+    <% end %>
+    </div>
+
   <% end %>
   <div></div>
 </div>
@@ -72,3 +84,7 @@
 </div>
 
 
+<!--以下管理人のみ表示-->
+<% if admin_signed_in? %>
+
+<% end %>
