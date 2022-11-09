@@ -28,6 +28,8 @@
       <div><%= my_post.large_category.name %></div>
     </div>
 
+    <div><%= link_to "削除", board_post_path(my_post.id), method: :delete %></div>
+
     <% end %>
 
     <% end %>

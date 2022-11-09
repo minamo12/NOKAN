@@ -11,7 +11,6 @@ class Public::BoardPostsController < ApplicationController
   def create
     @board_post = BoardPost.new(board_post_params)
     @board_post.customer_id = current_customer.id
-    binding.pry
     @board_post.save
     redirect_to board_posts_path
   end
@@ -23,6 +22,12 @@ class Public::BoardPostsController < ApplicationController
   def my_posts
     @customer = current_customer
     @my_posts = @customer.board_posts
+  end
+
+  def destroy
+    @board_post = BoardPost.find(params[:id])
+    @board_post.destroy
+    redirect_to customers_my_page_path
   end
 
   private
