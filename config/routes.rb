@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
     #comments
     resources :comments, only: [:create, :destroy]
-    get 'comments/my_comments' => 'commens#index'
+    get 'comment/my_comments' => 'comments#my_comments'
 
     #items
     resources :items, only: [:index, :show]

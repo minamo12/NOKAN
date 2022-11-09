@@ -1,0 +1,21 @@
+<div>自分のコメント一覧</div>
+
+<div>
+  <% @my_comments.each do |my_comment| %>
+
+    <div>
+      <label>コメント日時</label>
+      <div><%= my_comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+    </div>
+
+    <div>
+      <label>本文</label>
+      <div><%= my_comment.comment_text %></div>
+    </div>
+
+    <div>
+      <div><%= link_to "削除", comment_path(my_comment.id), method: :delete, "data-confirm" => "削除しますか？" %></div>
+    </div>
+
+  <% end %>
+</div>

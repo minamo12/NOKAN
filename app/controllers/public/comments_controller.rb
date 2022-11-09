@@ -1,6 +1,8 @@
 class Public::CommentsController < ApplicationController
 
-  def index
+  def my_comments
+    @customer = current_customer
+    @my_comments = @customer.comments
   end
 
   def create
@@ -9,6 +11,12 @@ class Public::CommentsController < ApplicationController
     binding.pry
     @comment.save
     redirect_to board_post_path(@comment.board_post.id)
+  end
+
+  def destroy
+    comment = Comment.find(params[:id])
+    comment.destroy
+    redirect_to comment_my_comments_path
   end
 
   private
