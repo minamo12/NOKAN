@@ -1,5 +1,7 @@
 
-<div>
+<div class="width-90p">
+
+<div class="outline text-center top-area">
   <p>
     ようこそ、「NOKAN」へ！</br>
     このサイトは農業鑑定競技の勉強と</br>
@@ -10,14 +12,18 @@
   </p>
 </div>
 
-</br>
-</br>
 
-<div>
+
+<div class="text-center top_50">
   <% @large_categories.each do |large_category| %>
   <br/>
-    <%= large_category.name %>
-    <%= link_to "勉強する", categories_path(large_category_id: large_category.id) %>
-    <%= link_to "模試をする", quizzes_path(large_category_id: large_category.id) %>
+  <div>
+    <span class="font_weight"><%= large_category.name %></span>
+    <%= link_to "勉強する", categories_path(large_category_id: large_category.id), class: 'btn btn-success' %>
+    <%= link_to "模試をする", quizzes_path(large_category_id: large_category.id), class: 'btn btn-primary' %>
+  </div>
   <% end %>
+</div>
+
+
 </div>
