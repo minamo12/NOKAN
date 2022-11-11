@@ -80,12 +80,12 @@
   </br>
   </br>
     <%= link_to large_category.name, admin_large_destroy_path(large_category), method: :delete, "data-confirm" => "削除しますか？" %>
+    <% large_category.medium_categories.each do |medium_category| %>
   </br>
-    ●<% large_category.medium_categories.each do |medium_category| %>
-      <%= link_to medium_category.name, admin_medium_destroy_path(medium_category), method: :delete, "data-confirm" => "削除しますか？" %>
+      ●<%= link_to medium_category.name, admin_medium_destroy_path(medium_category), method: :delete, "data-confirm" => "削除しますか？" %>
       <% medium_category.small_categories.each do |small_category| %>
   </br>
-        ><%= link_to small_category.name, admin_small_destroy_path(small_category), method: :delete, "data-confirm" => "削除しますか？" %>
+        &nbsp;&nbsp;><%= link_to small_category.name, admin_small_destroy_path(small_category), method: :delete, "data-confirm" => "削除しますか？" %>
       <% end %>
     <% end %>
   <% end %>
