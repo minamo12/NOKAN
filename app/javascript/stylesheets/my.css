@@ -62,8 +62,12 @@ header {
 
 
 /*文字*/
-.big-font {
+.font-20 {
   font-size: 20px;
+}
+
+.font-70 {
+  font-size: 70px;
 }
 
 .text-right-send {
@@ -79,6 +83,15 @@ header {
 
 .space_15 {
   margin-bottom: 15px;
+}
+
+.space_50 {
+  margin-bottom: 50px;
+}
+
+
+.top_30 {
+  margin-top: 30px;
 }
 
 .top_50 {

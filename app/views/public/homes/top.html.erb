@@ -18,7 +18,7 @@
   <% @large_categories.each do |large_category| %>
   <br/>
   <div class="row top-category-item">
-    <span class="font_weight col-4 text-right-send big-font"><%= large_category.name %></span>
+    <span class="font_weight col-4 text-right-send font-20"><%= large_category.name %></span>
     <%= link_to "勉強する", categories_path(large_category_id: large_category.id), class: 'btn btn-success btn-sm' %>
     <%= link_to "模試をする", quizzes_path(large_category_id: large_category.id), class: 'btn btn-primary btn-sm left-space-5' %>
   </div>
