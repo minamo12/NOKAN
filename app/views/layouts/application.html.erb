@@ -2,12 +2,17 @@
 <html>
   <head>
     <title>NOKAN</title>
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://kit.fontawesome.com/6691dd93a4.js" crossorigin="anonymous"></script>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
   </head>
 
   <body>
@@ -19,6 +24,12 @@
         <h1><%= link_to "NOKAN", root_path, class: 'logo' %></h1>
 
         <div class="list">
+
+        <!--ようこそ〇〇さん-->
+        <% if customer_signed_in? %>
+        <div class="welcome">ようこそ、<%= current_customer.name %>さん！</div>
+        <% end %>
+
           <ul>
             <!--管理者ログイン-->
             <% if admin_signed_in? %>

@@ -1,40 +1,54 @@
 
+<div class="title">模試履歴</div>
 
-<div>マイページ</div>
+<div class="flex">
 
-<%= @customer.name %>
+  <div>
 
-<div>
-  <div>模試履歴</div>
-  <% @mock_exams.each do |mock_exam| %>
+    <% @mock_exams.take(5).each do |mock_exam| %>
+    <table class="text-center table-line space_30">
+      <thead class="table-line">
+        <tr>
+          <th class="table-line">日時</th>
+          <th class="table-line">カテゴリ</th>
+          <th class="table-line">正解数</th>
+          <th colspan="1" class="table-line"></th>
+        </tr>
+      </thead>
 
-    <div>
-      <label>日時</label>
-      <div><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+      <tbody>
+        <tr>
+          <td class="table-line"><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td class="table-line">
+            <% mock_exam.answers.take(1).each do |answer| %>
+              <%= answer.quiz.item.large_category.name %>
+            <% end %>
+          </td>
+          <td class="table-line">
+            <span><%= mock_exam.point %></span>
+            <span class="font-12">/40</span>
+          </td>
+          <td><%= link_to "詳細", mock_exam_path(mock_exam.id), class: "btn btn-success btn-sm" %></td>
+        </tr>
+      </tbody>
+    </table>
+
+      <div class="text-right-send"><%= link_to "模試履歴一覧を見る", mock_exams_path, class: "btn btn-primary" %></div>
+
+    <% end %>
+  </div>
+
+  <div>
+    <div class="left-space-80 font-25">
+      会員情報を変更する
+      <%= link_to(edit_customer_path(@customer.id)) do %>
+      <span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
+      <% end %>
     </div>
+  </div>
 
-    <div>
-      <label>カテゴリ</label>
-      <div>
-        <% mock_exam.answers.take(1).each do |answer| %>
-          <%= answer.quiz.item.large_category.name %>
-        <% end %>
-      </div>
-    </div>
-
-    <div>
-      <label>正解数</label>
-      <div><%= mock_exam.point %>/40</div>
-    </div>
-
-    <div><%= link_to "詳細", mock_exam_path(mock_exam.id) %></div>
-
-    <div><%= link_to "模試履歴一覧を見る", mock_exams_path %></div>
-
-  <% end %>
 </div>
 
-<div>
-  <div>会員情報を変更する</div>
-  <div><%= link_to "→", edit_customer_path(@customer.id) %></div>
-</div>
+<div><i class="fa-regular fa-square-arrow-right"></i></div>
