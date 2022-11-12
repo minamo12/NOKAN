@@ -1,21 +1,31 @@
 
-<div>ユーザ名変更</div>
+<div class="center width-90">
+
+<div>
+
+<div class="title">ユーザー名変更</div>
 
 <%= form_with model: @customer, url: customers_infomation_path, method: :patch do |f| %>
 
 <div>
 
-  <div>
-    <label>ユーザ名</label>
-    <div><%= f.text_field :name %></div>
-  </div>
-
-  <div>
-    <div><%= f.submit "編集内容を保存" %></div>
-  </div>
+  <table class="no-deco">
+    <tr>
+      <th class="text-right-send">ユーザ名</th>
+      <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td class="text-center space_50_2"><%= f.submit "変更する", class: 'btn btn-success' %></td>
+    </tr>
+    <tr>
+      <th></th>
+      <td class="text-center"><%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger' %></td>
+    </tr>
+  </table>
 
 </div>
 
 <% end %>
 
-<%= link_to "退会する", customers_unsubscribe_path %>
+</div>
