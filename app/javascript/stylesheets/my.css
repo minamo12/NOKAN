@@ -42,6 +42,17 @@ header {
 
 
 /*装飾*/
+
+.title {
+  background-color: #eee;
+  display: inline-block;
+  padding: 3px 30px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  margin-left: 70px;
+  font-size: 25px;
+}
+
 .outline {
   border: solid 1px;
 }
@@ -49,6 +60,11 @@ header {
 .font_weight {
   font-weight: bold;
 }
+
+.no-deco {
+  font-weight: initial;
+}
+
 
 /*配置調整*/
 .text-center {
@@ -84,6 +100,11 @@ header {
 .space_15 {
   margin-bottom: 15px;
 }
+
+.space_30 {
+  margin-bottom: 30px;
+}
+
 
 .space_50 {
   margin-bottom: 50px;
@@ -181,4 +202,8 @@ header {
 .top-category-item {
   width: 100%;
   height: 20px;
+}
+
+th, td {
+  padding: 10px 5px;
 }
