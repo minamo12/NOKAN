@@ -11,7 +11,7 @@
 <div><%= link_to "削除", mock_exam_path(@mock_exam.id), method: :delete %></div>
 
 <table>
-  <% @mock_exam.answers.each do |answer| %>
+  <% @mock_exam.answers.each.with_index(1) do |answer, i| %>
 
   <thead>
     <tr>
@@ -26,7 +26,7 @@
 
   <tbody>
     <tr>
-      <td>1</td>
+      <td><%= i %></td>
       <td><%= answer.quiz.question %></td>
       <td>画像</td>
       <td>

@@ -8,49 +8,75 @@
 
 
 <%= form_with model: @mock_exam, url: mock_exams_path, method: :post do |f| %>
-<table>
-  <thead>
-    <tr>
-      <th>番号</th>
-      <th>問題</th>
-      <th colspan="2"></th>
-      <th>解答</th>
-      <th>答え</th>
-      <th colspan="1"></th>
+<table class="width-100p">
+  <thead class="outline">
+    <tr class="text-center">
+      <th class="outline">番号</th>
+      <th class="outline">問題</th>
+      <th colspan="1" class="outline"></th>
+      <th class="width-10p outline">解答</th>
+      <th class="outline">答え</th>
+      <th colspan="1" class="outline"></th>
     </tr>
   </thead>
 
 
   <tbody>
 
+    <% @count = 0 %>
+
     <% @items.each do |item| %>
+
+
     <% item.quizzes.take(40).each do |quiz| %>
       <tr>
-        <td>番号</td>
-        <td><%= quiz.question %></td>
-        <td>
-          A<%= image_tag quiz.get_number_a_image(50, 50) %>
-          B<%= image_tag quiz.get_number_b_image(50, 50) %>
-          C<%= image_tag quiz.get_number_c_image(50, 50) %>
+        <td class="text-center outline"><%= @count += 1 %></td>
+        <td class="outline"><%= quiz.question %></td>
+
+        <td class="outline">
+          <div class="image">
+            A<%= image_tag quiz.get_number_a_image(50, 50) %>
+            B<%= image_tag quiz.get_number_b_image(50, 50) %>
+            C<%= image_tag quiz.get_number_c_image(50, 50) %>
+          </div>
+          <!--ポップアップ内-->
+          <div class="pop-up center">
+            <div>
+              <table>
+                <thead>
+                  <tr class="text-center">
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%= image_tag quiz.get_number_a_image(170, 130) %></td>
+                    <td><%= image_tag quiz.get_number_b_image(170, 130) %></td>
+                    <td><%= image_tag quiz.get_number_c_image(170, 130) %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </td>
 
-        <td>
+        <td class="outline">
           <%= f.fields_for :answers, @mock_exam.answers.build, url: answers_path, method: :post do |a| %>
-            <%= a.check_box :scoring %>
-
-
-        <td><%= a.text_field :answer %></td>
-        <%= a.hidden_field :quiz_id, value: quiz.id %>
+            <div class="flex"><%= a.check_box :scoring %><%= a.text_field :answer, class: "width-100p left-space-5" %></div>
+        </td>
+            <%= a.hidden_field :quiz_id, value: quiz.id %>
         </td>
 
-        <td>
+        <td class="outline">
 
-          <p><%= quiz.correct_answer %></p>
+          <p class="text-center"><%= quiz.correct_answer %></p>
 
         </td>
 
-        <td>
-          <%= link_to "詳細", item_path(item.id) %>
+        <td class="outline text-center">
+          <%= link_to "詳細", item_path(item.id), class: "btn btn-success" %>
           <% end %>
         </td>
       </tr>
@@ -63,10 +89,10 @@
 </table>
 
   <%= f.number_field :point %>
-  <%= f.submit "結果を保存する" %>
+  <%= f.submit "結果を保存する", class: "btn btn-success" %>
 <% end %>
 
-<div><%= link_to "保存せず問題を入れ替える", quizzes_path(large_category_id: @large_category.id) %></div>
+<div><%= link_to "保存せず問題を入れ替える", quizzes_path(large_category_id: @large_category.id), class: "btn btn-primary" %></div>
 
 
 

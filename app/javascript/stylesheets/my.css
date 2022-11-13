@@ -234,3 +234,27 @@ header {
   margin: 30px 0 0 0;
   text-align: center;
 }
+
+/*ポップアップ*/
+
+.pop-up {
+  background-color: white;
+  border: solid 1px;
+  border-color: gray;
+  display: none;
+  width: 540px;
+  height: 200px;
+}
+
+.image:hover + .pop-up {
+  display: block;
+  position: absolute;
+}
+
+.pop-up-space {
+  padding: 2px 2px;
+}
+
+.check-box-outline {
+
+}
