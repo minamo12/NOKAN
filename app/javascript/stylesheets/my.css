@@ -105,6 +105,10 @@
   margin-left: 5px;
 }
 
+.left-space-50 {
+  margin-left: 50px;
+}
+
 .left-space-80 {
   margin-left: 80px;
 }
@@ -253,8 +257,4 @@ header {
 
 .pop-up-space {
   padding: 2px 2px;
-}
-
-.check-box-outline {
-
 }

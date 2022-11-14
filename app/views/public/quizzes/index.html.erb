@@ -1,10 +1,7 @@
 
-<div>模試</div>
-
-</br>
-</br>
-
-<button>答えを表示する</button>
+<div class="width-90p text-right-send space_5">
+  <button>答えを表示する</button>
+</div>
 
 
 <%= form_with model: @mock_exam, url: mock_exams_path, method: :post do |f| %>
@@ -88,11 +85,15 @@
 
 </table>
 
-  <%= f.number_field :point %>
-  <%= f.submit "結果を保存する", class: "btn btn-success" %>
+<div class="text-center width-50p top_50">
+  <%= f.number_field :point, class: "width-20p" %> /40
+  <%= f.submit "結果を保存する", class: "btn btn-success left-space-50" %>
 <% end %>
+</div>
 
-<div><%= link_to "保存せず問題を入れ替える", quizzes_path(large_category_id: @large_category.id), class: "btn btn-primary" %></div>
+<div class="text-center">
+  <%= link_to "保存せず問題を入れ替える", quizzes_path(large_category_id: @large_category.id), class: "btn btn-primary top_50" %>
+</div>
 
 
 
