@@ -119,6 +119,10 @@
   display: flex
 }
 
+.block {
+  display: block;
+}
+
 
 /*幅*/
 
