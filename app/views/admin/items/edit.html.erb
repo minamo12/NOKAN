@@ -30,7 +30,7 @@
     <label>他画像</label>
     <div><%= f.file_field :other_images, accept: "image/*", multiple: true %></div>
 
-    <div><%= f.submit '追加する' %></div>
+    <div><%= f.submit '修正する' %></div>
     <div><%= link_to "削除する", admin_item_path(@item.id), method: :delete %></div>
     <% end %>
   </div>

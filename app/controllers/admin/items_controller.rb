@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
 
   def new
+    @items = Item.all
     @item = Item.new
     @large_categories = LargeCategory.all
 

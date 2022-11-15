@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2022_11_01_130234) do
     t.string "name", null: false
     t.text "information", null: false
     t.text "commentary", null: false
+    t.string "reading", null: false
   end
 
   create_table "large_categories", force: :cascade do |t|

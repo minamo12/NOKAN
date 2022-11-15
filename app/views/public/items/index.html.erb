@@ -1,6 +1,28 @@
 
 <div>
-  <% @items.each do |item| %>
-  <%= link_to item.name, item_path(item.id) %>
-  <% end %>
+
+  <table>
+
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>説明</th>
+        <th>解説</th>
+        <th>画像</th>
+      </tr>
+    </thead>
+
+    <% @items.each do |item| %>
+    <tbody>
+      <tr>
+        <td><%= link_to item.name, item_path(item.id) %></td>
+        <td><%= item.information.truncate(13) %></td>
+        <td><%= item.commentary.truncate(13) %></td>
+        <td><%= image_tag item.get_image(80, 80) %></td>
+      </tr>
+    </tbody>
+
+    <% end %>
+  </table>
+
 </div>

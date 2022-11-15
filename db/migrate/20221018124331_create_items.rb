@@ -9,6 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.text :information, null: false
       t.text :commentary, null: false
+      t.string :reading, null: false
 
     end
   end

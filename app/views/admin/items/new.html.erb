@@ -67,3 +67,26 @@
   </div>
 
 </div>
+
+<div>項目一覧</div>
+
+<div>
+  <% @large_categories.order(:name).each do |large_category| %>
+    〇<%= large_category.name %>
+    </br>
+    <% large_category.medium_categories.order(:name).each do |medium_category| %>
+      ・<%= medium_category.name %>
+    </br>
+      <% medium_category.small_categories.order(:name).each do |small_category| %>
+        ><%= small_category.name %>
+    </br>
+        <% small_category.items.order(:name).each do |item| %>
+          -<%= item.name %>
+    </br>
+        <% end %>
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+</div>

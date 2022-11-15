@@ -1,5 +1,7 @@
 class Admin::LargeCategoriesController < ApplicationController
 
+  Item.order(:name)
+
   def index
     # すべて表示
     @large_categories = LargeCategory.all
@@ -9,7 +11,7 @@ class Admin::LargeCategoriesController < ApplicationController
     @medium_category = MediumCategory.new
     @small_category = SmallCategory.new
 
-    @items = Item.all
+    @items = Item.all.order(:name)
     @quizzes = Quiz.all
 
     if params[:large_category_id].present?
