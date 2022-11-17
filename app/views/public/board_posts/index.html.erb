@@ -1,48 +1,40 @@
 
 
-<div>掲示板一覧</div>
-
-<div><%= link_to "投稿する", new_board_post_path %></div>
+<div class="width-80p">
+  <div class="text-right-send"><%= link_to "投稿する", new_board_post_path, class: "btn btn-primary" %></div>
+</div>
 
 </br>
 
-<div>
+
+<div class="column-2 width-70p center">
+
+  <div>
 
   <% @board_posts.each do |board_post| %>
 
+  <div class="avoid width-90p board_card space_15">
   <%= link_to(board_post_path(board_post.id)) do %>
 
-    <div>
-      <label>タイトル</label>
-      <div><%= board_post.board_title %></div>
+    <div class="font-25 font_weight"><%= board_post.board_title %></div>
+    <div class="font-12 space_5"><%= board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+    <div class="width-90p board_text center space_5"><%= board_post.board_text.truncate(70) %></div>
+    <div class="text-right-send2 flex">
+      <div>※<%= board_post.comments.count %></div>
+      <div class="outline left-space-10 board_cate"><%= board_post.large_category.name %></div>
     </div>
-
-    <div>
-      <label>作成日時</label>
-      <div><%= board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-    </div>
-
-    <div>
-      <label>本文</label>
-      <div><%= board_post.board_text %></div>
-    </div>
-
-    <div>
-      <label>ユーザ名</label>
-      <div><%= board_post.customer.name %></div>
-    </div>
-
-    <div>
-      <label>カテゴリ</label>
-      <div><%= board_post.large_category.name %></div>
-    </div>
-
-    <div>
-      <label>コメント数</label>
-      <div><%= board_post.comments.count %></div>
-    </div>
+    <div><%= board_post.customer.name %></div>
 
     <% end %>
 
+  </div>
+
     <% end %>
-</div>
+
+    </div>
+
+  </div>
+
+<div class="width-100p space_50 text-center">
+  <div class="page"><%= paginate @board_posts %></div>
+  </div>

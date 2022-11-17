@@ -15,10 +15,6 @@
   border: solid 1px;
 }
 
-.font_weight {
-  font-weight: bold;
-}
-
 .no-deco {
   font-weight: initial;
 }
@@ -31,11 +27,6 @@
 
 
 /*配置調整*/
-.text-center {
-  margin: 0 auto;
-  text-align: center;
-}
-
 .center {
   margin: 0 auto;
 }
@@ -54,13 +45,25 @@
   font-size: 25px;
 }
 
-
 .font-70 {
   font-size: 70px;
 }
 
 .text-right-send {
-  text-align: right
+  text-align: right;
+}
+
+.text-right-send2 {
+  float: right;
+}
+
+.font_weight {
+  font-weight: bold;
+}
+
+.text-center {
+  margin: 0 auto;
+  text-align: center;
 }
 
 
@@ -112,6 +115,11 @@
 .left-space-5 {
   margin-left: 5px;
 }
+
+.left-space-10 {
+  margin-left: 10px;
+}
+
 
 .left-space-20 {
   margin-left: 20px;
@@ -301,6 +309,24 @@ header {
 }
 
 
+/*掲示板*/
+
+.board_card {
+  border: solid 1px;
+  padding: 5px;
+}
+
+.board_text {
+  border: dashed 1px;
+  padding: 5px;
+  word-break: break-all;
+}
+
+.board_cate {
+  padding: 0 5px;
+}
+
+
 /*その他*/
 
 .scroll {
@@ -310,6 +336,16 @@ header {
 .column-2 {
   column-count: 2;
 }
+
+.avoid {
+  break-inside: avoid;
+}
+
+.page {
+  display: inline-block;
+  margin: 0 5px;
+}
+
 
 
 /*テスト*/
