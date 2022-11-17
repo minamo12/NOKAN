@@ -11,7 +11,7 @@ class Admin::LargeCategoriesController < ApplicationController
     @medium_category = MediumCategory.new
     @small_category = SmallCategory.new
 
-    @items = Item.all.order(:name)
+    @items = Item.all
     @quizzes = Quiz.all
 
     if params[:large_category_id].present?

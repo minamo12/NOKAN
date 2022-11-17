@@ -1,3 +1,4 @@
+<div class="flex space_50">
 
 <div>項目追加</div>
 
@@ -8,10 +9,12 @@
     <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
 
     <label>大カテゴリ</label>
+    <div class="column-2">
     <% @large_categories.each do |large_category| %>
-    <br/>
       <%= link_to large_category.name, new_admin_item_path(large_category_id: large_category.id) %>
+    <br/>
     <% end %>
+    </div>
 
     <br/>
     <br/>
@@ -50,6 +53,9 @@
     <label>項目名</label>
     <div><%= f.text_field :name %></div>
 
+    <label>読み</label>
+    <div><%= f.text_field :reading %> </div>
+
     <label>情報</label>
     <div><%= f.text_area :information %></div>
 
@@ -62,31 +68,43 @@
     <label>他画像</label>
     <div><%= f.file_field :other_images, accept: "image/*", multiple: true %></div>
 
-    <div><%= f.submit '追加する' %></div>
+    <div><%= f.submit '追加する', class: "top_50" %></div>
     <% end %>
   </div>
 
 </div>
 
-<div>項目一覧</div>
 
-<div>
-  <% @large_categories.order(:name).each do |large_category| %>
+
+
+<div class="scroll left-space-80">
+  <div>項目一覧</div>
+  <% @large_categories.each do |large_category| %>
     〇<%= large_category.name %>
-    </br>
-    <% large_category.medium_categories.order(:name).each do |medium_category| %>
+
+    <div class="left-space-20">
+    <% large_category.medium_categories.each do |medium_category| %>
       ・<%= medium_category.name %>
-    </br>
-      <% medium_category.small_categories.order(:name).each do |small_category| %>
+
+
+      <div class="left-space-40">
+      <% medium_category.small_categories.each do |small_category| %>
         ><%= small_category.name %>
-    </br>
-        <% small_category.items.order(:name).each do |item| %>
-          -<%= item.name %>
-    </br>
+
+        <div class="left-space-20">
+        <% small_category.items.order(:reading).each do |item| %>
+          -<%= link_to item.name, item_path(item.id) %>
+          </br>
         <% end %>
+        </div>
+
       <% end %>
+      </div>
 
     <% end %>
+    </div>
 
   <% end %>
+</div>
+
 </div>

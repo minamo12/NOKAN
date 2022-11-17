@@ -1,29 +1,49 @@
 
+<div class="space_30"><%= @item.large_category.name %> > <%= @item.medium_category.name %> > <%= @item.small_category.name %></div>
 
-<%= @item.large_category.name %> > <%= @item.medium_category.name %> > <%= @item.small_category.name %>
-<div>
-  画像
-  <%= image_tag @item.get_image(200, 200) %>
+<div class="flex">
+
+<div class="width-50p">
+  <div class="flex space_50">
+
+    <div>
+      <label class="space_2">画像1</label>
+      <div><%= image_tag @item.get_image(200, 200) %></div>
+    </div>
+
+    <div class="left-space-20">
+      </br>
+      <div>名称：<%= @item.name %></div>
+      <div>読み方：<%= @item.reading %></div>
+      <div><%= safe_join(@item.information.split("\n"),tag(:br)) %></div>
+    </div>
+
+  </div>
+
+  <div class="width-80p">
+    <label class="space_10">＜その他＞</label>
+    <div><%= safe_join(@item.commentary.split("\n"),tag(:br)) %></div>
+  </div>
 </div>
 
-<div>
-  名称：<%= @item.name %>
-  <%= @item.information %>
-</div>
 
-<div>
-  ＜その他＞</br>
-  <%= @item.commentary %>
-</div>
-
-<div>
-  他画像
+<div class="column-2 width-50p">
   <% if @item.other_images.attached? %>
-    <% @item.other_images.each do |other_image| %>
-      <%= image_tag other_image, width: 100, height: 100 %>
+    <% @item.other_images.each.with_index(2) do |other_image, i| %>
+    <div class="space_15">
+      <label class="space_2"><%= "画像" + i.to_s %></label>
+      <div><%= image_tag other_image, width: 150, height: 150 %></div>
+    </div>
     <% end %>
   <% end %>
 </div>
+
+
+</div>
+
+
+
+
 
 <!--以下管理者　問題管理画面-->
 <% if admin_signed_in? %>

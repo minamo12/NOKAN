@@ -4,7 +4,7 @@
   <table>
 
     <thead>
-      <tr>
+      <tr class="text-center">
         <th>項目</th>
         <th>説明</th>
         <th>解説</th>
@@ -12,13 +12,16 @@
       </tr>
     </thead>
 
-    <% @items.each do |item| %>
+    <% @items.order(:reading).each do |item| %>
     <tbody>
-      <tr>
+      <tr class="border-bottom">
         <td><%= link_to item.name, item_path(item.id) %></td>
         <td><%= item.information.truncate(13) %></td>
         <td><%= item.commentary.truncate(13) %></td>
-        <td><%= image_tag item.get_image(80, 80) %></td>
+        <td>
+          <div class="item-index-image"><%= image_tag item.get_image(80, 80) %></div>
+          <div class="item-index-pop-up"><%= image_tag item.get_image(200, 200) %></div>
+        </td>
       </tr>
     </tbody>
 

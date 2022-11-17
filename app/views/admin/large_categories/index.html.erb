@@ -1,8 +1,11 @@
 
-
-<div>カテゴリ管理</div>
+<div class="flex">
 
 <div>
+
+  <div>
+
+  <div>カテゴリ管理</div>
 
   <div>
     <%= form_with model: @large_category, url: admin_large_create_path, method: :post do |f| %>
@@ -25,10 +28,12 @@
     <!--大カテ選択-->
     <div>大カテ選択</div>
     <% if @large_categories.present? %>
+    <div class="column-2">
       <% @large_categories.each do |large_category| %>
         <%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %>
         <br/>
       <% end %>
+    </div>
     <% elsif @large_select.present? %>
       <%= @large_select.name %>
     <% end %>
@@ -36,7 +41,8 @@
     <div><%= f.text_field :name %></div>
     <div><%= f.submit '追加する' %></div>
     <% end %>
-  </div>
+    </div>
+
 
 <br/>
 <br/>
@@ -48,10 +54,12 @@
     <!--大カテ選択-->
     <div>大カテ選択</div>
     <% if @large_categories.present? %>
+    <div class="column-2">
       <% @large_categories.each do |large_category| %>
         <%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %>
         <br/>
       <% end %>
+    </div>
     <% elsif @large_select.present? %>
       <%= @large_select.name %>
     <% end %>
@@ -71,22 +79,28 @@
     <% end %>
   </div>
 
+</div>
+
 <br/>
 <br/>
 
 
-<div>
+<div class="left-space-80">
   <% @large_categories.each do |large_category| %>
   </br>
   </br>
+  <div>
     <%= link_to large_category.name, admin_large_destroy_path(large_category), method: :delete, "data-confirm" => "削除しますか？" %>
+    </br>
     <% large_category.medium_categories.each do |medium_category| %>
-  </br>
       ●<%= link_to medium_category.name, admin_medium_destroy_path(medium_category), method: :delete, "data-confirm" => "削除しますか？" %>
+      </br>
       <% medium_category.small_categories.each do |small_category| %>
-  </br>
-        &nbsp;&nbsp;><%= link_to small_category.name, admin_small_destroy_path(small_category), method: :delete, "data-confirm" => "削除しますか？" %>
+        ><%= link_to small_category.name, admin_small_destroy_path(small_category), method: :delete, "data-confirm" => "削除しますか？" %>
+        </br>
       <% end %>
     <% end %>
   <% end %>
+</div>
+
 </div>

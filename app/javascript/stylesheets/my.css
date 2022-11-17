@@ -66,8 +66,16 @@
 
 /*調整空白*/
 
+.space_2 {
+  margin-bottom: 2px;
+}
+
 .space_5 {
   margin-bottom: 5px;
+}
+
+.space_10 {
+  margin-bottom: 10px;
 }
 
 .space_15 {
@@ -105,8 +113,20 @@
   margin-left: 5px;
 }
 
+.left-space-20 {
+  margin-left: 20px;
+}
+
+.left-space-40 {
+  margin-left: 40px;
+}
+
 .left-space-50 {
   margin-left: 50px;
+}
+
+.left-space-60 {
+  margin-left: 60px;
 }
 
 .left-space-80 {
@@ -121,6 +141,11 @@
 
 .block {
   display: block;
+}
+
+/*ボーダー*/
+.border-bottom {
+  border-bottom: solid 1px;
 }
 
 
@@ -259,6 +284,35 @@ header {
   position: absolute;
 }
 
+.item-index-pop-up {
+  background-color: white;
+  display: none;
+  width: 200px;
+  height: 200px;
+}
+
+.item-index-image:hover + .item-index-pop-up {
+  display: block;
+  position: absolute;
+}
+
 .pop-up-space {
   padding: 2px 2px;
+}
+
+
+/*その他*/
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.column-2 {
+  column-count: 2;
+}
+
+
+/*テスト*/
+.test {
+  border: solid 1px;
 }
