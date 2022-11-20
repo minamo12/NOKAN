@@ -16,16 +16,16 @@
   <div class="avoid width-90p board_card space_15">
   <%= link_to(board_post_path(board_post.id)) do %>
 
-    <div class="font-25 font_weight"><%= board_post.board_title %></div>
+    <div class="font-25 font_weight underline"><%= board_post.board_title %></div>
     <div class="font-12 space_5"><%= board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
     <div class="width-90p board_text center space_5"><%= board_post.board_text.truncate(70) %></div>
+    <% end %>
+
     <div class="text-right-send2 flex">
       <div>※<%= board_post.comments.count %></div>
       <div class="outline left-space-10 board_cate"><%= board_post.large_category.name %></div>
     </div>
     <div><%= board_post.customer.name %></div>
-
-    <% end %>
 
   </div>
 

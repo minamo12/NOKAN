@@ -32,7 +32,7 @@ class Public::BoardPostsController < ApplicationController
     if admin_signed_in?
       redirect_to board_posts_path
     else
-      redirect_to customers_my_page_path
+      redirect_to board_post_my_posts_path
     end
   end
 

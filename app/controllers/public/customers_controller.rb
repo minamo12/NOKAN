@@ -3,6 +3,8 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = current_customer
     @mock_exams = @customer.mock_exams
+    @board_posts = @customer.board_posts
+    @comments = @customer.comments
   end
 
   def edit

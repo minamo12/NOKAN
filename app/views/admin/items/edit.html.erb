@@ -1,78 +1,127 @@
 
-<div>項目編集</div>
 
-<div>
+<div class="flex">
 
-  <div>
-    <br/>
-    <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
-
-    <label>大カテゴリ</label>
-    <div class="column-2 width-20p">
-    <% @large_categories.each do |large_category| %>
-      <%= link_to large_category.name, edit_admin_item_path(large_category_id: large_category.id) %>
-    <br/>
-    <% end %>
-    </div>
-
-    <br/>
-    <br/>
-
-    <label>中カテゴリ</label>
-    <br/>
-    <% if @medium_categories.present? %>
-      <% @medium_categories.each do |medium_category| %>
-      <br/>
-        <%= link_to medium_category.name, edit_admin_item_path(medium_category_id: medium_category.id) %>
-      <% end %>
-      <% elsif @medium_category.present? %>
-        <%= @medium_category.name %>
-      <% elsif @small_category.present? %>
-        <%= @small_category.medium_category.name %>
-      <% else %>
-    <% end %>
-
-    <br/>
-    <br/>
-    <label>小カテゴリ</label>
-    <br/>
-    <% if @small_categories.present? %>
-      <% @small_categories.each do |small_category| %>
-      <br/>
-        <%= link_to small_category.name, edit_admin_item_path(small_category_id: small_category.id) %>
-      <% end %>
-      <% elsif @small_category.present? %>
-        <%= @small_category.name %>
-      <% else %>
-    <% end %>
-
-    <br/>
-    <br/>
-
-    <label>項目名</label>
-    <div><%= f.text_field :name %></div>
-
-    <label>読み</label>
-    <div><%= f.text_field :reading %> </div>
-
-    <label>情報</label>
-    <div><%= f.text_area :information %></div>
-
-    <label>解説</label>
-    <div><%= f.text_area :commentary %></div>
-
-    <label>画像1</label>
-    <div><%= f.file_field :image, accept: "image/*" %></div>
-
-    <label>他画像</label>
-    <div><%= f.file_field :other_images, accept: "image/*", multiple: true %></div>
-
-    <div><%= f.submit '更新する', class: "top_50" %></div>
-    <% end %>
-  </div>
+  <div class="title">項目編集</div>
+  <div><%= link_to "削除する", admin_item_path(@item.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger left-space-50" %></div>
 
 </div>
 
 
+<div>
 
-<div><%= link_to "削除する", admin_item_path(@item.id), method: :delete %></div>
+  <div>
+
+    <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
+
+    <!--カテゴリ選択-->
+    <div>
+      <div>変更前：<%= @item.large_category.name %> ＞ <%= @item.medium_category.name %> ＞ <%= @item.small_category.name %></div>
+      </br>
+      <div class="flex">
+
+        <div>
+          <label class="underline">大カテゴリ</label>
+          <div class="column-2">
+          <% @large_categories.each do |large_category| %>
+            <%= link_to large_category.name, edit_admin_item_path(large_category_id: large_category.id) %>
+          <br/>
+          <% end %>
+          </div>
+        </div>
+
+        <div class="space"> ＞ </div>
+
+        <div>
+          <label class="underline">中カテゴリ</label>
+          <% if @medium_categories.present? %>
+          <div class="column-2">
+            <% @medium_categories.each do |medium_category| %>
+              <%= link_to medium_category.name, edit_admin_item_path(medium_category_id: medium_category.id) %>
+              <br/>
+            <% end %>
+          </div>
+            <% elsif @medium_category.present? %>
+              <br/><%= @medium_category.name %>
+            <% elsif @small_category.present? %>
+              <br/><%= @small_category.medium_category.name %>
+            <% else %>
+          <% end %>
+        </div>
+
+        <div class="space"> ＞ </div>
+
+        <div>
+          <label class="underline">小カテゴリ</label>
+          <% if @small_categories.present? %>
+          <div class="column-2">
+            <% @small_categories.each do |small_category| %>
+              <%= link_to small_category.name, edit_admin_item_path(small_category_id: small_category.id) %>
+              <br/>
+            <% end %>
+          </div>
+            <% elsif @small_category.present? %>
+              <br/><%= @small_category.name %>
+            <% else %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+    <!---->
+
+    <div>
+      <table class="width-70p">
+        <tr>
+          <th>項目名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>読み</th>
+          <td><%= f.text_field :reading %></td>
+        </tr>
+        <tr>
+          <th>情報</th>
+          <td><%= f.text_area :information, class: "width-50p height-50" %></td>
+        </tr>
+        <tr>
+          <th>解説</th>
+          <td><%= f.text_area :commentary, class: "width-70p height-50" %></td>
+        </tr>
+        <tr>
+          <th>画像1</th>
+          <td>
+            変更前<%= image_tag @item.get_image(150, 150) %>
+            <%= f.file_field :image, accept: "image/*" %>
+          </td>
+        </tr>
+        <tr>
+          <th>他画像</th>
+          <td>
+            変更前
+          <div class="column-2 width-50p">
+            <% if @item.other_images.attached? %>
+              <% @item.other_images.each.with_index(2) do |other_image, i| %>
+              <div class="space_15 avoid">
+                <div class="space_2"><%= "画像" + i.to_s %></div>
+                <div><%= image_tag other_image, width: 150, height: 150 %></div>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+          <%= f.file_field :other_images, accept: "image/*", multiple: true %>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit '更新する', class: "top_50 btn btn-primary" %></td>
+        </tr>
+      </table>
+    </div>
+
+    <% end %>
+
+  </div>
+
+</div>
+

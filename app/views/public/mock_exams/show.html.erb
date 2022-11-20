@@ -1,47 +1,95 @@
 
-<div>模試履歴詳細</div>
 
-<div><%= @mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-<div>
-  <% @mock_exam.answers.take(1).each do |answer| %>
-    <%= answer.quiz.item.large_category.name %>
-  <% end %>
+<!--頭部分-->
+<div class="title">模試履歴詳細</div>
+
+<div class="flex width-50p space_30">
+  <div class="width-30p"><%= @mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+  <div class="width-30p">
+    <% @mock_exam.answers.take(1).each do |answer| %>
+      <%= answer.quiz.item.large_category.name %>
+    <% end %>
+  </div>
+  <div class="width-20p"><%= link_to "削除", mock_exam_path(@mock_exam.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger" %></div>
+  <div class="font-20"><%= @mock_exam.point %> /40</div>
 </div>
-<div><%= @mock_exam.point %>/40</div>
-<div><%= link_to "削除", mock_exam_path(@mock_exam.id), method: :delete %></div>
+<!---->
 
-<table>
-  <% @mock_exam.answers.each.with_index(1) do |answer, i| %>
 
+<!--模試詳細部分-->
+
+
+<table class="width-100p">
   <thead>
-    <tr>
-      <th>番号</th>
-      <th>問題</th>
-      <th colspan="1"></th>
-      <th>解答</th>
-      <th>答え</th>
-      <th colspan="1"></th>
+    <tr class="text-center">
+      <th class="outline">番号</th>
+      <th class="outline">問題</th>
+      <th colspan="1" class="outline"></th>
+      <th class="width-10p outline">解答</th>
+      <th class="outline">答え</th>
+      <th colspan="1" class="outline"></th>
     </tr>
   </thead>
 
+  <% @mock_exam.answers.each.with_index(1) do |answer, i| %>
   <tbody>
-    <tr>
-      <td><%= i %></td>
-      <td><%= answer.quiz.question %></td>
-      <td>画像</td>
-      <td>
-        <% if answer.scoring %>
-          〇
-        <% else %>
-          ✕
-        <% end %>
-        <%= answer.answer %>
-      </td>
-      <td><%= answer.quiz.correct_answer %></td>
-      <td><%= link_to "詳細", item_path(answer.quiz.item.id) %></td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
 
+      <tr>
+        <td class="text-center outline"><%= i %></td>
+        <td class="outline"><%= answer.quiz.question %></td>
+
+        <td class="outline">
+          <div class="image">
+            A<%= image_tag answer.quiz.get_number_a_image(50, 50) %>
+            B<%= image_tag answer.quiz.get_number_b_image(50, 50) %>
+            C<%= image_tag answer.quiz.get_number_c_image(50, 50) %>
+          </div>
+          <!--ポップアップ内-->
+          <div class="pop-up center">
+            <div>
+              <table>
+                <thead>
+                  <tr class="text-center">
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%= image_tag answer.quiz.get_number_a_image(170, 130) %></td>
+                    <td><%= image_tag answer.quiz.get_number_b_image(170, 130) %></td>
+                    <td><%= image_tag answer.quiz.get_number_c_image(170, 130) %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </td>
+
+        <td class="outline">
+          <div class="flex text-center">
+            <div>
+            <% if answer.scoring %>
+              <span class="maru">〇</span>
+            <% else %>
+              <span class="batu">✕</span>
+            <% end %>
+            </div>
+            <div class="width-80p"><%= answer.answer %></div>
+          </div>
+        </td>
+
+        <td class="outline text-center"><%= answer.quiz.correct_answer %></td>
+
+        <td class="outline text-center">
+          <%= link_to "詳細", item_path(answer.quiz.item.id), class: "btn btn-success" %>
+        </td>
+      </tr>
+
+    <% end %>
+
+  </tbody>
+
+</table>
 

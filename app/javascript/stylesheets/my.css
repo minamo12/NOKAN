@@ -7,8 +7,8 @@
   padding: 3px 30px;
   margin-bottom: 30px;
   font-weight: bold;
-  margin-left: 70px;
-  font-size: 25px;
+  margin-left: 20px;
+  font-size: 22px;
 }
 
 .outline {
@@ -17,12 +17,6 @@
 
 .no-deco {
   font-weight: initial;
-}
-
-
-/*テーブル*/
-.table-line {
-  border: solid 1px;
 }
 
 
@@ -35,6 +29,10 @@
 /*文字*/
 .font-12 {
   font-size: 12px;
+}
+
+.font-15 {
+  font-size: 15px;
 }
 
 .font-20 {
@@ -64,6 +62,10 @@
 .text-center {
   margin: 0 auto;
   text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
 }
 
 
@@ -120,9 +122,12 @@
   margin-left: 10px;
 }
 
-
 .left-space-20 {
   margin-left: 20px;
+}
+
+.left-space-30 {
+  margin-left: 30px;
 }
 
 .left-space-40 {
@@ -210,6 +215,11 @@
 
 .width-10p {
   width: 10%;
+}
+
+
+.height-50 {
+  height: 100px;
 }
 
 
@@ -327,6 +337,16 @@ header {
 }
 
 
+/*模試*/
+.maru {
+  color: red;
+}
+
+.batu {
+  color: blue;
+}
+
+
 /*その他*/
 
 .scroll {
@@ -346,6 +366,19 @@ header {
   margin: 0 5px;
 }
 
+footer {
+  margin-top: 80px;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.space {
+  margin: 0 20px;
+}
 
 
 /*テスト*/
