@@ -1,93 +1,141 @@
+
+<p>
+  <% if @item.errors.any? %>
+    <% @item.errors.full_messages.each do |messeage| %>
+      <div>・<%= messeage %></div>
+    <% end %>
+  <% end %>
+</p>
+
 <div class="flex space_50">
 
-<div>項目追加</div>
 
-<div>
 
-  <div>
-    <br/>
+<div class="width-100p">
+  <div class="title">項目追加</div>
+
+
+  <!--カテゴリ選択-->
     <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
 
-    <label>大カテゴリ</label>
+    <div><%= link_to "選び直す", new_admin_item_path(@item.id) %></div>
+
+    <div class="flex width-100p space_50">
+
+    <div>
+      <label class="underline">大カテゴリ</label>
+      <div class="column-2">
+      <% if @large_category.present? %>
+
+        <%= @large_category.name %>
+        <% elsif @medium_category.present? %>
+          <%= @medium_category.large_category.name %>
+        <% elsif @small_category.present? %>
+          <%= @small_category.medium_category.large_category.name %>
+        <% else %>
+        <% @large_categories.each do |large_category| %>
+          <%= link_to large_category.name, new_admin_item_path(large_category_id: large_category.id) %>
+        <br/>
+        <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+
+    <div class="space"> ＞ </div>
+
+    <div>
+    <label class="underline">中カテゴリ</label>
+    <% if @medium_categories.present? %>
     <div class="column-2">
-    <% @large_categories.each do |large_category| %>
-      <%= link_to large_category.name, new_admin_item_path(large_category_id: large_category.id) %>
-    <br/>
+      <% @medium_categories.each do |medium_category| %>
+        <%= link_to medium_category.name, new_admin_item_path(medium_category_id: medium_category.id) %>
+        <br/>
+      <% end %>
+    </div>
+      <% elsif @medium_category.present? %>
+        <br/><%= @medium_category.name %>
+      <% elsif @small_category.present? %>
+        <br/><%= @small_category.medium_category.name %>
+      <% else %>
+    <% end %>
+
+    </div>
+
+    <div class="space"> ＞ </div>
+
+    <div>
+    <label class="underline">小カテゴリ</label>
+    <% if @small_categories.present? %>
+    <div class="column-2">
+      <% @small_categories.each do |small_category| %>
+        <%= link_to small_category.name, new_admin_item_path(small_category_id: small_category.id) %>
+        <br/>
+      <% end %>
+    </div>
+      <% elsif @small_category.present? %>
+        <br/><%= @small_category.name %>
+      <% else %>
     <% end %>
     </div>
 
-    <br/>
-    <br/>
+    </div>
+    <!---->
 
-    <label>中カテゴリ</label>
-    <br/>
-    <% if @medium_categories.present? %>
-      <% @medium_categories.each do |medium_category| %>
-      <br/>
-        <%= link_to medium_category.name, new_admin_item_path(medium_category_id: medium_category.id) %>
-      <% end %>
-      <% elsif @medium_category.present? %>
-        <%= @medium_category.name %>
-      <% elsif @small_category.present? %>
-        <%= @small_category.medium_category.name %>
-      <% else %>
+    <div>
+      <table class="width-70p">
+        <tr>
+          <th>項目名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>読み</th>
+          <td><%= f.text_field :reading %></td>
+        </tr>
+        <tr>
+          <th>情報</th>
+          <td><%= f.text_area :information, class: "width-50p height-50" %></td>
+        </tr>
+        <tr>
+          <th>解説</th>
+          <td><%= f.text_area :commentary, class: "width-70p height-50" %></td>
+        </tr>
+        <tr>
+          <th>画像1</th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <th>他画像</th>
+          <td><%= f.file_field :other_images, accept: "image/*", multiple: true %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit '追加する', class: "top_50 btn btn-primary" %></td>
+        </tr>
+      </table>
+    </div>
+
+
     <% end %>
 
-    <br/>
-    <br/>
-    <label>小カテゴリ</label>
-    <br/>
-    <% if @small_categories.present? %>
-      <% @small_categories.each do |small_category| %>
-      <br/>
-        <%= link_to small_category.name, new_admin_item_path(small_category_id: small_category.id) %>
-      <% end %>
-      <% elsif @small_category.present? %>
-        <%= @small_category.name %>
-      <% else %>
-    <% end %>
-
-    <br/>
-    <br/>
-
-    <label>項目名</label>
-    <div><%= f.text_field :name %></div>
-
-    <label>読み</label>
-    <div><%= f.text_field :reading %> </div>
-
-    <label>情報</label>
-    <div><%= f.text_area :information %></div>
-
-    <label>解説</label>
-    <div><%= f.text_area :commentary %></div>
-
-    <label>画像1</label>
-    <div><%= f.file_field :image, accept: "image/*" %></div>
-
-    <label>他画像</label>
-    <div><%= f.file_field :other_images, accept: "image/*", multiple: true %></div>
-
-    <div><%= f.submit '追加する', class: "top_50" %></div>
-    <% end %>
-  </div>
 
 </div>
 
 
 
 
-<div class="scroll left-space-80">
+<div class="scroll right-send height-680">
   <div>項目一覧</div>
   <% @large_categories.each do |large_category| %>
     〇<%= large_category.name %>
 
-    <div class="left-space-20">
+    <div class="left-space-10">
     <% large_category.medium_categories.each do |medium_category| %>
       ・<%= medium_category.name %>
 
 
-      <div class="left-space-40">
+      <div class="left-space-10">
       <% medium_category.small_categories.each do |small_category| %>
         ><%= small_category.name %>
 

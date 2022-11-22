@@ -5,11 +5,11 @@ class Admin::LargeCategoriesController < ApplicationController
   def index
     # すべて表示
     @large_categories = LargeCategory.all
-    @medium_categories = MediumCategory.all
-    @small_categories = SmallCategory.all
     @large_category = LargeCategory.new
     @medium_category = MediumCategory.new
     @small_category = SmallCategory.new
+    @@large_select = 0
+    @@medium_select = 0
 
     @items = Item.all
     @quizzes = Quiz.all
@@ -30,8 +30,14 @@ class Admin::LargeCategoriesController < ApplicationController
 
   def large_create
     @large_category = LargeCategory.new(large_category_params)
-    @large_category.save
-    redirect_to admin_large_categories_path
+    if @large_category.save
+      redirect_to admin_large_categories_path
+    else
+      @large_categories = LargeCategory.all
+      @medium_categories = MediumCategory.all
+      @small_categories = SmallCategory.all
+      render :index
+    end
   end
 
   def large_destroy
@@ -44,9 +50,20 @@ class Admin::LargeCategoriesController < ApplicationController
 
   def medium_create
     @medium_category = MediumCategory.new(medium_category_params)
-    @medium_category.large_category_id = @@large_select.id
-    @medium_category.save
-    redirect_to admin_large_categories_path
+    @large_category = LargeCategory.new
+    @small_category = SmallCategory.new
+    if @@large_select == 0
+    else
+      @medium_category.large_category_id = @@large_select.id
+    end
+
+    if @medium_category.save
+      redirect_to admin_large_categories_path
+    else
+      @large_categories = LargeCategory.all
+      @@large_select = 0
+      render :index
+    end
   end
 
   def medium_destroy
@@ -59,9 +76,20 @@ class Admin::LargeCategoriesController < ApplicationController
 
   def small_create
     @small_category = SmallCategory.new(small_category_params)
-    @small_category.medium_category_id = @@medium_select.id
-    @small_category.save
-    redirect_to admin_large_categories_path
+    @large_category = LargeCategory.new
+    @medium_category = MediumCategory.new
+    if @@medium_select == 0
+    else
+      @small_category.medium_category_id = @@medium_select.id
+    end
+
+    if @small_category.save
+      redirect_to admin_large_categories_path
+    else
+      @large_categories = LargeCategory.all
+      @@medium_select = 0
+      render :index
+    end
   end
 
   def small_destroy

@@ -29,6 +29,8 @@
         <!--ようこそ〇〇さん-->
         <% if customer_signed_in? %>
         <div class="welcome">ようこそ、<%= current_customer.name %>さん！</div>
+        <% elsif admin_signed_in? %>
+        <div class="welcome">管理者ログイン中</div>
         <% end %>
 
           <ul>

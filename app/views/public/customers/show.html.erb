@@ -8,26 +8,26 @@
   <table class="text-center space_30 width-100p">
     <thead>
       <tr>
-        <th class="table-line width-40p">日時</th>
-        <th class="table-line width-20p font-15">カテゴリ</th>
-        <th class="table-line">正解数</th>
-        <th colspan="1" class="table-line"></th>
+        <th class="outline width-40p">日時</th>
+        <th class="outline width-20p font-15">カテゴリ</th>
+        <th class="outline">正解数</th>
+        <th colspan="1" class="outline"></th>
       </tr>
     </thead>
     <% @mock_exams.take(5).each do |mock_exam| %>
     <tbody>
       <tr>
-        <td class="table-line"><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td class="table-line">
+        <td class="outline"><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td class="outline">
           <% mock_exam.answers.take(1).each do |answer| %>
             <%= answer.quiz.item.large_category.name %>
           <% end %>
         </td>
-        <td class="table-line">
+        <td class="outline">
           <span><%= mock_exam.point %></span>
           <span class="font-12">/40</span>
         </td>
-        <td class="table-line"><%= link_to "詳細", mock_exam_path(mock_exam.id), class: "btn btn-success btn-sm" %></td>
+        <td class="outline"><%= link_to "詳細", mock_exam_path(mock_exam.id), class: "btn btn-success btn-sm" %></td>
       </tr>
     </tbody>
     <% end %>
@@ -57,23 +57,23 @@
   <table class="space_30">
     <thead>
       <tr>
-        <th class="table-line">タイトル</th>
-        <th class="table-line">本文</th>
-        <th class="table-line">カテゴリ</th>
-        <th class="table-line">投稿日時</th>
-        <th class="table-line">※</th>
-        <th colspan="1" class="table-line"></th>
+        <th class="outline">タイトル</th>
+        <th class="outline">本文</th>
+        <th class="outline">カテゴリ</th>
+        <th class="outline">投稿日時</th>
+        <th class="outline">※</th>
+        <th colspan="1" class="outline"></th>
       </tr>
     </thead>
     <% @board_posts.take(5).each do |board_post| %>
     <tbody>
       <tr>
-        <td class="table-line"><%= board_post.board_title %></td>
-        <td class="table-line"><%= board_post.board_text.truncate(13) %></td>
-        <td class="table-line"><%= board_post.large_category.name %></td>
-        <td class="table-line"><%= board_post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td class="table-line"><%= board_post.comments.count %></td>
-        <td class="table-line"><%= link_to "詳細", board_post_path(board_post.id), class: "btn btn-success btn-sm" %></td>
+        <td class="outline"><%= board_post.board_title %></td>
+        <td class="outline"><%= board_post.board_text.truncate(13) %></td>
+        <td class="outline"><%= board_post.large_category.name %></td>
+        <td class="outline"><%= board_post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td class="outline"><%= board_post.comments.count %></td>
+        <td class="outline"><%= link_to "詳細", board_post_path(board_post.id), class: "btn btn-success btn-sm" %></td>
       </tr>
     </tbody>
     <% end %>
@@ -88,23 +88,23 @@
   <table>
     <thead>
       <tr>
-        <th class="table-line">コメント文</th>
-        <th class="table-line">日時</th>
-        <th class="table-line">タイトル</th>
-        <th class="table-line">ユーザ名</th>
-        <th class="table-line">カテゴリ</th>
-        <th colspan="1" class="table-line"></th>
+        <th class="outline">コメント文</th>
+        <th class="outline">日時</th>
+        <th class="outline">タイトル</th>
+        <th class="outline">ユーザ名</th>
+        <th class="outline">カテゴリ</th>
+        <th colspan="1" class="outline"></th>
       </tr>
     </thead>
     <% @comments.take(5).each do |comment| %>
     <tbody>
       <tr>
-        <td class="table-line"><%= comment.comment_text.truncate(13) %></td>
-        <td class="table-line"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td class="table-line"><%= comment.board_post.board_title %></td>
-        <td class="table-line"><%= comment.board_post.customer.name %></td>
-        <td class="table-line"><%= comment.board_post.large_category.name %></td>
-        <td class="table-line"><%= link_to "詳細", board_post_path(comment.board_post.id), class: "btn btn-success btn-sm" %></td>
+        <td class="outline"><%= comment.comment_text.truncate(13) %></td>
+        <td class="outline"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td class="outline"><%= comment.board_post.board_title %></td>
+        <td class="outline"><%= comment.board_post.customer.name %></td>
+        <td class="outline"><%= comment.board_post.large_category.name %></td>
+        <td class="outline"><%= link_to "詳細", board_post_path(comment.board_post.id), class: "btn btn-success btn-sm" %></td>
       </tr>
     </tbody>
     <% end %>

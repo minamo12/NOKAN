@@ -11,8 +11,11 @@ class Public::BoardPostsController < ApplicationController
   def create
     @board_post = BoardPost.new(board_post_params)
     @board_post.customer_id = current_customer.id
-    @board_post.save
-    redirect_to board_posts_path
+    if @board_post.save
+      redirect_to board_posts_path
+    else
+      render :new
+    end
   end
 
   def show

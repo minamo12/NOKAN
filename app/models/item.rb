@@ -11,6 +11,10 @@ class Item < ApplicationRecord
   belongs_to :medium_category
   belongs_to :small_category
 
+  validates :name, presence: true
+  validates :information, presence: true
+  validates :reading, presence: true
+
 def get_image(width, height)
   unless image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpg')

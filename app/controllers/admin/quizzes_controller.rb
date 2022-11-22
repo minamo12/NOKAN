@@ -8,8 +8,12 @@ class Admin::QuizzesController < ApplicationController
     @item = Item.find(params[:item_id])
     @quiz = Quiz.new(quiz_params)
     @quiz.item_id = @item.id
-    @quiz.save
-    redirect_to item_path(@item.id)
+    if @quiz.save
+      redirect_to item_path(@item.id)
+    else
+      @quizzes = @item.quizzes
+      render template: "public/items/show"
+    end
   end
 
   def edit
@@ -21,8 +25,11 @@ class Admin::QuizzesController < ApplicationController
     @item = Item.find(params[:item_id])
     @quiz = Quiz.find(params[:id])
     @quiz.item_id = @item.id
-    @quiz.update(quiz_params)
-    redirect_to item_path(@item.id)
+    if @quiz.update(quiz_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

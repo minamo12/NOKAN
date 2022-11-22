@@ -1,4 +1,12 @@
 
+<p>
+  <% if @board_post.errors.any? %>
+    <% @board_post.errors.full_messages.each do |messeage| %>
+      <div>・<%= messeage %></div>
+    <% end %>
+  <% end %>
+</p>
+
 <div class="title">掲示板新規投稿</div>
 
 <div>

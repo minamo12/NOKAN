@@ -9,6 +9,9 @@ class Quiz < ApplicationRecord
 
   belongs_to :item
 
+  validates :question, presence: true
+  validates :correct_answer, presence: true
+
   def get_number_a_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

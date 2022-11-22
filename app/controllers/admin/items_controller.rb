@@ -8,6 +8,7 @@ class Admin::ItemsController < ApplicationController
     if params[:large_category_id].present?
       @@large_category = LargeCategory.find(params[:large_category_id])
       @medium_categories = @@large_category.medium_categories
+      @large_category = @@large_category
     end
 
     if params[:medium_category_id].present?
@@ -24,13 +25,29 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
-    new
     @item = Item.new(item_params)
-    @item.large_category_id = @@large_category.id
-    @item.medium_category_id = @@medium_category.id
-    @item.small_category_id = @@small_category.id
-    @item.save
-    redirect_to item_path(@item.id)
+
+    if @large_category.present?
+      @item.large_category_id = @@large_category.id
+    else
+    end
+
+    if @medium_category.present?
+      @item.medium_category_id = @@medium_category.id
+    else
+    end
+
+    if @small_category.present?
+      @item.small_category_id = @@small_category.id
+    else
+    end
+
+    if @item.save
+      redirect_to item_path(@item.id)
+    else
+      @large_categories = LargeCategory.all
+      render action: :new
+    end
   end
 
   def edit
@@ -39,6 +56,7 @@ class Admin::ItemsController < ApplicationController
     if params[:large_category_id].present?
       @@edit_large_category = LargeCategory.find(params[:large_category_id])
       @medium_categories = @@edit_large_category.medium_categories
+      @large_category = @@edit_large_category
     end
 
     if params[:medium_category_id].present?
@@ -56,11 +74,26 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    @item.large_category_id = @@edit_large_category.id
-    @item.medium_category_id = @@edit_medium_category.id
-    @item.small_category_id = @@edit_small_category.id
-    @item.update(item_params)
-    redirect_to item_path(@item.id)
+    if @large_category.present?
+      @item.large_category_id = @@edit_large_category.id
+    else
+    end
+
+    if @medium_category.present?
+      @item.medium_category_id = @@edit_medium_category.id
+    else
+    end
+
+    if @small_category.present?
+      @item.small_category_id = @@edit_small_category.id
+    else
+    end
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      @large_categories = LargeCategory.all
+      render :edit
+    end
   end
 
   def destroy

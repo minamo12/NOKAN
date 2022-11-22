@@ -5,4 +5,7 @@ class BoardPost < ApplicationRecord
   belongs_to :customer
   belongs_to :large_category
 
+  validates :board_title, presence: true
+  validates :board_text, presence: true
+
 end

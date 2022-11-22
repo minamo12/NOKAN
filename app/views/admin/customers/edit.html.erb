@@ -1,34 +1,46 @@
-<h4><%= @customer.name %>さんの会員情報編集</h4>
+
+<p>
+  <% if @customer.errors.any? %>
+    <% @customer.errors.full_messages.each do |messeage| %>
+      <div>・<%= messeage %></div>
+    <% end %>
+  <% end %>
+</p>
+
+
+<div class="title"><%= @customer.name %>さんの会員情報編集</div>
 
 
 <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 
-<div>
-  <label class="col-2">会員ID</label>
-  <%= @customer.id %>
-</div>
 
-<div>
-  <label class="col-2">ユーザー名</label>
-  <%= f.text_field :name %>
-</div>
+<table>
+  <tr>
+    <th>会員ID</th>
+    <td><%= @customer.id %></td>
+  </tr>
+  <tr>
+    <th>ユーザ名</th>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  <tr>
+    <th>会員ステータス</th>
+    <td>
+      <div>
+        <%= f.radio_button :is_active, true %>
+        <label class="right-space">有効</label>
+      </div>
+      <div>
+        <%= f.radio_button :is_active, false %>
+        <label>退会</label>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <th></th>
+    <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
+  </tr>
+</table>
 
-
-<div class="flex space_30">
-  <label class="col-2">会員ステータス</label>
-  <div>
-    <%= f.radio_button :is_active, true %>
-    <label class="right-space">有効</label>
-  </div>
-  <div>
-    <%= f.radio_button :is_active, false %>
-    <label>退会</label>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-2"></div>
-  <%= f.submit '変更を保存', class: 'btn btn-success col-2' %>
-</div>
 
 <% end %>

@@ -1,4 +1,11 @@
 
+<p>
+  <% if @item.errors.any? %>
+    <% @item.errors.full_messages.each do |messeage| %>
+      <div>・<%= messeage %></div>
+    <% end %>
+  <% end %>
+</p>
 
 <div class="flex">
 
@@ -14,6 +21,8 @@
 
     <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
 
+    <div><%= link_to "選び直す", edit_admin_item_path(@item.id) %></div>
+
     <!--カテゴリ選択-->
     <div>
       <div>変更前：<%= @item.large_category.name %> ＞ <%= @item.medium_category.name %> ＞ <%= @item.small_category.name %></div>
@@ -23,12 +32,23 @@
         <div>
           <label class="underline">大カテゴリ</label>
           <div class="column-2">
-          <% @large_categories.each do |large_category| %>
-            <%= link_to large_category.name, edit_admin_item_path(large_category_id: large_category.id) %>
-          <br/>
-          <% end %>
+          <% if @large_category.present? %>
+
+            <%= @large_category.name %>
+            <% elsif @medium_category.present? %>
+              <%= @medium_category.large_category.name %>
+            <% elsif @small_category.present? %>
+              <%= @small_category.medium_category.large_category.name %>
+            <% else %>
+            <% @large_categories.each do |large_category| %>
+              <%= link_to large_category.name, edit_admin_item_path(large_category_id: large_category.id) %>
+            <br/>
+            <% end %>
+
+            <% end %>
           </div>
         </div>
+
 
         <div class="space"> ＞ </div>
 

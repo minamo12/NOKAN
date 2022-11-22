@@ -1,4 +1,12 @@
 
+<p>
+  <% if @quiz.errors.any? %>
+    <% @quiz.errors.full_messages.each do |messeage| %>
+      <div>・<%= messeage %></div>
+    <% end %>
+  <% end %>
+</p>
+
 <div class="flex">
 
   <div class="title">問題編集</div>

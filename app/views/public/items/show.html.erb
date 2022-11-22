@@ -47,8 +47,6 @@
 
 <!--以下管理者　問題管理画面-->
 <% if admin_signed_in? %>
-</br>
-</br>
 
 <div clasS="width-70p space_50">
   <div class="text-center"><%= link_to "修正する", edit_admin_item_path(@item.id), class: "btn btn-success" %></div>
@@ -117,6 +115,14 @@
   <div class="title">問題追加</div>
 
   <div>
+
+  <p>
+    <% if @quiz.errors.any? %>
+      <% @quiz.errors.full_messages.each do |messeage| %>
+        <div>・<%= messeage %></div>
+      <% end %>
+    <% end %>
+  </p>
 
     <table>
       <%= form_with model: @quiz, url: admin_quizzes_path(item_id: @item.id), method: :post do |f| %>

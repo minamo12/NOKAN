@@ -1,35 +1,35 @@
 
 
-<div>会員一覧</div>
+<div class="title">会員一覧</div>
 
 <div>
-  <% @customers.each do |customer| %>
 
   <table>
 
-    <thead>
+    <thead class="text-center">
       <tr>
-        <th>ID</th>
-        <th>ユーザ名</th>
-        <th>ステータス</th>
+        <th class="outline">ID</th>
+        <th class="outline">ユーザ名</th>
+        <th class="outline">ステータス</th>
       </tr>
     </thead>
-
-    <tbody>
+    <% @customers.each do |customer| %>
+    <tbody class="text-center">
       <tr>
-        <td><%= customer.id %></td>
-        <td><%= link_to customer.name, edit_admin_customer_path(customer.id) %></td>
-        <td>
+        <td class="outline"><%= customer.id %></td>
+        <td class="outline"><%= link_to customer.name, edit_admin_customer_path(customer.id) %></td>
+        <td class="outline">
           <% if customer.is_active %>
-            <div>有効</div>
+            <div class="true">有効</div>
           <% else %>
-            <div>退会</div>
+            <div class="false">退会</div>
           <% end %>
         </td>
       </tr>
     </tbody>
+    <% end %>
 
   </table>
 
-  <% end %>
+
 </div>

@@ -1,4 +1,9 @@
 
+<p id="notice">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+</p>
 
 <div class="title">管理者ログイン</div>
 

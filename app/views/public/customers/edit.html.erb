@@ -1,6 +1,14 @@
 
 <div class="center width-90">
 
+<p>
+  <% if @customer.errors.any? %>
+    <% @customer.errors.full_messages.each do |messeage| %>
+      <%= messeage %>
+    <% end %>
+  <% end %>
+</p>
+
 <div>
 
 <div class="title">ユーザー名変更</div>
