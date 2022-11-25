@@ -5,6 +5,4 @@ class MediumCategory < ApplicationRecord
 
   belongs_to :large_category
 
-  validates :name, presence: true
-
 end

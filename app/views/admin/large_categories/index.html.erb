@@ -25,7 +25,7 @@
 
       <%= form_with model: @large_category, url: admin_large_create_path, method: :post do |f| %>
       <div class="top_30 flex">
-        <div><%= f.text_field :name, placeholder: "大カテゴリ追加" %></div>
+        <div><%= f.text_field :name, placeholder: "大カテゴリ追加", :required => true %></div>
         <div><%= f.submit '追加する' %></div>
       </div>
       <% end %>
@@ -66,7 +66,7 @@
       <div>
         <%= form_with model: @medium_category, url: admin_medium_create_path, method: :post do |f| %>
         <div class="top_30 flex">
-          <div><%= f.text_field :name, placeholder: "中カテゴリ追加" %></div>
+          <div><%= f.text_field :name, placeholder: "中カテゴリ追加", :required => true %></div>
           <div><%= f.submit '追加する' %></div>
         </div>
         <% end %>
@@ -106,7 +106,7 @@
 
     <%= form_with model: @small_category, url: admin_small_create_path, method: :post do |f| %>
     <div class="top_30 flex">
-      <div><%= f.text_field :name, placeholder: "小カテゴリ追加" %></div>
+      <div><%= f.text_field :name, placeholder: "小カテゴリ追加", :required => true %></div>
       <div><%= f.submit '追加する' %></div>
     </div>
     <% end %>

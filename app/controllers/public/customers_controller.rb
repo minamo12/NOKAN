@@ -2,9 +2,9 @@ class Public::CustomersController < ApplicationController
 
   def show
     @customer = current_customer
-    @mock_exams = @customer.mock_exams
-    @board_posts = @customer.board_posts
-    @comments = @customer.comments
+    @mock_exams = @customer.mock_exams.order(id: "DESC")
+    @board_posts = @customer.board_posts.order(id: "DESC")
+    @comments = @customer.comments.order(id: "DESC")
   end
 
   def edit
@@ -30,7 +30,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name)
+    params.require(:customer).permit(:name, :is_active)
   end
 
 end

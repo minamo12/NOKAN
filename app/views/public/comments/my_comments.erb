@@ -1,31 +1,31 @@
 
 <div>
+
   <div class="title">自分のコメント一覧(<%= @my_comments.count %>件)</div>
   <table>
     <thead>
       <tr>
-        <th class="table-line">コメント文</th>
-        <th class="table-line">日時</th>
-        <th class="table-line">タイトル</th>
-        <th class="table-line">ユーザ名</th>
-        <th class="table-line">カテゴリ</th>
-        <th colspan="1" class="table-line"></th>
-        <th colspan="1" class="table-line"></th>
+        <th class="outline">コメント文</th>
+        <th class="outline">日時</th>
+        <th class="outline">タイトル</th>
+        <th class="outline">ユーザ名</th>
+        <th class="outline">カテゴリ</th>
+        <th colspan="1" class="outline"></th>
+        <th colspan="1" class="outline"></th>
       </tr>
     </thead>
     <% @my_comments.each do |my_comment| %>
     <tbody>
       <tr>
-        <td class="table-line"><%= my_comment.comment_text.truncate(33) %></td>
-        <td class="table-line"><%= my_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td class="table-line"><%= my_comment.board_post.board_title %></td>
-        <td class="table-line"><%= my_comment.board_post.customer.name %></td>
-        <td class="table-line"><%= my_comment.board_post.large_category.name %></td>
-        <td class="table-line"><%= link_to "詳細", board_post_path(my_comment.board_post.id), class: "btn btn-success btn-sm" %></td>
-        <td class="table-line"><%= link_to "削除", comment_path(my_comment.id), method: :delete, "data-confirm" => "削除しますか？" %></td>
+        <td class="outline"><%= my_comment.comment_text.truncate(33) %></td>
+        <td class="outline"><%= my_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        <td class="outline"><%= my_comment.board_post.board_title %></td>
+        <td class="outline"><%= my_comment.board_post.customer.name %></td>
+        <td class="outline"><%= my_comment.board_post.large_category.name %></td>
+        <td class="outline"><%= link_to "詳細", board_post_path(my_comment.board_post.id), class: "btn btn-success btn-sm" %></td>
+        <td class="outline"><%= link_to "削除", comment_path(my_comment.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger btn-sm" %></td>
       </tr>
     </tbody>
     <% end %>
   </table>
-  <div><%= link_to "自分のコメント一覧を見る", comment_my_comments_path, class: "btn btn-primary" %></div>
 </div>

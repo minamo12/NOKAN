@@ -28,7 +28,7 @@
     <% item.quizzes.take(40).each do |quiz| %>
       <tr>
         <td class="text-center outline"><%= @count += 1 %></td>
-        <td class="outline"><%= quiz.question %></td>
+        <td class="outline"><%= safe_join(quiz.question.split("\n"),tag(:br)) %></td>
 
         <td class="outline">
           <div class="image">
@@ -86,13 +86,22 @@
 </table>
 
 <div class="text-center width-50p top_50">
-  <%= f.number_field :point, class: "width-20p" %> /40
+
+<p>
+  <% if @mock_exam.errors.any? %>
+    <% @mock_exam.errors.full_messages.each do |messeage| %>
+      <div>・<%= messeage %></div>
+    <% end %>
+  <% end %>
+</p>
+
+  <%= f.number_field :point, class: "width-20p", :required => true %> /40
   <%= f.submit "結果を保存する", class: "btn btn-success left-space-50" %>
 <% end %>
 </div>
 
 <div class="text-center">
-  <%= link_to "保存せず問題を入れ替える", quizzes_path(large_category_id: @large_category.id), class: "btn btn-primary top_50" %>
+  <%= link_to('保存せず問題を入れ替える', 'javascript:void(0);', onclick: "window.location.reload();", class: "btn btn-primary top_50")  %>
 </div>
 
 
@@ -104,3 +113,4 @@
     $('p').toggle();
   })
 </script>
+

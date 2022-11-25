@@ -1,42 +1,52 @@
 
 
-<div class="flex">
+<div class="flex space_50 width-100p">
 
-<!--模試履歴-->
-<div class="width-40p">
+  <!--模試履歴-->
+<div class="">
   <div class="title">模試履歴</div>
-  <table class="text-center space_30 width-100p">
-    <thead>
-      <tr>
-        <th class="outline width-40p">日時</th>
-        <th class="outline width-20p font-15">カテゴリ</th>
-        <th class="outline">正解数</th>
-        <th colspan="1" class="outline"></th>
-      </tr>
-    </thead>
-    <% @mock_exams.take(5).each do |mock_exam| %>
-    <tbody>
-      <tr>
-        <td class="outline"><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td class="outline">
-          <% mock_exam.answers.take(1).each do |answer| %>
-            <%= answer.quiz.item.large_category.name %>
-          <% end %>
-        </td>
-        <td class="outline">
-          <span><%= mock_exam.point %></span>
-          <span class="font-12">/40</span>
-        </td>
-        <td class="outline"><%= link_to "詳細", mock_exam_path(mock_exam.id), class: "btn btn-success btn-sm" %></td>
-      </tr>
-    </tbody>
-    <% end %>
-  </table>
-  <div class="text-right-send"><%= link_to "模試履歴一覧を見る", mock_exams_path, class: "btn btn-primary" %></div>
+
+  <% if @mock_exams.count == 0 %>
+  <div>まだ模試履歴がありません。</div>
+
+  <% else %>
+  <div>
+    <table class="text-center space_30">
+      <thead>
+        <tr>
+          <th class="outline">日時</th>
+          <th class="outlinefont-15">カテゴリ</th>
+          <th class="outline">正解数</th>
+          <th colspan="1" class="outline"></th>
+        </tr>
+      </thead>
+      <% @mock_exams.take(5).each do |mock_exam| %>
+      <tbody>
+        <tr>
+          <td class="outline"><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td class="outline">
+            <% mock_exam.answers.take(1).each do |answer| %>
+              <%= answer.quiz.item.large_category.name %>
+            <% end %>
+          </td>
+          <td class="outline">
+            <span><%= mock_exam.point %></span>
+            <span class="font-12">/40</span>
+          </td>
+          <td class="outline"><%= link_to "詳細", mock_exam_path(mock_exam.id), class: "btn btn-success btn-sm" %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <div class="text-right-send"><%= link_to "模試履歴一覧を見る", mock_exams_path, class: "btn btn-primary" %></div>
+  </div>
+  <% end %>
 </div>
+  <!---->
 
 
-<div>
+
+<div class="">
   <div class="left-space-80 font-25">
     会員情報を変更する
     <%= link_to(edit_customer_path(@customer.id)) do %>
@@ -52,9 +62,17 @@
 
 
 <!--自分の投稿一覧-->
+<div class="width-70p">
+
+<div class="space_50">
+<div class="title">自分の投稿一覧</div>
+
+<% if @board_posts.count == 0 %>
+<div>まだ投稿していません。</div>
+
+<% else %>
 <div>
-  <div class="title">自分の投稿一覧</div>
-  <table class="space_30">
+  <table class="space_30 width-100p">
     <thead>
       <tr>
         <th class="outline">タイトル</th>
@@ -78,14 +96,26 @@
     </tbody>
     <% end %>
   </table>
-  <div><%= link_to "自分の投稿一覧を見る", board_post_my_posts_path, class: "btn btn-primary" %></div>
+  <div class="text-right-send"><%= link_to "自分の投稿一覧を見る", board_post_my_posts_path, class: "btn btn-primary" %></div>
 </div>
+<% end %>
+</div>
+</div>
+<!---->
 
 
 <!--自分のコメント一覧-->
+<div class="width-70p">
+
 <div>
-  <div class="title">自分のコメント一覧</div>
-  <table>
+<div class="title">自分のコメント一覧</div>
+
+<% if @comments.count == 0 %>
+<div>まだコメントをしていません</div>
+
+<% else %>
+<div>
+  <table class="space_30 width-100p">
     <thead>
       <tr>
         <th class="outline">コメント文</th>
@@ -109,7 +139,10 @@
     </tbody>
     <% end %>
   </table>
-  <div><%= link_to "自分のコメント一覧を見る", comment_my_comments_path, class: "btn btn-primary" %></div>
+  <div class="text-right-send"><%= link_to "自分のコメント一覧を見る", comment_my_comments_path, class: "btn btn-primary" %></div>
 </div>
 
-
+<% end %>
+</div>
+</div>
+<!---->

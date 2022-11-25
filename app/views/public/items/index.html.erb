@@ -1,10 +1,18 @@
 
 <div>
+  <% @items.take(1).each do |item| %>
+    <%= link_to item.large_category.name, categories_path(large_category_id: item.large_category.id) %> >
+    <%= item.medium_category.name %> >
+    <%= item.small_category.name %>
+  <% end %>
+</div>
+
+<div>
 
   <table>
 
     <thead>
-      <tr class="text-center">
+      <tr class="text-center border-bottom">
         <th>項目</th>
         <th>説明</th>
         <th>解説</th>

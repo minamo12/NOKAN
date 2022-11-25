@@ -4,6 +4,8 @@ class Admin::ItemsController < ApplicationController
     @items = Item.all
     @item = Item.new
     @large_categories = LargeCategory.all
+    @@small_category = 0
+    @@edit_small_category = 0
 
     if params[:large_category_id].present?
       @@large_category = LargeCategory.find(params[:large_category_id])
@@ -27,19 +29,11 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    if @large_category.present?
-      @item.large_category_id = @@large_category.id
+    if @@small_category == 0
     else
-    end
-
-    if @medium_category.present?
-      @item.medium_category_id = @@medium_category.id
-    else
-    end
-
-    if @small_category.present?
+      @item.large_category_id = @@small_category.medium_category.large_category.id
+      @item.medium_category_id = @@small_category.medium_category.id
       @item.small_category_id = @@small_category.id
-    else
     end
 
     if @item.save
@@ -52,6 +46,10 @@ class Admin::ItemsController < ApplicationController
 
   def edit
     @large_categories = LargeCategory.all
+
+    @@edit_large_category = 0
+    @@edit_medium_category = 0
+    @@edit_small_category = 0
 
     if params[:large_category_id].present?
       @@edit_large_category = LargeCategory.find(params[:large_category_id])
@@ -74,19 +72,11 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-    if @large_category.present?
-      @item.large_category_id = @@edit_large_category.id
+    if @@edit_small_category == 0
     else
-    end
-
-    if @medium_category.present?
-      @item.medium_category_id = @@edit_medium_category.id
-    else
-    end
-
-    if @small_category.present?
+      @item.large_category_id = @@edit_small_category.medium_category.large_category.id
+      @item.medium_category_id = @@edit_small_category.medium_category.id
       @item.small_category_id = @@edit_small_category.id
-    else
     end
     if @item.update(item_params)
       redirect_to item_path(@item.id)
@@ -99,7 +89,7 @@ class Admin::ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
-    redirect_to root_path
+    redirect_to items_path(small_category_id: @item.small_category.id)
   end
 
   private

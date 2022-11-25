@@ -4,6 +4,4 @@ class SmallCategory < ApplicationRecord
 
   belongs_to :medium_category
 
-  validates :name, presence: true
-
 end

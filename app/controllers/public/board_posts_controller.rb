@@ -1,7 +1,7 @@
 class Public::BoardPostsController < ApplicationController
 
   def index
-    @board_posts = BoardPost.page(params[:page]).per(10)
+    @board_posts = BoardPost.page(params[:page]).per(8).order(id: "DESC")
   end
 
   def new

@@ -94,19 +94,19 @@
       <table class="width-70p">
         <tr>
           <th>項目名</th>
-          <td><%= f.text_field :name %></td>
+          <td><%= f.text_field :name, :required => true %></td>
         </tr>
         <tr>
           <th>読み</th>
-          <td><%= f.text_field :reading %></td>
+          <td><%= f.text_field :reading, :required => true %></td>
         </tr>
         <tr>
           <th>情報</th>
-          <td><%= f.text_area :information, class: "width-50p height-50" %></td>
+          <td><%= f.text_area :information, class: "width-50p height-100", :required => true %></td>
         </tr>
         <tr>
           <th>解説</th>
-          <td><%= f.text_area :commentary, class: "width-70p height-50" %></td>
+          <td><%= f.text_area :commentary, class: "width-70p height-100" %></td>
         </tr>
         <tr>
           <th>画像1</th>

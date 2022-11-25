@@ -11,6 +11,12 @@
 
   <div>
 
+  <% if @board_posts.count == 0 %>
+
+  <div>まだ投稿がありません。</div>
+
+  <% else %>
+
   <% @board_posts.each do |board_post| %>
 
   <div class="avoid width-90p board_card space_15">
@@ -37,4 +43,6 @@
 
 <div class="width-100p space_50 text-center">
   <div class="page"><%= paginate @board_posts %></div>
-  </div>
+</div>
+
+<% end %>

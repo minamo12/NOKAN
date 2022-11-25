@@ -20,11 +20,11 @@
   <table class="width-90p">
     <tr>
       <th>問題</th>
-      <td><%= f.text_field :question, class: "width-70p" %></td>
+      <td><%= f.text_area :question, class: "width-70p height-55", :required => true %></td>
     </tr>
     <tr>
       <th>答え</th>
-      <td><%= f.text_field :correct_answer %></td>
+      <td><%= f.text_field :correct_answer, :required => true %></td>
     </tr>
     <tr>
       <th>画像A</th>
