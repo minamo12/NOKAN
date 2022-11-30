@@ -413,6 +413,14 @@ footer {
   color: #bbb;
 }
 
+.flex-start {
+  align-items: flex-start;
+}
+
+.board {
+  align-self: flex-start;
+}
+
 /*テスト*/
 .test {
   border: solid 1px;

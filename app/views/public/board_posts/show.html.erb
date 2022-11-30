@@ -8,9 +8,10 @@
 </div>
 <!---->
 
-<div class="flex">
+<div class="flex flex-start">
   <!--投稿-->
-  <div class="outline width-50p board_card">
+  <div class="width-50p board">
+    <div class="outline board_card">
 
     <div class="text-center font-25 underline"><%= @board_post.board_title %></div>
     <div class="text-right-send"><%= @board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
@@ -21,6 +22,22 @@
     </div>
     <div><%= @board_post.customer.name %></div>
 
+    </div>
+      <!--コメ投稿フォーム-->
+      <div class="width-80p top_50">
+        <div>コメント投稿</div>
+        <%= form_with model: @comment, url: comments_path, method: :post do |f| %>
+
+          <div><%= f.text_area :comment_text, :required => true%></div>
+          <div><%= f.hidden_field :board_post_id, :value => @board_post.id %></div>
+          <div><%= f.submit 'コメントする' %></div>
+
+        <% end %>
+      </div>
+      <!---->
+    <div>
+
+    </div>
   </div>
 
 
@@ -41,7 +58,11 @@
       <div class="board_text"><%= safe_join(comment.comment_text.split("\n"),tag(:br)) %></div>
       <div class="flex">
         <div><%= comment.customer.name %></div>
-        <div class="width-100p text-right-send"><%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "btn btn-danger btn-sm top_10" %></div>
+        <!--投稿者本人のみ表示-->
+        <% if comment.customer.id == current_customer.id %>
+          <div class="width-100p text-right-send"><%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "btn btn-danger btn-sm top_10" %></div>
+        <% end %>
+        <!---->
       </div>
     </div>
 
@@ -51,17 +72,4 @@
   </div>
 </div>
 
-<!--コメ投稿フォーム-->
-
-<div class="width-30p top_50">
-
-  <div>コメント投稿</div>
-  <%= form_with model: @comment, url: comments_path, method: :post do |f| %>
-
-    <div><%= f.text_area :comment_text, :required => true%></div>
-    <div><%= f.hidden_field :board_post_id, :value => @board_post.id %></div>
-    <div><%= f.submit 'コメントする' %></div>
-
-  <% end %>
-</div>
 

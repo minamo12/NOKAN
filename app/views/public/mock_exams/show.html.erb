@@ -36,7 +36,7 @@
 
       <tr>
         <td class="text-center outline"><%= i %></td>
-        <td class="outline"><%= answer.quiz.question %></td>
+        <td class="outline"><%= safe_join(answer.quiz.question.split("\n"),tag(:br)) %></td>
 
         <td class="outline">
           <div class="image">

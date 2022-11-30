@@ -31,7 +31,6 @@
 - 実装機能リスト　https://docs.google.com/spreadsheets/d/1l2g-byFRSGNr_civ2HsnAn9i77s8jJCf97d_kqbou9A/edit?usp=sharing
 - ER図　https://drive.google.com/file/d/1VJAq_N8kq8ceur_kdYGr65xFvFI4lgeB/view?usp=sharing
 - テーブル定義書　https://docs.google.com/spreadsheets/d/18i-Vtr7SnlMd7VxB-p10uBK4-Lxy5jBQiRTgDPYCZ50/edit?usp=sharing
-- ワイヤーフレーム　https://drive.google.com/file/d/1rtw2ccjLeFp8hV0VXaa8IPg7ekfJE7js/view?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -41,4 +40,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です。
+- イラストAC　https://www.ac-illust.com/
+- 写真AC　https://www.photo-ac.com/

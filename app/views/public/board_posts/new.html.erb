@@ -22,11 +22,11 @@
       </tr>
       <tr>
         <th>タイトル</th>
-        <td><%= f.text_field :board_title %></td>
+        <td><%= f.text_field :board_title, :required => true %></td>
       </tr>
       <tr>
         <th>本文</th>
-        <td><%= f.text_area :board_text, class: "width-70p" %></td>
+        <td><%= f.text_area :board_text, class: "width-70p", :required => true %></td>
       </tr>
       <tr>
         <th colspan="1"></th>

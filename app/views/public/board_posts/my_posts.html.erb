@@ -1,8 +1,15 @@
 
 <div>
 
+  <div class="title">自分の投稿一覧(<%= @my_posts.count %>件)</div>
+
+  <% if @my_posts.count == 0 %>
+
+  <div>まだコメントをしていません。</div>
+
+  <% else %>
   <div>
-    <div class="title">自分の投稿一覧(<%= @my_post.count %>件)</div>
+
     <table class="space_30">
       <thead>
         <tr>
@@ -29,5 +36,5 @@
     </table>
   </div>
 
-
+  <% end %>
 </div>
