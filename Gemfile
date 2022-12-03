@@ -65,8 +65,6 @@ gem 'font-awesome-sass'
 
 gem 'rails-i18n'
 
-gem 'seed-fu'
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
