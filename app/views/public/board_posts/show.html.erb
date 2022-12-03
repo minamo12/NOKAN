@@ -24,6 +24,7 @@
 
     </div>
       <!--コメ投稿フォーム-->
+      <% if customer_signed_in? %>
       <div class="width-80p top_50">
         <div>コメント投稿</div>
         <%= form_with model: @comment, url: comments_path, method: :post do |f| %>
@@ -34,6 +35,7 @@
 
         <% end %>
       </div>
+      <% end %>
       <!---->
     <div>
 
