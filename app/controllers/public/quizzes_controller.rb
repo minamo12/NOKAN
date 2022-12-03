@@ -5,7 +5,7 @@ class Public::QuizzesController < ApplicationController
     @answer = Answer.new
     if params[:large_category_id].present?
       @large_category = LargeCategory.find(params[:large_category_id])
-      @items = @large_category.items.order("RANDOM()")
+      @items = @large_category.items
     end
   end
 
