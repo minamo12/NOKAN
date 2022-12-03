@@ -59,8 +59,10 @@
       <div class="flex">
         <div><%= comment.customer.name %></div>
         <!--投稿者本人のみ表示-->
+        <% if customer_signed_in? %>
         <% if comment.customer.id == current_customer.id %>
           <div class="width-100p text-right-send"><%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "btn btn-danger btn-sm top_10" %></div>
+        <% end %>
         <% end %>
         <!---->
       </div>
