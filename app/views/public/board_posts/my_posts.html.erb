@@ -13,23 +13,23 @@
     <table class="space_30">
       <thead>
         <tr>
-          <th class="table-line">タイトル</th>
-          <th class="table-line">本文</th>
-          <th class="table-line">カテゴリ</th>
-          <th class="table-line">※</th>
-          <th colspan="1" class="table-line"></th>
-          <th colspan="1" class="table-line"></th>
+          <th class="outline">タイトル</th>
+          <th class="outline">本文</th>
+          <th class="outline">カテゴリ</th>
+          <th class="outline">※</th>
+          <th colspan="1" class="outline"></th>
+          <th colspan="1" class="outline"></th>
         </tr>
       </thead>
       <% @my_posts.each do |my_post| %>
       <tbody>
         <tr>
-          <td class="table-line"><%= my_post.board_title %></td>
-          <td class="table-line"><%= my_post.board_text.truncate(33) %></td>
-          <td class="table-line"><%= my_post.large_category.name %></td>
-          <td class="table-line"><%= my_post.comments.count %></td>
-          <td class="table-line"><%= link_to "詳細", board_post_path(my_post.id), class: "btn btn-success btn-sm" %></td>
-          <td class="table-line"><%= link_to "削除", board_post_path(my_post.id), method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "削除しますか？" %></td>
+          <td class="outline"><%= my_post.board_title %></td>
+          <td class="outline"><%= my_post.board_text.truncate(33) %></td>
+          <td class="outline"><%= my_post.large_category.name %></td>
+          <td class="outline"><%= my_post.comments.count %></td>
+          <td class="outline"><%= link_to "詳細", board_post_path(my_post.id), class: "btn btn-success btn-sm" %></td>
+          <td class="outline"><%= link_to "削除", board_post_path(my_post.id), method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "削除しますか？" %></td>
         </tr>
       </tbody>
       <% end %>
