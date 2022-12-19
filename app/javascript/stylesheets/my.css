@@ -327,6 +327,17 @@ header {
   position: absolute;
 }
 
+.info-text {
+  background-color: #EEE;
+  border: solid 1px;
+  display: none;
+}
+
+.info:hover + .info-text{
+  position: absolute;
+  display: block;
+}
+
 .item-index-pop-up {
   background-color: white;
   display: none;

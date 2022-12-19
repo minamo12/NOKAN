@@ -23,8 +23,12 @@ class Public::MockExamsController < ApplicationController
 
   def destroy
     @mock_exam = MockExam.find(params[:id])
-    @mock_exam.destroy
-    redirect_to mock_exams_path
+    if current_customer.id == @mock_exam.customer.id
+      @mock_exam.destroy
+      redirect_to mock_exams_path
+    else
+      redirect_to root_path
+    end
   end
 
   private

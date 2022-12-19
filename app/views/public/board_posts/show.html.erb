@@ -9,6 +9,7 @@
 <!---->
 
 <div class="flex flex-start">
+
   <!--投稿-->
   <div class="width-50p board">
     <div class="outline board_card">
@@ -23,6 +24,14 @@
     <div><%= @board_post.customer.name %></div>
 
     </div>
+
+    <% if customer_signed_in? %>
+    <% if @board_post.customer.id == current_customer.id %>
+    <div><%= link_to "投稿を削除する", board_post_path(@board_post.id), method: :delete, class: "btn btn-danger btn-sm top_10", "data-confirm" => "削除しますか？" %></div>
+    <% end %>
+    <% end %>
+
+
       <!--コメ投稿フォーム-->
       <% if customer_signed_in? %>
       <div class="width-80p top_50">
@@ -49,7 +58,7 @@
 
     <% if @comments.count == 0 %>
 
-    <div>またコメントがありません。</div>
+    <div>まだコメントがありません。</div>
 
     <% else %>
 

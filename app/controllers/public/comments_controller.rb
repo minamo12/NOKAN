@@ -14,8 +14,12 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find(params[:id])
-    comment.destroy
-    redirect_to board_post_path(comment.board_post.id)
+    if current_customer.id == comment.customer.id
+      comment.destroy
+      redirect_to board_post_path(comment.board_post.id)
+    else
+      redirect_to root_path
+    end
   end
 
   private

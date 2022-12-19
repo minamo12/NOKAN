@@ -3,26 +3,30 @@ class Admin::LargeCategoriesController < ApplicationController
   Item.order(:name)
 
   def index
-    # すべて表示
-    @large_categories = LargeCategory.all
-    @large_category = LargeCategory.new
-    @medium_category = MediumCategory.new
-    @small_category = SmallCategory.new
-    @@large_select = 0
-    @@medium_select = 0
+    if admin_signed_in?
+      # すべて表示
+      @large_categories = LargeCategory.all
+      @large_category = LargeCategory.new
+      @medium_category = MediumCategory.new
+      @small_category = SmallCategory.new
+      @@large_select = 0
+      @@medium_select = 0
 
-    @items = Item.all
-    @quizzes = Quiz.all
+      @items = Item.all
+      @quizzes = Quiz.all
 
-    if params[:large_category_id].present?
-      @@large_select = LargeCategory.find(params[:large_category_id])
-      @large_select = @@large_select
-      @medium_selects = @@large_select.medium_categories
-    end
+      if params[:large_category_id].present?
+        @@large_select = LargeCategory.find(params[:large_category_id])
+        @large_select = @@large_select
+        @medium_selects = @@large_select.medium_categories
+      end
 
-    if params[:medium_category_id].present?
-      @@medium_select = MediumCategory.find(params[:medium_category_id])
-      @medium_select = @@medium_select
+      if params[:medium_category_id].present?
+        @@medium_select = MediumCategory.find(params[:medium_category_id])
+        @medium_select = @@medium_select
+      end
+    else
+      redirect_to root_path
     end
   end
 
@@ -41,9 +45,13 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   def large_destroy
-    @large_categories = LargeCategory.find(params[:id])
-    @large_categories.destroy
-    redirect_to admin_large_categories_path
+    if admin_signed_in?
+      @large_categories = LargeCategory.find(params[:id])
+      @large_categories.destroy
+      redirect_to admin_large_categories_path
+    else
+      redirect_to root_path
+    end
   end
 
   # 中カテゴリ
@@ -67,9 +75,13 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   def medium_destroy
-    @medium_categories = MediumCategory.find(params[:id])
-    @medium_categories.destroy
-    redirect_to admin_large_categories_path
+    if admin_signed_in?
+      @medium_categories = MediumCategory.find(params[:id])
+      @medium_categories.destroy
+      redirect_to admin_large_categories_path
+    else
+      redirect_to root_path
+    end
   end
 
   # 小カテゴリ
@@ -93,9 +105,13 @@ class Admin::LargeCategoriesController < ApplicationController
   end
 
   def small_destroy
-    @small_categories = SmallCategory.find(params[:id])
-    @small_categories.destroy
-    redirect_to admin_large_categories_path
+    if admin_signed_in?
+      @small_categories = SmallCategory.find(params[:id])
+      @small_categories.destroy
+      redirect_to admin_large_categories_path
+    else
+      redirect_to root_path
+    end
   end
 
   private
