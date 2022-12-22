@@ -21,9 +21,21 @@
 
 
     <header>
-      <div>
+      <div class="width-100p">
         <!--ロゴ-->
         <h1><%= link_to "NOKAN", root_path, class: 'logo' %></h1>
+
+        <button id="menu-button" class="header-menu text-right-send2"></button>
+
+        <div id="menu">テストテストテストテスト</div>
+
+        <script>
+          $('#menu').hide();
+
+          $('#menu-button').click(function() {
+            $('#menu').toggle();
+          })
+        </script>
 
         <div class="list">
 

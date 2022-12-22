@@ -437,6 +437,10 @@ footer {
   border: solid 1px;
 }
 
+.header-menu {
+  display: none;
+}
+
 
 /*スマホレスポンシブ対応*/
 
@@ -475,6 +479,13 @@ footer {
     width: 90%;
     height: 100px;
     column-count: 2;
+  }
+
+  .header-menu {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
   }
 
 }

@@ -1,6 +1,6 @@
 
 <div class="width-90p text-right-send space_5">
-  <button>答えを表示する</button>
+  <button id="quiz-button">答えを表示する</button>
 </div>
 
 <div>
@@ -102,7 +102,7 @@
 
 <div class="text-center width-50p top_50">
 
-<p>
+<p id="ptest">
   <% if @mock_exam.errors.any? %>
     <% @mock_exam.errors.full_messages.each do |messeage| %>
       <div>・<%= messeage %></div>
@@ -124,7 +124,7 @@
 <script>
   $('p').hide();
 
-  $('button').click(function() {
+  $('#quiz-button').click(function() {
     $('p').toggle();
   })
 </script>
