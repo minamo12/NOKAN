@@ -126,9 +126,12 @@
 }
 
 .top-area {
-  width: 600px;
+  width: 80%;
   padding: 30px;
+  border: 1px solid #c0c0c0;
 }
+
+
 
 
 .left-space-5 {
@@ -437,10 +440,6 @@ footer {
   border: solid 1px;
 }
 
-.header-menu {
-  display: none;
-}
-
 
 /*スマホレスポンシブ対応*/
 
@@ -452,12 +451,9 @@ footer {
 
   header {
     width: 100%;
-    height: 100px;
+    height: 50px;
     margin-bottom: 30px;
-  }
-
-  .list {
-    display: none;
+    border-bottom: solid 1px;
   }
 
   .logo {
@@ -465,14 +461,15 @@ footer {
     position: absolute;
     color: black;
     text-decoration: none;
-    padding: 8px 30px;
+    top: 15px;
+    padding: 8px 20px;
     margin: 0 20px;
-    font-size: 30px;
+    font-size: 20px;
   }
 
   .top-area {
-    width: 100%;
     font-size: 10px;
+    padding: 10px;
   }
 
   .top-category {
@@ -481,13 +478,30 @@ footer {
     column-count: 2;
   }
 
-  .header-menu {
-    display: block;
-    width: 30px;
-    height: 30px;
-    margin: 10px;
+  .welcome {
+    display: none;
   }
 
+  .top-text {
+    width: 100%;
+  }
+
+  .header-btn {
+    border: solid 1px #c0c0c0;
+    border-radius: 3px;
+    color: black;
+    text-decoration: none;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 70px 0 0 0;
+    padding: 0;
+  }
 }
 
 /**/

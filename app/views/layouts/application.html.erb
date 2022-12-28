@@ -25,26 +25,16 @@
         <!--ロゴ-->
         <h1><%= link_to "NOKAN", root_path, class: 'logo' %></h1>
 
-        <button id="menu-button" class="header-menu text-right-send2"></button>
-
-        <div id="menu">テストテストテストテスト</div>
-
-        <script>
-          $('#menu').hide();
-
-          $('#menu-button').click(function() {
-            $('#menu').toggle();
-          })
-        </script>
+        <div>
+          <!--ようこそ〇〇さん-->
+          <% if customer_signed_in? %>
+          <div class="welcome">ようこそ、<%= current_customer.name %>さん！</div>
+          <% elsif admin_signed_in? %>
+          <div class="welcome">管理者ログイン中</div>
+          <% end %>
+        </div>
 
         <div class="list">
-
-        <!--ようこそ〇〇さん-->
-        <% if customer_signed_in? %>
-        <div class="welcome">ようこそ、<%= current_customer.name %>さん！</div>
-        <% elsif admin_signed_in? %>
-        <div class="welcome">管理者ログイン中</div>
-        <% end %>
 
           <ul>
             <!--管理者ログイン-->
@@ -71,6 +61,7 @@
 
             <% end %>
           </ul>
+
         </div>
 
       </div>

@@ -84,7 +84,7 @@
         </td>
 
         <td class="outline">
-          <p class="text-center"><%= quiz.correct_answer %></p>
+          <answer class="text-center"><%= quiz.correct_answer %></answer>
         </td>
 
         <td class="outline text-center">
@@ -122,10 +122,10 @@
 
 
 <script>
-  $('p').hide();
+  $('answer').hide();
 
   $('#quiz-button').click(function() {
-    $('p').toggle();
+    $('answer').toggle();
   })
 </script>
 
