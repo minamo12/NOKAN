@@ -20,12 +20,14 @@
   <% @board_posts.each do |board_post| %>
 
   <div class="avoid width-90p board_card space_15">
+  <!--掲示板詳細へのリンク-->
   <%= link_to(board_post_path(board_post.id)) do %>
 
     <div class="font-25 font_weight underline"><%= board_post.board_title %></div>
     <div class="font-12 space_5"><%= board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
     <div class="width-90p board_text center space_5"><%= board_post.board_text.truncate(70) %></div>
     <% end %>
+  <!---->
 
     <div class="text-right-send2 flex">
       <div>※<%= board_post.comments.count %></div>
