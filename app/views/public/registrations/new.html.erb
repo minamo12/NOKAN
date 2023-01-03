@@ -11,7 +11,7 @@
 
   <table class="no-deco">
     <tr>
-      <th class="text-right-send">ユーザ名</th>
+      <th class="text-right-send sign-up-item">ユーザ名</th>
       <td><%= f.text_field :name, autofocus: true, autocomplete: "name" %></td>
     </tr>
     <tr>
@@ -28,7 +28,7 @@
     </tr>
     <tr>
       <th></th>
-      <td>すでに登録済みの方は　<%= render "public/shared/links" %>　から</td>
+      <td class="center">すでに登録済みの方は<%= render "public/shared/links" %></td>
     </tr>
   </table>
 
