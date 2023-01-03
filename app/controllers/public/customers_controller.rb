@@ -13,15 +13,8 @@ class Public::CustomersController < ApplicationController
 
   def update
     @customer = current_customer
-    if current_customer.id == @customer.customer.id
-      if @customer.update(customer_params)
-        redirect_to customers_my_page_path
-      else
-        render :edit
-      end
-    else
-      redirect_to root_path
-    end
+    @customer.update(customer_params)
+    redirect_to customers_my_page_path
   end
 
   def withdraw

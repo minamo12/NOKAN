@@ -1,21 +1,37 @@
 
 
-<div class="flex space_50 width-100p">
+<div class="space_50">
 
   <!--模試履歴-->
-<div class="">
+<div class="flex">
   <div class="title">模試履歴</div>
+  <% if @mock_exams.count == 0 %>
+  <% else %>
+  <div class="left-space-10"><%= link_to "一覧を見る", mock_exams_path, class: "small-btn btn btn-primary list-link" %></div>
+  <% end %>
+  <div class="">
+    <div class="left-space-80 font-25 edit-customer">
+      会員情報を変更する
+      <%= link_to(edit_customer_path(@customer.id)) do %>
+      <span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </span>
+      <% end %>
+    </div>
+    <div><i class="fa-regular fa-square-arrow-right"></i></div>
+  </div>
+</div>
 
   <% if @mock_exams.count == 0 %>
   <div>まだ模試履歴がありません。</div>
 
   <% else %>
   <div>
-    <table class="text-center space_30">
+    <table class="space_30">
       <thead>
         <tr>
           <th class="outline">日時</th>
-          <th class="outline font-15">カテゴリ</th>
+          <th class="outline">カテゴリ</th>
           <th class="outline">正解数</th>
           <th colspan="1" class="outline"></th>
         </tr>
@@ -23,7 +39,7 @@
       <% @mock_exams.take(5).each do |mock_exam| %>
       <tbody>
         <tr>
-          <td class="outline"><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+          <td class="outline"><div class=""><%=mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></div></td>
           <td class="outline">
             <% mock_exam.answers.take(1).each do |answer| %>
               <%= answer.quiz.item.large_category.name %>
@@ -33,46 +49,39 @@
             <span><%= mock_exam.point %></span>
             <span class="font-12">/40</span>
           </td>
-          <td class="outline"><%= link_to "詳細", mock_exam_path(mock_exam.id), class: "btn btn-success btn-sm" %></td>
+          <td class="outline"><%= link_to "詳細", mock_exam_path(mock_exam.id), class: "small-btn btn btn-success btn-sm" %></td>
         </tr>
       </tbody>
       <% end %>
     </table>
-    <div class="text-right-send"><%= link_to "模試履歴一覧を見る", mock_exams_path, class: "btn btn-primary" %></div>
   </div>
   <% end %>
+
+  <% if @mock_exams.count > 5 %>
+  <div>最新5件を表示中(全<%= @mock_exams.count %>件)</div>
+  <% else %>
+  <% end %>
+
 </div>
   <!---->
 
 
-
-<div class="">
-  <div class="left-space-80 font-25">
-    会員情報を変更する
-    <%= link_to(edit_customer_path(@customer.id)) do %>
-    <span>
-      <i class="fa-solid fa-arrow-right"></i>
-    </span>
-    <% end %>
-  </div>
-  <div><i class="fa-regular fa-square-arrow-right"></i></div>
-</div>
-
-</div>
-
-
 <!--自分の投稿一覧-->
-<div class="width-70p">
+<div class="">
 
 <div class="space_50">
-<div class="title">自分の投稿一覧</div>
+
+<div class="flex">
+  <div class="title">自分の投稿一覧</div>
+  <div class="left-space-10"><%= link_to "一覧を見る", board_post_my_posts_path, class: "small-btn btn btn-primary" %></div>
+</div>
 
 <% if @board_posts.count == 0 %>
 <div>まだ投稿していません。</div>
 
 <% else %>
 <div>
-  <table class="space_30 width-100p">
+  <table class="space_30">
     <thead>
       <tr>
         <th class="outline">タイトル</th>
@@ -86,36 +95,47 @@
     <% @board_posts.take(5).each do |board_post| %>
     <tbody>
       <tr>
-        <td class="outline"><%= board_post.board_title %></td>
-        <td class="outline"><%= board_post.board_text.truncate(13) %></td>
+        <td class="outline"><%= board_post.board_title.truncate(9) %></td>
+        <td class="outline"><%= board_post.board_text.truncate(8) %></td>
         <td class="outline"><%= board_post.large_category.name %></td>
         <td class="outline"><%= board_post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td class="outline"><%= board_post.comments.count %></td>
-        <td class="outline"><%= link_to "詳細", board_post_path(board_post.id), class: "btn btn-success btn-sm" %></td>
+        <td class="outline"><%= link_to "詳細", board_post_path(board_post.id), class: "small-btn btn btn-success btn-sm" %></td>
       </tr>
     </tbody>
     <% end %>
   </table>
-  <div class="text-right-send"><%= link_to "自分の投稿一覧を見る", board_post_my_posts_path, class: "btn btn-primary" %></div>
 </div>
 <% end %>
+
+<% if @board_posts.count > 5 %>
+<div>最新5件を表示中(全<%= @board_posts.count %>件)</div>
+<% else %>
+<% end %>
+
 </div>
 </div>
 <!---->
 
 
 <!--自分のコメント一覧-->
-<div class="width-70p">
+<div class="">
 
 <div>
-<div class="title">自分のコメント一覧</div>
+<div class="flex">
+  <div class="title">自分のコメント一覧</div>
+  <% if @comments.count == 0 %>
+  <% else %>
+  <div class="left-space-10"><%= link_to "一覧を見る", comment_my_comments_path, class: "small-btn btn btn-primary" %></div>
+  <% end %>
+</div>
 
 <% if @comments.count == 0 %>
 <div>まだコメントをしていません</div>
 
 <% else %>
 <div>
-  <table class="space_30 width-100p">
+  <table class="space_30">
     <thead>
       <tr>
         <th class="outline">コメント文</th>
@@ -129,20 +149,24 @@
     <% @comments.take(5).each do |comment| %>
     <tbody>
       <tr>
-        <td class="outline"><%= comment.comment_text.truncate(13) %></td>
+        <td class="outline"><%= comment.comment_text.truncate(7) %></td>
         <td class="outline"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-        <td class="outline"><%= comment.board_post.board_title %></td>
-        <td class="outline"><%= comment.board_post.customer.name %></td>
+        <td class="outline"><%= comment.board_post.board_title.truncate(7) %></td>
+        <td class="outline"><%= comment.board_post.customer.name.truncate(5) %></td>
         <td class="outline"><%= comment.board_post.large_category.name %></td>
-        <td class="outline"><%= link_to "詳細", board_post_path(comment.board_post.id), class: "btn btn-success btn-sm" %></td>
+        <td class="outline"><%= link_to "詳細", board_post_path(comment.board_post.id), class: "small-btn btn btn-success btn-sm" %></td>
       </tr>
     </tbody>
     <% end %>
   </table>
-  <div class="text-right-send"><%= link_to "自分のコメント一覧を見る", comment_my_comments_path, class: "btn btn-primary" %></div>
 </div>
-
 <% end %>
+
+<% if @comments.count > 5 %>
+<div>最新5件を表示中(全<%= @comments.count %>件)</div>
+<% else %>
+<% end %>
+
 </div>
 </div>
 <!---->

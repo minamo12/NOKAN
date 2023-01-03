@@ -537,6 +537,27 @@ footer {
     font-size: 15px;
   }
 
+  .edit-customer {
+    font-size: 13px;
+    margin-left: 40px;
+  }
+
+  .list-link {
+    font-size: 12px;
+  }
+
+  th {
+    font-size: 11px;
+  }
+
+  td {
+    font-size: 11px;
+  }
+
+  .small-btn {
+    font-size: 11px;
+  }
+
 }
 
 /**/
