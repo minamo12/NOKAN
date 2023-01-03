@@ -464,7 +464,7 @@ footer {
   }
 
   .top-area {
-    font-size: 10px;
+    font-size: 12px;
     padding: 10px;
   }
 
@@ -518,6 +518,14 @@ footer {
 
   .mini-flex {
     display: flex;
+  }
+
+  .about {
+    font-size: 15px;
+  }
+
+  .caution {
+    font-size: 10px;
   }
 
 }
