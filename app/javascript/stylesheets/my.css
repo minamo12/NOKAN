@@ -317,13 +317,12 @@ header {
   border: solid 1px;
   border-color: gray;
   display: none;
-  width: 540px;
-  height: 200px;
 }
 
 .image:hover + .pop-up {
   display: block;
   position: absolute;
+  right: 5px;
 }
 
 .info-text {
@@ -429,6 +428,14 @@ footer {
 
 .board {
   align-self: flex-start;
+}
+
+.pc {
+  display: block !important;
+}
+
+.sp {
+  display: none !important;
 }
 
 /*テスト*/
@@ -556,6 +563,43 @@ footer {
 
   .small-btn {
     font-size: 11px;
+  }
+
+  .pc {
+    display: none !important;
+  }
+
+  .sp {
+    display: block !important;
+  }
+
+  .answer {
+    width: 20%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .image:hover + .pop-up {
+    display: block;
+    position: absolute;
+  }
+
+  .answer-open {
+    font-size: 13px;
+  }
+
+  .sp-font-10 {
+    font-size: 10px;
+  }
+
+  .sp-width-60p {
+    width: 60%;
+  }
+
+  .sp-font-12 {
+    font-size: 12px;
   }
 
 }

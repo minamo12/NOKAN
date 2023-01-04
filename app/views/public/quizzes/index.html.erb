@@ -1,16 +1,16 @@
 
 <div class="width-90p text-right-send space_5">
-  <button id="quiz-button">答えを表示する</button>
+  <button id="quiz-button" class="answer-open">答えを表示する</button>
 </div>
 
 <div>
   <i class="fa-solid fa-circle-info info"></i>
-  <div class="info-text">
+  <div class="info-text sp-font-10">
     <div>
-      1. 問題文と画像をよく見て、解答をフォームに入力します。</br>
+      1. 問題文と画像を見て、解答をフォームに入力します。</br>
       2. 「答えを表示する」ボタンを押して答え合わせをし、正解ならチェックをつけます。</br>
       3. 正解数を数えて下のフォームに入力します。</br>
-      4. よければ「結果を保存する」ボタンを押して保存します。</br>
+      4. 「結果を保存する」ボタンを押して保存します。</br>
       </br>
       ・「保存せず問題を入れ替える」を押すと問題が入れ替わります。</br>
       ・「答えを表示する」ボタンはもう一度押すと答えが非表示になります。</br>
@@ -25,10 +25,10 @@
 <table class="width-100p">
   <thead class="outline">
     <tr class="text-center">
-      <th class="outline">番号</th>
+      <th class="outline" colspan="1"></th>
       <th class="outline">問題</th>
       <th colspan="1" class="outline"></th>
-      <th class="width-10p outline">解答</th>
+      <th class="width-10p outline answer">解答</th>
       <th class="outline">答え</th>
       <th colspan="1" class="outline"></th>
     </tr>
@@ -49,14 +49,17 @@
 
         <td class="outline">
           <div class="image">
-            A<%= image_tag quiz.get_number_a_image(50, 50) %>
-            B<%= image_tag quiz.get_number_b_image(50, 50) %>
-            C<%= image_tag quiz.get_number_c_image(50, 50) %>
+            <span class="pc">
+              A<%= image_tag quiz.get_number_a_image(50, 50) %>
+              B<%= image_tag quiz.get_number_b_image(50, 50) %>
+              C<%= image_tag quiz.get_number_c_image(50, 50) %>
+            </span>
+            <span class="sp underline sp-font-10">画像を表示</span>
           </div>
           <!--ポップアップ内-->
-          <div class="pop-up center">
+          <div class="pop-up">
             <div>
-              <table>
+              <table class="pc">
                 <thead>
                   <tr class="text-center">
                     <th>A</th>
@@ -69,6 +72,23 @@
                     <td><%= image_tag quiz.get_number_a_image(170, 130) %></td>
                     <td><%= image_tag quiz.get_number_b_image(170, 130) %></td>
                     <td><%= image_tag quiz.get_number_c_image(170, 130) %></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <table class="sp">
+                <thead>
+                  <tr class="text-center">
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%= image_tag quiz.get_number_a_image(130, 90) %></td>
+                    <td><%= image_tag quiz.get_number_b_image(130, 90) %></td>
+                    <td><%= image_tag quiz.get_number_c_image(130, 90) %></td>
                   </tr>
                 </tbody>
               </table>
@@ -88,7 +108,7 @@
         </td>
 
         <td class="outline text-center">
-          <%= link_to "詳細", item_path(item.id), class: "btn btn-success" %>
+          <%= link_to "詳細", item_path(item.id), class: "sp-font-10 small-btn btn btn-success btn-sm" %>
         </td>
         <% end %>
       </tr>
@@ -100,23 +120,14 @@
 
 </table>
 
-<div class="text-center width-50p top_50">
-
-<p id="ptest">
-  <% if @mock_exam.errors.any? %>
-    <% @mock_exam.errors.full_messages.each do |messeage| %>
-      <div>・<%= messeage %></div>
-    <% end %>
-  <% end %>
-</p>
-
+<div class="text-center width-50p top_50 sp-width-60p">
   <%= f.number_field :point, class: "width-20p", :required => true %> /40
-  <%= f.submit "結果を保存する", class: "btn btn-success left-space-50" %>
+  <%= f.submit "結果を保存する", class: "small-btn btn btn-success left-space-30" %>
 <% end %>
 </div>
 
 <div class="text-center">
-  <%= link_to('保存せず問題を入れ替える', 'javascript:void(0);', onclick: "window.location.reload();", class: "btn btn-primary top_50")  %>
+  <%= link_to('保存せず問題を入れ替える', 'javascript:void(0);', onclick: "window.location.reload();", class: "small-btn btn btn-primary top_50")  %>
 </div>
 
 
