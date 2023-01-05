@@ -322,7 +322,6 @@ header {
 .image:hover + .pop-up {
   display: block;
   position: absolute;
-  right: 5px;
 }
 
 .info-text {
@@ -598,12 +597,36 @@ footer {
     width: 60%;
   }
 
+  .sp-width-100p {
+    width: 100%;
+  }
+
+  .sp-width-15p {
+    width: 15%;
+  }
+
+  .sp-width-14p {
+    width: 14%;
+  }
+
+  .sp-width-10p {
+    width: 10%;
+  }
+
+  .sp-width-13p {
+    width: 13%;
+  }
+
   .sp-font-12 {
     font-size: 12px;
   }
 
   .sp-font-15 {
     font-size: 15px;
+  }
+
+  .sp-font-11 {
+    font-size: 11px;
   }
 
   .sp-font-17 {
@@ -624,6 +647,10 @@ footer {
 
   .sp-left-0 {
     margin-left: 0;
+  }
+
+  .image:hover + .pop-up {
+    right: 5px;
   }
 
 }

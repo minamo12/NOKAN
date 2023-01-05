@@ -3,15 +3,15 @@
 <!--頭部分-->
 <div class="title">模試履歴詳細</div>
 
-<div class="flex width-50p space_30">
-  <div class="width-30p"><%= @mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-  <div class="width-30p">
+<div class="flex space_30">
+  <div><%= @mock_exam.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+  <div class="left-space-10">
     <% @mock_exam.answers.take(1).each do |answer| %>
       <%= answer.quiz.item.large_category.name %>
     <% end %>
   </div>
-  <div class="width-20p"><%= link_to "削除", mock_exam_path(@mock_exam.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger" %></div>
-  <div class="font-20"><%= @mock_exam.point %> /40</div>
+  <div class="left-space-20"><%= link_to "削除", mock_exam_path(@mock_exam.id), method: :delete, "data-confirm" => "削除しますか？", class: "sp-font-10 btn btn-danger" %></div>
+  <div class="font-20 left-space-20"><%= @mock_exam.point %> /40</div>
 </div>
 <!---->
 
@@ -83,7 +83,7 @@
         <td class="outline text-center"><%= answer.quiz.correct_answer %></td>
 
         <td class="outline text-center">
-          <%= link_to "詳細", item_path(answer.quiz.item.id), class: "btn btn-success" %>
+          <%= link_to "詳細", item_path(answer.quiz.item.id), class: "sp-font-11 btn btn-success" %>
         </td>
       </tr>
 

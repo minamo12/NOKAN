@@ -8,8 +8,7 @@
         <th class="outline">コメント文</th>
         <th class="outline">日時</th>
         <th class="outline">タイトル</th>
-        <th class="outline">ユーザ名</th>
-        <th class="outline">カテゴリ</th>
+        <th class="outline sp-font-10">カテゴリ</th>
         <th colspan="1" class="outline"></th>
         <th colspan="1" class="outline"></th>
       </tr>
@@ -20,10 +19,9 @@
         <td class="outline"><%= my_comment.comment_text.truncate(33) %></td>
         <td class="outline"><%= my_comment.created_at.strftime('%Y/%m/%d %H:%M') %></td>
         <td class="outline"><%= my_comment.board_post.board_title %></td>
-        <td class="outline"><%= my_comment.board_post.customer.name %></td>
-        <td class="outline"><%= my_comment.board_post.large_category.name %></td>
-        <td class="outline"><%= link_to "詳細", board_post_path(my_comment.board_post.id), class: "btn btn-success btn-sm" %></td>
-        <td class="outline"><%= link_to "削除", comment_path(my_comment.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger btn-sm" %></td>
+        <td class="outline sp-width-14p"><%= my_comment.board_post.large_category.name %></td>
+        <td class="outline sp-width-13p"><%= link_to "詳細", board_post_path(my_comment.board_post.id), class: "sp-font-10 btn btn-success btn-sm" %></td>
+        <td class="outline sp-width-13p"><%= link_to "削除", comment_path(my_comment.id), method: :delete, "data-confirm" => "削除しますか？", class: "sp-font-10 btn btn-danger btn-sm" %></td>
       </tr>
     </tbody>
     <% end %>
