@@ -8,7 +8,7 @@
 
   <div class="font_weight"><%= medium_category.name %></div>
 
-    <div>
+    <div class="left-space-20">
       <% medium_category.small_categories.each do |small_category| %>
         ><%= link_to small_category.name, items_path(small_category_id: small_category.id) %>
       </br>
