@@ -14,20 +14,20 @@
   <div class="width-50p board">
     <div class="outline board_card">
 
-    <div class="text-center font-25 underline"><%= @board_post.board_title %></div>
-    <div class="text-right-send"><%= @board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-    <div class="board_text space_5"><%= safe_join(@board_post.board_text.split("\n"),tag(:br)) %></div>
-    <div class="text-right-send2 flex">
+    <div class="text-center font-25 underline sp-font-17"><%= @board_post.board_title %></div>
+    <div class="text-right-send sp-font-10"><%= @board_post.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+    <div class="board_text space_5 sp-font-12"><%= safe_join(@board_post.board_text.split("\n"),tag(:br)) %></div>
+    <div class="text-right-send2 flex sp-font-12">
       <div>※<%= @board_post.comments.count %></div>
       <div class="outline board_cate left-space-10"><%= @board_post.large_category.name %></div>
     </div>
-    <div><%= @board_post.customer.name %></div>
+    <div class="sp-font-12"><%= @board_post.customer.name %></div>
 
     </div>
 
     <% if customer_signed_in? %>
     <% if @board_post.customer.id == current_customer.id %>
-    <div><%= link_to "投稿を削除する", board_post_path(@board_post.id), method: :delete, class: "btn btn-danger btn-sm top_10", "data-confirm" => "削除しますか？" %></div>
+    <div><%= link_to "投稿を削除する", board_post_path(@board_post.id), method: :delete, class: "sp-font-12 btn btn-danger btn-sm top_10", "data-confirm" => "削除しますか？" %></div>
     <% end %>
     <% end %>
 
@@ -54,7 +54,7 @@
 
   <!--コメント-->
   <div class="width-40p left-space-40">
-  <div class="title">コメント一覧(<%= @comments.count %>)</div>
+  <div class="title sp-left-0">コメント一覧(<%= @comments.count %>)</div>
 
     <% if @comments.count == 0 %>
 
@@ -65,14 +65,14 @@
     <% @comments.each do |comment| %>
 
     <div class="board_card space_15">
-      <div class="text-right-send"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
-      <div class="board_text"><%= safe_join(comment.comment_text.split("\n"),tag(:br)) %></div>
+      <div class="text-right-send sp-font-12"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+      <div class="board_text sp-font-12"><%= safe_join(comment.comment_text.split("\n"),tag(:br)) %></div>
       <div class="flex">
-        <div><%= comment.customer.name %></div>
+        <div class="sp-font-12"><%= comment.customer.name %></div>
         <!--投稿者本人のみ表示-->
         <% if customer_signed_in? %>
         <% if comment.customer.id == current_customer.id %>
-          <div class="width-100p text-right-send"><%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "btn btn-danger btn-sm top_10" %></div>
+          <div class="width-100p text-right-send"><%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "sp-font-12 btn btn-danger btn-sm top_10" %></div>
         <% end %>
         <% end %>
         <!---->

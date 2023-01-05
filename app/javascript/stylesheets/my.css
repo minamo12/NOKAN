@@ -606,6 +606,10 @@ footer {
     font-size: 15px;
   }
 
+  .sp-font-17 {
+    font-size: 17px;
+  }
+
   .sp-block {
     display: block;
   }
@@ -616,6 +620,10 @@ footer {
 
   .sp-left-50 {
     margin-left: 50px;
+  }
+
+  .sp-left-0 {
+    margin-left: 0;
   }
 
 }

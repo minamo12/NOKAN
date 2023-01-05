@@ -17,15 +17,15 @@
 
     <table class="width-80p">
       <tr>
-        <th class="width-15p">カテゴリ選択</th>
+        <th class="text-right-send">カテゴリ選択</th>
         <td><%= f.collection_select :large_category_id, LargeCategory.all, :id, :name, include_blank: "--選択してください--" %></td>
       </tr>
       <tr>
-        <th>タイトル</th>
+        <th class="text-right-send">タイトル</th>
         <td><%= f.text_field :board_title, :required => true %></td>
       </tr>
       <tr>
-        <th>本文</th>
+        <th class="text-right-send">本文</th>
         <td><%= f.text_area :board_text, class: "width-70p", :required => true %></td>
       </tr>
       <tr>
