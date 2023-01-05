@@ -602,6 +602,22 @@ footer {
     font-size: 12px;
   }
 
+  .sp-font-15 {
+    font-size: 15px;
+  }
+
+  .sp-block {
+    display: block;
+  }
+
+  .colum-initial {
+    column-count: initial;
+  }
+
+  .sp-left-50 {
+    margin-left: 50px;
+  }
+
 }
 
 /**/

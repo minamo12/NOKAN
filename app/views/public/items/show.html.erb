@@ -7,7 +7,7 @@
 
 <div class="flex">
 
-  <div class="width-50p">
+  <div class="width-50p sp-font-12">
     <div class="flex space_50">
 
       <div>
@@ -31,10 +31,10 @@
   </div>
 
 
-  <div class="column-2 width-50p">
+  <div class="column-2 width-50p colum-initial">
     <% if @item.other_images.attached? %>
       <% @item.other_images.each.with_index(2) do |other_image, i| %>
-      <div class="space_15 avoid">
+      <div class="space_15 avoid  sp-left-50">
         <div class="space_2"><%= "画像" + i.to_s %></div>
         <div><%= image_tag other_image, width: 150, height: 150 %></div>
       </div>
