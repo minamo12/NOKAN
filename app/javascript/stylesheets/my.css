@@ -597,6 +597,10 @@ footer {
     width: 60%;
   }
 
+  .sp-width-50p {
+    width: 50%;
+  }
+
   .sp-width-100p {
     width: 100%;
   }
@@ -611,6 +615,10 @@ footer {
 
   .sp-width-10p {
     width: 10%;
+  }
+
+  .sp-width-11p {
+    width: 11%;
   }
 
   .sp-width-13p {
@@ -631,6 +639,10 @@ footer {
 
   .sp-font-17 {
     font-size: 17px;
+  }
+
+  .sp-mini-button {
+    padding: 3px 5px;
   }
 
   .sp-block {

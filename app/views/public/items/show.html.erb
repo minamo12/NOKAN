@@ -19,7 +19,7 @@
         </br>
         <div>名称：<%= @item.name %></div>
         <div>読み方：<%= @item.reading %></div>
-        <div><%= safe_join(@item.information.split("\n"),tag(:br)) %></div>
+        <div class="top_10"><%= safe_join(@item.information.split("\n"),tag(:br)) %></div>
       </div>
 
     </div>
@@ -77,10 +77,10 @@
       <% @quizzes.each do |quiz| %>
       <tbody>
         <tr>
-          <td class="outline"><%= safe_join(quiz.question.split("\n"),tag(:br)) %></td>
-          <td class="outline"><%= quiz.correct_answer %></td>
+          <td class="outline sp-font-10"><%= safe_join(quiz.question.split("\n"),tag(:br)) %></td>
+          <td class="outline sp-font-10"><%= quiz.correct_answer %></td>
 
-          <td class="outline">
+          <td class="outline sp-width-50p">
             <div class="image">
               A<%= image_tag quiz.get_number_a_image(50, 50) %>
               B<%= image_tag quiz.get_number_b_image(50, 50) %>
@@ -109,7 +109,7 @@
             </div>
           </td>
 
-          <td class="outline"><%= link_to "修正する", edit_admin_quiz_path(quiz.id, item_id: quiz.item.id), class: "btn btn-success" %></td>
+          <td class="outline sp-width-11p"><%= link_to "修正", edit_admin_quiz_path(quiz.id, item_id: quiz.item.id), class: "sp-mini-button sp-font-10 btn btn-success" %></td>
         </tr>
       </tbody>
       <% end %>
