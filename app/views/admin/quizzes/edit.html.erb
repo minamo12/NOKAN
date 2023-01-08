@@ -10,7 +10,7 @@
 <div class="flex">
 
   <div class="title">問題編集</div>
-  <div class="left-space-40"><%= link_to "削除する", admin_quiz_path(@quiz.id, item_id: @item.id), method: :delete, "data-confirm" => "削除しますか？", class: "btn btn-danger" %></div>
+  <div class="left-space-40"><%= link_to "削除する", admin_quiz_path(@quiz.id, item_id: @item.id), method: :delete, "data-confirm" => "削除しますか？", class: "sp-font-12 btn btn-danger" %></div>
 
 </div>
 
@@ -32,7 +32,7 @@
         変更前
         <div class="flex">
           <div><%= image_tag @quiz.get_number_a_image(170, 130) %></div>
-          <div><%= f.file_field :number_a_image, accept: "image/*" %></div>
+          <div class="left-space-5"><%= f.file_field :number_a_image, accept: "image/*" %></div>
         </div>
       </td>
     </tr>
@@ -42,7 +42,7 @@
         変更前
         <div class="flex">
           <div><%= image_tag @quiz.get_number_b_image(170, 130) %></div>
-          <div><%= f.file_field :number_b_image, accept: "image/*" %></div>
+          <div class="left-space-5"><%= f.file_field :number_b_image, accept: "image/*" %></div>
         </div>
       </td>
     </tr>
@@ -52,13 +52,13 @@
         変更前
         <div class="flex">
           <div><%= image_tag @quiz.get_number_c_image(170, 130) %></div>
-          <div><%= f.file_field :number_c_image, accept: "image/*" %></div>
+          <div class="left-space-5"><%= f.file_field :number_c_image, accept: "image/*" %></div>
         </div>
       </td>
     </tr>
     <tr>
       <th></th>
-      <td><%= f.submit '更新する', class: "btn btn-success" %></td>
+      <td><%= f.submit '更新する', class: "sp-font-12 btn btn-success" %></td>
     </tr>
 
   </table>

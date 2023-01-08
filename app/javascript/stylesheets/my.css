@@ -166,7 +166,7 @@
 
 /*並び方*/
 .flex {
-  display: flex
+  display: flex;
 }
 
 .block {
