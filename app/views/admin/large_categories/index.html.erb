@@ -1,10 +1,12 @@
 
 
-<div class="flex width-100p">
+<div class="title">カテゴリ管理</div>
+
+<div class="flex width-100p sp-font-12">
 
 
 <div class="width-50p">
-  <div class="title">カテゴリ管理</div>
+
 
   <div><%= link_to "選び直す", admin_large_categories_path %></div>
 
@@ -43,7 +45,7 @@
     <% elsif @medium_select.present? %>
       > <%= @medium_select.large_category.name %> <
     <% else %>
-    <div class="column-2">
+    <div>
       <% @large_categories.each do |large_category| %>
         <div><%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %></div>
       <% end %>
@@ -81,13 +83,13 @@
     <!--中カテ選択-->
     <div class="font-20 space_10">中カテ選択</div>
     <% if @medium_selects.present? %>
-    <div class="column-2">
+    <div>
       <% @medium_selects.each do |medium_category| %>
         <div><%= link_to medium_category.name, admin_large_categories_path(medium_category_id: medium_category.id) %></div>
       <% end %>
     </div>
     <% elsif @medium_select.present? %>
-      <div class="column-2">> <%= @medium_select.name %> <</div>
+      <div>> <%= @medium_select.name %> <</div>
     <% else %>
     <% end %>
     <!---->
