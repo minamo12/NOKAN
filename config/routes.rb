@@ -69,6 +69,12 @@ Rails.application.routes.draw do
     #customers
     resources :customers, only: [:index, :edit, :update]
 
+    #bord_posts
+    resources :board_posts, only: [:destroy]
+
+    #comments
+    resources :comments, only: [:destroy]
+
   end
 
 end

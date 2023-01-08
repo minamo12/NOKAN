@@ -1,2 +1,0 @@
-module Admin::BordPostsHelper
-end

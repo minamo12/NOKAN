@@ -33,11 +33,7 @@ class Public::BoardPostsController < ApplicationController
     @board_post = BoardPost.find(params[:id])
     if current_customer.id == @board_post.customer.id
       @board_post.destroy
-      if admin_signed_in?
-        redirect_to board_posts_path
-      else
-        redirect_to board_post_my_posts_path
-      end
+      redirect_to board_post_my_posts_path
     else
       redirect_to root_path
     end

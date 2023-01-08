@@ -3,7 +3,7 @@
 <!--以下管理人のみ表示-->
 <div class="space_30">
 <% if admin_signed_in? %>
-  <%= link_to "削除する", board_post_path(@board_post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？", class: "btn btn-danger" %>
+  <%= link_to "削除する", admin_board_post_path(@board_post.id), method: :delete, "data-confirm" => "この投稿を削除しますか？", class: "sp-font-12 btn btn-danger" %>
 <% end %>
 </div>
 <!---->
@@ -78,7 +78,7 @@
         <!---->
         <!--管理者-->
         <% if admin_signed_in? %>
-        <div class="width-100p text-right-send"><%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "sp-font-12 btn btn-danger btn-sm top_10" %></div>
+        <div class="width-100p text-right-send"><%= link_to "削除する", admin_comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "sp-font-12 btn btn-danger btn-sm top_10" %></div>
         <% end %>
         <!---->
       </div>
