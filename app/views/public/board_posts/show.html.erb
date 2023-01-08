@@ -76,6 +76,11 @@
         <% end %>
         <% end %>
         <!---->
+        <!--管理者-->
+        <% if admin_signed_in? %>
+        <div class="width-100p text-right-send"><%= link_to "削除する", comment_path(comment.id), method: :delete, "data-confirm" => "このコメントを削除しますか？", class: "sp-font-12 btn btn-danger btn-sm top_10" %></div>
+        <% end %>
+        <!---->
       </div>
     </div>
 
