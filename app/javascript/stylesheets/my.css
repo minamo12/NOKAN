@@ -410,7 +410,7 @@ footer {
 }
 
 .space {
-  margin: 0 20px;
+  margin: 0 3px;
 }
 
 .true {
@@ -608,6 +608,7 @@ footer {
   .sp-width-17p {
     width: 17%;
   }
+
   .sp-width-15p {
     width: 15%;
   }
@@ -674,6 +675,10 @@ footer {
 
   .sp-bottom-10 {
     margin-bottom: 10px;
+  }
+
+  .sp-width-120px {
+    width: 120px;
   }
 
 }

@@ -25,8 +25,8 @@
 
     <!--カテゴリ選択-->
     <div class="space_15">
-      <div class="top_10 space_10">変更前：<%= @item.large_category.name %> ＞ <%= @item.medium_category.name %> ＞ <%= @item.small_category.name %></div>
-      <div class="flex sp-font-15">
+      <div class="top_10 space_10 sp-font-15">変更前：<%= @item.large_category.name %> ＞ <%= @item.medium_category.name %> ＞ <%= @item.small_category.name %></div>
+      <div class="flex sp-font-12">
 
         <div>
           <label class="underline">大カテゴリ</label>
@@ -133,7 +133,7 @@
         </tr>
         <tr>
           <th></th>
-          <td><%= f.submit '更新する', class: "top_50 btn btn-primary" %></td>
+          <td><%= f.submit '更新する', class: "top_50 btn btn-primary sp-font-12" %></td>
         </tr>
       </table>
     </div>

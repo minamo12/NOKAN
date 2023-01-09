@@ -8,7 +8,7 @@
 <div class="flex">
 
   <div class="width-50p sp-font-12">
-    <div class="flex space_50">
+    <div class="flex space_50 sp-block">
 
       <div>
         <label class="space_2">画像1</label>
@@ -28,8 +28,12 @@
       <label class="space_10">＜その他＞</label>
       <div><%= safe_join(@item.commentary.split("\n"),tag(:br)) %></div>
     </div>
+      <% if admin_signed_in? %>
+      <div clasS="width-70p space_50">
+        <div class="text-center"><%= link_to "修正する", edit_admin_item_path(@item.id), class: "sp-font-12 btn btn-success" %></div>
+      </div>
+      <% end %>
   </div>
-
 
   <div class="column-2 width-50p colum-initial">
     <% if @item.other_images.attached? %>
@@ -42,7 +46,6 @@
     <% end %>
   </div>
 
-
 </div>
 
 
@@ -51,10 +54,6 @@
 
 <!--以下管理者　問題管理画面-->
 <% if admin_signed_in? %>
-
-<div clasS="width-70p space_50">
-  <div class="text-center"><%= link_to "修正する", edit_admin_item_path(@item.id), class: "btn btn-success" %></div>
-</div>
 
 
 <div class="space_50">
