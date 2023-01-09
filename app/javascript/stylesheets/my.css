@@ -624,20 +624,20 @@ footer {
     width: 11%;
   }
 
-  .sp-width-13p {
-    width: 13%;
+  .sp-font-11 {
+    font-size: 11px;
   }
 
   .sp-font-12 {
     font-size: 12px;
   }
 
-  .sp-font-15 {
-    font-size: 15px;
+  .sp-width-13p {
+    width: 13%;
   }
 
-  .sp-font-11 {
-    font-size: 11px;
+  .sp-font-15 {
+    font-size: 15px;
   }
 
   .sp-font-17 {
