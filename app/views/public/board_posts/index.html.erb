@@ -1,8 +1,9 @@
 
-
+<% if customer_signed_in? %>
 <div class="width-80p">
   <div class="text-right-send"><%= link_to "投稿する", new_board_post_path, class: "sp-font-15 btn btn-primary" %></div>
 </div>
+<% end %>
 
 </br>
 
