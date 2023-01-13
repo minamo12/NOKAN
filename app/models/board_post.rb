@@ -5,4 +5,6 @@ class BoardPost < ApplicationRecord
   belongs_to :customer
   belongs_to :large_category
 
+  validates :board_title, length: {maximum: 26}
+
 end

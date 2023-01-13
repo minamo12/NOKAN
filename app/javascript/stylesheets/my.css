@@ -369,6 +369,10 @@ header {
   word-break: break-all;
 }
 
+.board_title{
+  word-break: break-all;
+}
+
 .board_cate {
   padding: 0 5px;
 }
