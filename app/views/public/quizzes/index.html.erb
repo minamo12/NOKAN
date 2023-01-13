@@ -1,4 +1,9 @@
 
+<% if customer_signed_in? %>
+<% else %>
+  <div class="sp-font-12 space_5 red">！未ログイン状態だと結果の保存ができません！</div>
+<% end %>
+
 <div class="width-90p text-right-send space_5">
   <button id="quiz-button" class="answer-open">答えを表示する</button>
 </div>
@@ -120,11 +125,15 @@
 
 </table>
 
+
 <div class="text-center width-50p top_50 sp-width-60p">
   <%= f.number_field :point, class: "width-20p", :required => true %> /40
+  <% if customer_signed_in? %>
   <%= f.submit "結果を保存する", class: "small-btn btn btn-success left-space-30" %>
+  <% end %>
 <% end %>
 </div>
+
 
 <div class="text-center">
   <%= link_to('保存せず問題を入れ替える', 'javascript:void(0);', onclick: "window.location.reload();", class: "small-btn btn btn-primary top_50")  %>
