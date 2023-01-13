@@ -669,6 +669,10 @@ footer {
     margin-left: 0;
   }
 
+  .sp-left-3-p {
+    padding-left: 3px;
+  }
+
   .image:hover + .pop-up {
     right: 5px;
   }
