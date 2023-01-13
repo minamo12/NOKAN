@@ -40,14 +40,17 @@
 
         <td class="outline">
           <div class="image">
-            A<%= image_tag answer.quiz.get_number_a_image(50, 50) %>
-            B<%= image_tag answer.quiz.get_number_b_image(50, 50) %>
-            C<%= image_tag answer.quiz.get_number_c_image(50, 50) %>
+            <span class="pc">
+              A<%= image_tag answer.quiz.get_number_a_image(50, 50) %>
+              B<%= image_tag answer.quiz.get_number_b_image(50, 50) %>
+              C<%= image_tag answer.quiz.get_number_c_image(50, 50) %>
+            </span>
+            <span class="sp underline sp-font-10">画像を表示</span>
           </div>
           <!--ポップアップ内-->
           <div class="pop-up center">
             <div>
-              <table>
+              <table class="pc">
                 <thead>
                   <tr class="text-center">
                     <th>A</th>
@@ -63,6 +66,25 @@
                   </tr>
                 </tbody>
               </table>
+
+              <table class="sp">
+                <thead>
+                  <tr class="text-center">
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%= image_tag answer.quiz.get_number_a_image(125, 90) %></td>
+                    <td><%= image_tag answer.quiz.get_number_b_image(125, 90) %></td>
+                    <td><%= image_tag answer.quiz.get_number_c_image(125, 90) %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
             </div>
           </div>
         </td>
