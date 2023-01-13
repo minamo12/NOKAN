@@ -5,6 +5,13 @@
   <% end %>
 </p>
 
+
+<% if customer_signed_in? %>
+  <div class="red space_10">
+    会員としてログインしています。</br>ログアウトをしてください。
+  </div>
+<% end %>
+
 <div class="title">管理者ログイン</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

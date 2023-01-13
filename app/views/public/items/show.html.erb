@@ -18,7 +18,7 @@
       <div class="left-space-20">
         </br>
         <div>名称：<%= @item.name %></div>
-        <div>読み方：<%= @item.reading %></div>
+        <div class="border-bottom">読み方：<%= @item.reading %></div>
         <div class="top_10"><%= safe_join(@item.information.split("\n"),tag(:br)) %></div>
       </div>
 
