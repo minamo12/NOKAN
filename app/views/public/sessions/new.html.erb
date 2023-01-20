@@ -5,6 +5,12 @@
   <% end %>
 </p>
 
+<% if admin_signed_in? %>
+  <div class="red space_10">
+    管理者としてログインしています。</br>ログアウトをしてください。
+  </div>
+<% end %>
+
 
 <div class="title">ログイン</div>
 
@@ -21,7 +27,10 @@
     </tr>
     <tr>
       <th></th>
+      <% if admin_signed_in? %>
+      <% else %>
       <td><%= f.submit "ログイン", class: 'btn btn-success' %></td>
+      <% end %>
     </tr>
     <tr>
       <th></th>

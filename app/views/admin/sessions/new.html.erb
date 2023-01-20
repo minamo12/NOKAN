@@ -27,7 +27,10 @@
   </tr>
   <tr>
     <th></th>
+    <% if customer_signed_in? %>
+    <% else %>
     <td><%= f.submit "ログイン", class: 'sp-font-12 btn btn-success' %></td>
+    <% end %>
   </tr>
 </table>
 
