@@ -40,7 +40,7 @@
   </thead>
 
 
-  <tbody>
+  <tbody id="quiz">
 
     <% @count = 0 %>
 
@@ -127,7 +127,17 @@
 
 
 <div class="text-center width-50p top_50 sp-width-60p">
-  <%= f.number_field :point, class: "width-20p", :required => true %> /40
+  <div class="quiz_point"></div>
+  <script>
+    $(function() {
+        $('input:checkbox').change(function() {
+            var cnt = $('#quiz input:checkbox:checked').length;
+            $('div.quiz_point').text('正解数：' + cnt + '/40問');
+        }).trigger('change');
+    });
+</script>
+  <p class="font-12 red">↓自動計算した上記の正解数を入力してください↓</p>
+  <%= f.number_field :point, class: "width-20p", :required => true %>
   <% if customer_signed_in? %>
   <%= f.submit "結果を保存する", class: "small-btn btn btn-success left-space-30" %>
   <% end %>
@@ -138,6 +148,8 @@
 <div class="text-center">
   <%= link_to('保存せず問題を入れ替える', 'javascript:void(0);', onclick: "window.location.reload();", class: "small-btn btn btn-primary top_50")  %>
 </div>
+
+
 
 
 
