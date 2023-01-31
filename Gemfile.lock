@@ -93,6 +93,13 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.11.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
+    faker (3.1.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     font-awesome-sass (6.2.1)
       sassc (~> 2.0)
@@ -288,6 +295,8 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   dotenv-rails
+  factory_bot_rails
+  faker
   font-awesome-sass
   image_processing (~> 1.2)
   jbuilder (~> 2.7)

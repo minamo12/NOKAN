@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# ログイン前
 describe 'トップ画面(root_path)のテスト' do
   before do
     visit root_path
@@ -44,6 +45,15 @@ describe 'トップ画面(root_path)のテスト' do
   end
 end
 
+describe 'About画面のテスト' do
+  before do
+    visit about_path
+  end
+  it '「About」の文字が表示されているか' do
+    expect(page).to have_content 'About'
+  end
+end
+
 describe '新規会員登録画面のテスト' do
   before do
     visit new_customer_registration_path
@@ -60,6 +70,37 @@ describe '新規会員登録画面のテスト' do
     it '「こちら」がログイン(new_customer_session_path)へのリンクになっているか' do
       expect(page).to have_content 'こちら'
       expect(page).to have_link 'こちら', href: new_customer_session_path
+    end
+  end
+end
+
+describe 'ログイン画面のテスト'do
+  before do
+    visit new_customer_session_path
+  end
+  context '表示・リンクの確認' do
+    it 'ユーザ名、パスワード用のフォームがあるか' do
+      expect(page).to have_field 'customer[name]'
+      expect(page).to have_field 'customer[password]'
+    end
+    it '「ログイン」ボタンがあるか' do
+      expect(page).to have_button 'ログイン'
+    end
+    it '「こちら」が新規登録(new_customer_registration_path)へのリンクになっているか' do
+      expect(page).to have_content 'こちら'
+      expect(page).to have_link 'こちら', href: new_customer_registration_path
+    end
+  end
+end
+
+describe '模試実施画面のテスト' do
+  let(:item) { create(:item) }
+  before do
+    visit quizzes_path(item.large_category)
+  end
+  context '表示・リンクの確認' do
+    it '未ログイン時の警告「保存ができません」が表示されているか' do
+      expect(page).to have_content 'test'
     end
   end
 end
