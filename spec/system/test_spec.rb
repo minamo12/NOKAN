@@ -94,21 +94,32 @@ describe 'ログイン画面のテスト'do
 end
 
 describe '模試実施画面のテスト' do
-  let!(:large_category) { create(:large_category) }
-  let!(:medium_category) { create(:medium_category, large_category_id: large_category.id) }
-  let!(:small_test) { create(:small_category, medium_category_id: medium_category.id) }
-  let!(:item) { create(:item, large_category_id: large_category.id, medium_category_id: medium_category.id, small_category_id: small_category.id) }
+  let(:large_category) { create(:large_category) }
+  let(:medium_category) { create(:medium_category, large_category_id: large_category.id) }
+  let(:small_category) { create(:small_category, medium_category_id: medium_category.id) }
+  let(:item) { create(:item, large_category_id: large_category.id, medium_category_id: medium_category.id, small_category_id: small_category.id) }
+  let(:quiz) { create(:quiz, item_id: item.id) }
   before do
-    visit quizzes_path(large_category)
+    visit quizzes_path(large_category_id: large_category.id)
   end
-  context 'test' do
-    it 'test' do
-        LargeCategory.create(:large_category)
-        MediumCategory.create(:medium_category)
-        SmallCategory.create(:small_category)
-        Item.create(:item)
-      large_category.item.each do |item|
-        expect(page).to have_content item.name
+  context '表示・リンクの確認' do
+    it '未ログイン時の警告が表示されるか' do
+      expect(page).to have_content '未ログイン状態'
+    end
+    it '「答えを表示する」ボタンがあるか' do
+      expect(page).to have_button '答えを表示する'
+    end
+    it '問題文・回答用フォーム・正誤判定用チェック・詳細ボタンが表示・機能しているか' do
+      (1..5).each do |i|
+        Quiz.create(question:'test'+i.to_s, correct_answer:'test'+i.to_s, item_id: item.id)
+      end
+      visit quizzes_path(large_category_id: large_category.id)
+      Quiz.all.each_with_index do |quiz,i|
+        expect(page).to have_content quiz.question
+        expect(page).to have_field 'mock_exam[answers_attributes][0][answer]'
+        expect(page).to have_field 'mock_exam[answers_attributes][0][scoring]'
+        expect(page).to have_unchecked_field 'mock_exam[answers_attributes][0][scoring]'
+        expect(page).to have_content '詳細'
       end
     end
   end

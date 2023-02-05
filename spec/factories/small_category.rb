@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :small_category do
-    user { medium_category.item }
-    name { Faker::Lorem.small_test }
+    name { Faker::Lorem.characters(number:5) }
   end
 end

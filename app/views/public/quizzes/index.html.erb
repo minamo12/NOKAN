@@ -139,7 +139,7 @@
   <p class="font-12 red">↓自動計算した上記の正解数を入力してください↓</p>
   <%= f.number_field :point, class: "width-20p", :required => true %>
   <% if customer_signed_in? %>
-  <%= f.submit "結果を保存する", class: "small-btn btn btn-success left-space-30" %>
+  <%= f.submit "結果を保存する", class: "small-btn btn btn-success left-space-30 save_result" %>
   <% end %>
 <% end %>
 </div>
