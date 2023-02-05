@@ -94,13 +94,22 @@ describe 'ログイン画面のテスト'do
 end
 
 describe '模試実施画面のテスト' do
-  let(:item) { create(:item) }
+  let!(:large_category) { create(:large_category) }
+  let!(:medium_category) { create(:medium_category, large_category_id: large_category.id) }
+  let!(:small_test) { create(:small_category, medium_category_id: medium_category.id) }
+  let!(:item) { create(:item, large_category_id: large_category.id, medium_category_id: medium_category.id, small_category_id: small_category.id) }
   before do
-    visit quizzes_path(item.large_category)
+    visit quizzes_path(large_category)
   end
-  context '表示・リンクの確認' do
-    it '未ログイン時の警告「保存ができません」が表示されているか' do
-      expect(page).to have_content 'test'
+  context 'test' do
+    it 'test' do
+        LargeCategory.create(:large_category)
+        MediumCategory.create(:medium_category)
+        SmallCategory.create(:small_category)
+        Item.create(:item)
+      large_category.item.each do |item|
+        expect(page).to have_content item.name
+      end
     end
   end
 end
