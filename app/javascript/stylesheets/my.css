@@ -455,64 +455,7 @@ footer {
 
 @media screen and (max-width:425px) {
 
-  main {
-    width: 100%;
-  }
-
-  header {
-    width: 100%;
-    height: 40px;
-    margin-bottom: 30px;
-    border-bottom: solid 1px;
-  }
-
-  .logo {
-    border: solid 1px;
-    position: absolute;
-    color: black;
-    text-decoration: none;
-    top: 15px;
-    padding: 8px 20px;
-    margin: 0 20px;
-    font-size: 20px;
-  }
-
-  .top-area {
-    font-size: 12px;
-    padding: 10px;
-  }
-
-  .welcome {
-    display: none;
-  }
-
-  .top-text {
-    width: 100%;
-  }
-
-  .header-btn {
-    border: solid 1px #c0c0c0;
-    border-radius: 3px;
-    color: black;
-    text-decoration: none;
-    padding: 4px 10px;
-    font-size: 10px;
-  }
-
-  ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin: 70px 0 0 0;
-    padding: 0;
-  }
-
-  .top-large-name {
-    font-size: 13px;
-    text-align: center;
-    margin-bottom: 10px;
-    border-bottom: 1px solid black;
-  }
+  /*ボタン*/
 
   .study-btn {
     font-size: 10px;
@@ -525,81 +468,37 @@ footer {
     width: 50%;
   }
 
-  .top-category-item {
-    display: block;
-    margin-bottom: 20px;
+  .sp-mini-button {
+    padding: 3px 5px;
   }
 
-  .mini-flex {
-    display: flex;
-  }
+  /*******************/
 
-  .about {
-    font-size: 15px;
-  }
-
-  .caution {
-    font-size: 10px;
-  }
-
-  .title {
-    font-size: 15px;
-    padding: 3px 15px;
-  }
-
-  .sign-up-item {
-    font-size: 15px;
-  }
-
-  .edit-customer {
-    font-size: 13px;
-    margin-left: 40px;
-  }
-
-  .list-link {
-    font-size: 12px;
-  }
-
-  th {
-    font-size: 11px;
-  }
-
-  td {
-    font-size: 11px;
-  }
-
-  .small-btn {
-    font-size: 11px;
-  }
-
-  .pc {
-    display: none !important;
-  }
-
-  .sp {
-    display: block !important;
-  }
-
-  .answer {
-    width: 20%;
-  }
-
-  img {
-    max-width: 100%;
-  }
-
-  .image:hover + .pop-up {
-    display: block;
-    position: absolute;
-  }
-
-  .answer-open {
-    font-size: 13px;
-  }
+  /*フォントサイズ*/
 
   .sp-font-10 {
     font-size: 10px;
   }
+
+  .sp-font-11 {
+    font-size: 11px;
+  }
+
+  .sp-font-12 {
+    font-size: 12px;
+  }
+
+  .sp-font-15 {
+    font-size: 15px;
+  }
+
+  .sp-font-17 {
+    font-size: 17px;
+  }
+
+  /*******************/
+
+  /*width*/
 
   .sp-width-60p {
     width: 60%;
@@ -633,37 +532,17 @@ footer {
     width: 11%;
   }
 
-  .sp-font-11 {
-    font-size: 11px;
-  }
-
-  .sp-font-12 {
-    font-size: 12px;
-  }
-
   .sp-width-13p {
     width: 13%;
   }
 
-  .sp-font-15 {
-    font-size: 15px;
+  .sp-width-120px {
+    width: 120px;
   }
 
-  .sp-font-17 {
-    font-size: 17px;
-  }
+  /*******************/
 
-  .sp-mini-button {
-    padding: 3px 5px;
-  }
-
-  .sp-block {
-    display: block;
-  }
-
-  .colum-initial {
-    column-count: initial;
-  }
+  /*スペース*/
 
   .sp-left-50 {
     margin-left: 50px;
@@ -677,10 +556,6 @@ footer {
     padding-left: 3px;
   }
 
-  .image:hover + .pop-up {
-    right: 5px;
-  }
-
   .sp-top-10 {
     margin-top: 10px;
   }
@@ -689,8 +564,157 @@ footer {
     margin-bottom: 10px;
   }
 
-  .sp-width-120px {
-    width: 120px;
+  /*******************/
+
+  /*タグ指定*/
+
+  th {
+    font-size: 11px;
+  }
+
+  td {
+    font-size: 11px;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  header {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 30px;
+    border-bottom: solid 1px;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 70px 0 0 0;
+    padding: 0;
+  }
+
+  /*******************/
+
+  /*固有クラス*/
+
+  .top-category-item {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .about {
+    font-size: 15px;
+  }
+
+  .caution {
+    font-size: 10px;
+  }
+
+  .title {
+    font-size: 15px;
+    padding: 3px 15px;
+  }
+
+  .sign-up-item {
+    font-size: 15px;
+  }
+
+  .edit-customer {
+    font-size: 13px;
+    margin-left: 40px;
+  }
+
+  .list-link {
+    font-size: 12px;
+  }
+
+  .answer {
+    width: 20%;
+  }
+
+  .logo {
+    border: solid 1px;
+    position: absolute;
+    color: black;
+    text-decoration: none;
+    top: 15px;
+    padding: 8px 20px;
+    margin: 0 20px;
+    font-size: 20px;
+  }
+
+  .top-area {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .answer-open {
+    font-size: 13px;
+  }
+
+  .top-large-name {
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+  }
+
+  .header-btn {
+    border: solid 1px #c0c0c0;
+    border-radius: 3px;
+    color: black;
+    text-decoration: none;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
+  .welcome {
+    display: none;
+  }
+
+  .top-text {
+    width: 100%;
+  }
+
+  /*******************/
+
+  .mini-flex {
+    display: flex;
+  }
+
+  .small-btn {
+    font-size: 11px;
+  }
+
+  .pc {
+    display: none !important;
+  }
+
+  .sp {
+    display: block !important;
+  }
+
+  .image:hover + .pop-up {
+    display: block;
+    position: absolute;
+  }
+
+  .image:hover + .pop-up {
+    right: 5px;
+  }
+
+  .sp-block {
+    display: block;
+  }
+
+  .colum-initial {
+    column-count: initial;
   }
 
 }
