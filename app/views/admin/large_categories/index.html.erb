@@ -14,17 +14,6 @@
 
   <div>
     <!--大カテ追加-->
-
-      <!--エラー文-->
-      <p>
-        <% if @large_category.errors.any? %>
-          <% @large_category.errors.full_messages.each do |messeage| %>
-            <div>・<%= messeage %></div>
-          <% end %>
-        <% end %>
-      </p>
-      <!---->
-
       <%= form_with model: @large_category, url: admin_large_create_path, method: :post do |f| %>
       <div class="top_30 flex">
         <div><%= f.text_field :name, placeholder: "大カテゴリ追加", :required => true, class: "sp-width-120px" %></div>
@@ -39,13 +28,13 @@
 <br/>
 
     <!--大カテ選択-->
-    <div class="font-20 space_10">大カテ選択</div>
+    <div class="font-20 space_10 underline">大カテ選択</div>
     <% if @large_select.present? %>
       > <%= @large_select.name %> <
     <% elsif @medium_select.present? %>
       > <%= @medium_select.large_category.name %> <
     <% else %>
-    <div>
+    <div class="space_30">
       <% @large_categories.each do |large_category| %>
         <div><%= link_to large_category.name, admin_large_categories_path(large_category_id: large_category.id) %></div>
       <% end %>
@@ -55,24 +44,21 @@
 
 
     <!--中カテ追加-->
-      <!--エラー文-->
-      <p>
-        <% if @medium_category.errors.any? %>
-          <% @medium_category.errors.full_messages.each do |messeage| %>
-            <div>・<%= messeage %></div>
-          <% end %>
-        <% end %>
-      </p>
-      <!---->
+
+    <% if @large_select.present? %>
 
       <div>
         <%= form_with model: @medium_category, url: admin_medium_create_path, method: :post do |f| %>
-        <div class="top_30 flex">
+        <div class="top_20 flex">
           <div><%= f.text_field :name, placeholder: "中カテゴリ追加", :required => true, class: "sp-width-120px" %></div>
           <div><%= f.submit '追加する' %></div>
         </div>
         <% end %>
       </div>
+
+    <% else %>
+      <div>大カテゴリを選択してください。</div>
+    <% end %>
     <!---->
 
     </div>
@@ -81,13 +67,13 @@
 
   <div>
     <!--中カテ選択-->
-    <div class="font-20 space_10">中カテ選択</div>
     <% if @medium_selects.present? %>
-    <div>
-      <% @medium_selects.each do |medium_category| %>
-        <div><%= link_to medium_category.name, admin_large_categories_path(medium_category_id: medium_category.id) %></div>
-      <% end %>
-    </div>
+    <div class="font-20 space_10 underline">中カテ選択</div>
+      <div>
+        <% @medium_selects.each do |medium_category| %>
+          <div><%= link_to medium_category.name, admin_large_categories_path(medium_category_id: medium_category.id) %></div>
+        <% end %>
+      </div>
     <% elsif @medium_select.present? %>
       <div>> <%= @medium_select.name %> <</div>
     <% else %>
@@ -96,21 +82,17 @@
 
     <!--小カテ追加-->
 
-      <!--エラー文-->
-      <p>
-        <% if @small_category.errors.any? %>
-          <% @small_category.errors.full_messages.each do |messeage| %>
-            <div>・<%= messeage %></div>
-          <% end %>
-        <% end %>
-      </p>
-      <!---->
+    <% if @medium_select.present? %>
 
-    <%= form_with model: @small_category, url: admin_small_create_path, method: :post do |f| %>
-    <div class="top_30 flex">
-      <div><%= f.text_field :name, placeholder: "小カテゴリ追加", :required => true, class: "sp-width-120px" %></div>
-      <div><%= f.submit '追加する' %></div>
-    </div>
+      <%= form_with model: @small_category, url: admin_small_create_path, method: :post do |f| %>
+      <div class="top_20 flex">
+        <div><%= f.text_field :name, placeholder: "小カテゴリ追加", :required => true, class: "sp-width-120px" %></div>
+        <div><%= f.submit '追加する' %></div>
+      </div>
+      <% end %>
+
+    <% else %>
+      <div>中カテゴリを選択してください。</div>
     <% end %>
     <!---->
   </div>
