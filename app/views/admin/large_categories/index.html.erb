@@ -57,7 +57,7 @@
       </div>
 
     <% else %>
-      <div>大カテゴリを選択してください。</div>
+      <div class="top_20">大カテゴリを選択してください。</div>
     <% end %>
     <!---->
 
@@ -82,7 +82,7 @@
 
     <!--小カテ追加-->
 
-    <% if @medium_select.present? %>
+    <% if @medium_select.present?  %>
 
       <%= form_with model: @small_category, url: admin_small_create_path, method: :post do |f| %>
       <div class="top_20 flex">
@@ -92,7 +92,7 @@
       <% end %>
 
     <% else %>
-      <div>中カテゴリを選択してください。</div>
+      <div class="top_20">中カテゴリを選択してください。</div>
     <% end %>
     <!---->
   </div>
