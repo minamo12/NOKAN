@@ -82,6 +82,11 @@
     </div>
     <!---->
 
+
+    <!--カテゴリ選択後に表示-->
+
+    <% if @small_category.present? %>
+
     <div>
       <table>
         <tr>
@@ -94,7 +99,7 @@
         </tr>
         <tr>
           <th>情報</th>
-          <td><%= f.text_area :information, class: "height-100 width-100p", :required => true %></td>
+          <td><%= f.text_area :information, class: "height-100 width-100p" %></td>
         </tr>
         <tr>
           <th>解説</th>
@@ -114,6 +119,14 @@
         </tr>
       </table>
     </div>
+
+    <% else %>
+
+    <div>カテゴリを選択してください。</div>
+
+    <% end %>
+
+    <!---->
 
 
     <% end %>
