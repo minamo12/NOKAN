@@ -9,7 +9,7 @@
 
 <div>
 
-  <table>
+  <table class="widelink">
 
     <thead>
       <tr class="text-center border-bottom">
@@ -24,11 +24,11 @@
     <tbody>
       <tr class="border-bottom">
         <td><%= link_to item.name, item_path(item.id) %></td>
-        <td><%= item.information.truncate(13) %></td>
-        <td><%= item.commentary.truncate(13) %></td>
+        <td><%= link_to item.information.truncate(13), item_path(item.id) %></td>
+        <td><%= link_to item.commentary.truncate(13), item_path(item.id) %></td>
         <td>
           <div class="item-index-image"><%= image_tag item.get_image(80, 80) %></div>
-          <div class="item-index-pop-up"><%= image_tag item.get_image(200, 200) %></div>
+          <div class="item-index-pop-up top_10"><%= image_tag item.get_image(200, 200) %></div>
         </td>
       </tr>
     </tbody>

@@ -179,7 +179,7 @@
 
 /*ボーダー*/
 .border-bottom {
-  border-bottom: solid 1px;
+  border-bottom: solid 5px #c0c0c0;
 }
 
 
@@ -238,6 +238,14 @@
   width: 10%;
 }
 
+.width-100 {
+  width: 100px;
+}
+
+
+.height-80 {
+  height: 80px;
+}
 
 .height-55 {
   height: 55px;
@@ -249,6 +257,10 @@
 
 .height-680 {
   height: 680px;
+}
+
+.height-100p {
+  height: 100%;
 }
 
 
@@ -304,7 +316,7 @@ header {
   color: black;
   text-decoration: none;
   padding: 8px 30px;
-  margin: 0 20px;
+  margin: 0 20px
 }
 
 .welcome {
@@ -355,7 +367,6 @@ header {
   padding: 2px 2px;
 }
 
-
 /*掲示板*/
 
 .board_card {
@@ -388,7 +399,23 @@ header {
 }
 
 
+/**/
+
+
 /*その他*/
+
+a:hover {
+  background-color: #eeffff;
+}
+
+.linelink {
+  display: block
+}
+
+table.widelink td a {
+  display: block;
+  padding: 30px 0;
+}
 
 .scroll {
   overflow-y: scroll;
@@ -646,7 +673,7 @@ footer {
     top: 15px;
     padding: 8px 20px;
     margin: 0 20px;
-    font-size: 20px;
+    font-size: 40px;
   }
 
   .top-area {

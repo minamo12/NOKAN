@@ -90,9 +90,9 @@
     <!---->
 
     <div>
-      <table class="width-70p">
+      <table class="width-100p">
         <tr>
-          <th class="sp-width-17p">項目名</th>
+          <th class="sp-width-17p width-100">項目名</th>
           <td><%= f.text_field :name, :required => true %></td>
         </tr>
         <tr>
@@ -117,23 +117,32 @@
         <tr>
           <th>他画像</th>
           <td>
-            変更前
-          <div class="column-2 width-50p">
-            <div>↓削除する画像をチェックしてください↓</div>
-            <% if @item.other_images.attached? %>
+            ↓削除する画像をチェックしてください↓
+
+          <% if @item.other_images.attached? %>
+            <div class="column-2 width-50p">
               <% @item.other_images.each.with_index(2) do |other_image, i| %>
               <div class="space_15 avoid">
-                <div class="space_2"><%= "画像" + i.to_s %></div>
-
                 <div>
                   <%= f.check_box :other_image_ids, { multiple: true }, other_image.id, false %>
+                  <%= "画像" + i.to_s %>
+                  <label for="item_other_image_ids_<%= other_image.id %>" >
+                    <%= image_tag other_image, width: 150, height: 150 %>
+                  </label>
                 </div>
-                <label><%= image_tag other_image, width: 150, height: 150 %></label>
 
               </div>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+
+          <!--更新と削除同時にできないので、
+          更新する場合は「追加する」ボタンを用意しておいて
+          クリックするとフォームと注意書きが表示されるようにする。
+          また、
+          [:item][:other_images].present?
+          かませて、これがある場合はフォームを表示させないようにする
+          -->
           <%= f.file_field :other_images, accept: "image/*", multiple: true %>
           </td>
         </tr>
