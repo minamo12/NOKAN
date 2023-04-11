@@ -98,6 +98,13 @@ class Admin::ItemsController < ApplicationController
         render :edit
       end
 
+      if params[:item][:other_image_ids]
+        params[:item][:other_image_ids].each do |other_image_id|
+          image = @item.other_images.find(other_image_id)
+          image.purge
+        end
+      end
+
     else
       redirect_to root_path
     end

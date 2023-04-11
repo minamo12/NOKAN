@@ -119,11 +119,17 @@
           <td>
             変更前
           <div class="column-2 width-50p">
+            <div>↓削除する画像をチェックしてください↓</div>
             <% if @item.other_images.attached? %>
               <% @item.other_images.each.with_index(2) do |other_image, i| %>
               <div class="space_15 avoid">
                 <div class="space_2"><%= "画像" + i.to_s %></div>
-                <div><%= image_tag other_image, width: 150, height: 150 %></div>
+
+                <div>
+                  <%= f.check_box :other_image_ids, { multiple: true }, other_image.id, false %>
+                </div>
+                <label><%= image_tag other_image, width: 150, height: 150 %></label>
+
               </div>
               <% end %>
             <% end %>
