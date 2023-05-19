@@ -11,3 +11,23 @@ Admin.create!(
     {email: 'test@test', password: 'password'}
   ]
 )
+
+Customer.create!(
+  [
+    {name: "test", password: "testte"}
+  ]
+)
+
+large_categories = LargeCategory.create!(
+  [
+    {name: "共通"},
+    {name: "農業"}
+  ]
+)
+
+meium_categories = MediumCategory.create!(
+	[
+	  {name: "野菜", large_category_id: large_categories[0].id},
+    {name: "果樹", large_category_id: large_categories[1].id}
+	]
+)
