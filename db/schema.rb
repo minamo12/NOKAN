@@ -61,23 +61,6 @@ ActiveRecord::Schema.define(version: 2022_11_01_130234) do
     t.boolean "scoring", default: false, null: false
   end
 
-  create_table "board_posts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id", null: false
-    t.integer "large_category_id", null: false
-    t.string "board_title", null: false
-    t.text "board_text", null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id", null: false
-    t.integer "board_post_id", null: false
-    t.text "comment_text", null: false
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
