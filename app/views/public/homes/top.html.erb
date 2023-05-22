@@ -22,7 +22,7 @@
 
 
 
-<div class="column-2 center top-category">
+<div class="column-2 center width-100p space_50">
   <% @large_categories.each do |large_category| %>
   <div class="space_15 ">
     <div class="width-100p top-category-item">
@@ -36,4 +36,38 @@
   <% end %>
 
 </div>
+
+
+<div>
+  <div class="title">最近の更新(10件)</div>
+  <table>
+    <thead>
+      <tr>
+        <th>作成日</th>
+        <th>項目名</th>
+        <th>分野</th>
+      </tr>
+    </thead>
+
+    <% @items.take(10).each do |item| %>
+
+    <tbody>
+      <tr>
+        <td><%= item.created_at.strftime('%m/%d') %></td>
+        <td><%= item.name %></td>
+        <td>
+          <%= item.large_category.name %>
+          >
+          <%= item.medium_category.name %>
+          >
+          <%= item.small_category.name %>
+        </td>
+      </tr>
+    </tbody>
+
+    <% end %>
+
+  </table>
+</div>
+
 </div>

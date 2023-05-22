@@ -22,12 +22,12 @@ large_categories = LargeCategory.create!(
   [
     {name: "共通"},
     {name: "農業"},
-    {name: "共通"},
-    {name: "共通"},
-    {name: "共通"},
-    {name: "共通"},
-    {name: "共通"},
-    {name: "共通"}
+    {name: "園芸"},
+    {name: "畜産"},
+    {name: "食品化学"},
+    {name: "農業土木"},
+    {name: "林業"},
+    {name: "造園"}
   ]
   )
 
